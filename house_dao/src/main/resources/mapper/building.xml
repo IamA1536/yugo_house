@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.sfteam.house.biz.mapper.BuildingMapper">
+
+    <select id="getBuilding" parameterType="int" resultType="building">
+        select
+        id, type, itemname, price, img, itemfrom, info, address, decstatus
+        from building
+        <where>
+            <if test="type != null">
+                type = #{type}
+            </if>
+        </where>
+    </select>
+
+
+
+    <insert id="addToCollection">
+        insert into user_collections (userid, itemid, time)
+        values (#{userID},
+                #{itemID},
+                #{time})
+    </insert>
+
+    <insert id="insert">
+        insert into user_important (ID, realname, IDnumber, pw, email)
+        values (#{ID},
+                #{realname},
+                #{IDnumber},
+                #{pw});
+        insert into user_standrad (ID, username, type, email, info, icon, sex, address, tele)
+        values (#{ID},
+                #{username},
+                #{type},
+                #{email},
+                #{info},
+                #{icon},
+                #{sex},
+                #{address},
+                #{tele});
+    </insert>
+
+    <delete id="delete" parameterType="building">
+        delete
+        from building
+        where ID = #{ID};
+        <if test="#{type} = 1">
+            delete
+            from property
+            where ID = #{ID};
+        </if>
+        <if test="#{type} != 1">
+            delete
+            from rent
+            where ID = #{ID};
+        </if>
+
+    </delete>
+
+    <delete id="delete" parameterType="int">
+        delete
+        from building
+        where ID = #{ID};
+        <if test="#{type} = 1">
+            delete
+            from property
+            where ID = #{ID};
+        </if>
+        <if test="#{type} != 1">
+            delete
+            from rent
+            where ID = #{ID};
+        </if>
+    </delete>
+
+    <update id="update">
+        update building
+        <set>
+            <if test="email !=null and email != '' ">
+                email = #{email},
+            </if>
+            <if test="info !=null and info != '' ">
+                info = #{info},
+            </if>
+            <if test="icon !=null and icon != '' ">
+                icon = #{icon},
+            </if>
+            <if test="address !=null ">
+                address = #{address},
+            </if>
+            <if test="tele != null">
+                tele = #{tele}
+            </if>
+        </set>
+        where ID = #{ID}
+    </update>
+
+    <select id="selectUserCount" resultType="long">
+        select count(*)
+        from user_important
+    </select>
+</mapper>

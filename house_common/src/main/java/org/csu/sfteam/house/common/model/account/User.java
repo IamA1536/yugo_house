@@ -1,4 +1,4 @@
-package org.sfteam.house.model.account;
+package org.csu.sfteam.house.common.model.account;
 
 /**
  * @email 1694522669@qq.com
@@ -6,7 +6,7 @@ package org.sfteam.house.model.account;
  * @date: 2019/8/30 15:49
  */
 public class User {
-    private long id;
+    private long ID;
     private String username;
     private int type;
     private String email;
@@ -15,21 +15,17 @@ public class User {
     private int sex;
     private String address;
     private String tele;
+    private String realname;
+    private String IDnumber;
+    private String pw;
 
-    public User(){
-        
+
+    public User() {
+
     }
 
-    public String toString(){
+    public String toString() {
         return "";
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getUsername() {
@@ -94,5 +90,37 @@ public class User {
 
     public void setTele(String tele) {
         this.tele = tele;
+    }
+
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getIDnumber() {
+        return IDnumber;
+    }
+
+    public void setIDnumber(String IDnumber) {
+        this.IDnumber = IDnumber;
+    }
+
+    public String getPw() {
+        return pw;
+    }
+
+    public void setPw(String pw) {
+        this.pw = pw;
     }
 }
