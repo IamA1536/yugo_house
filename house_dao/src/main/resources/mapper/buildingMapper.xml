@@ -2,6 +2,89 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.csu.sfteam.house.biz.mapper.BuildingMapper">
 
+    <insert id="insert">
+        insert into building (ID, type, itemName, price, img, itemFrom, info, address, decStatus)
+        values (#{ID},
+                #{type},
+                #{itemName},
+                #{price},
+                #{img},
+                #{itemFrom},
+                #{info},
+                #{address},
+                #{decStatus});
+    </insert>
+
+    <delete id="delete" parameterType="building">
+        delete
+        from building
+        where ID = #{ID};
+        <if test="#{type} = 1">
+            delete
+            from property_building
+            where ID = #{ID};
+        </if>
+        <if test="#{type} = 2">
+            delete
+            from rent
+            where ID = #{ID};
+        </if>
+    </delete>
+
+    <delete id="delete" parameterType="int">
+        delete
+        from building
+        where ID = #{ID};
+        <if test="#{type} = 1">
+            delete
+            from property_building
+            where ID = #{ID};
+        </if>
+        <if test="#{type} != 1">
+            delete
+            from rent
+            where ID = #{ID};
+        </if>
+    </delete>
+
+    <update id="update">
+        update building
+        <set>
+            <if test="email !=null and email != '' ">
+                email = #{email},
+            </if>
+            <if test="info !=null and info != '' ">
+                info = #{info},
+            </if>
+            <if test="icon !=null and icon != '' ">
+                icon = #{icon},
+            </if>
+            <if test="address !=null ">
+                address = #{address},
+            </if>
+            <if test="tele != null">
+                tele = #{tele}
+            </if>
+        </set>
+        where ID = #{ID}
+        <if test="#{type} = 1">
+            update
+            property_building
+            <set>
+                saleStatus = #{saleStatus}
+            </set>
+            where ID = #{ID};
+        </if>
+        <if test="#{type} != 1">
+            update
+            rent
+            <set>
+                area = #{area}
+            </set>
+            where ID = #{ID};
+        </if>
+    </update>
+
     <select id="getPropertyListByKeywords" parameterType="string" resultType="building">
         select building.ID,
                building.type,
@@ -100,88 +183,5 @@
             </where>
         </if>
     </select>
-
-    <insert id="insert">
-        insert into building (ID, type, itemName, price, img, itemFrom, info, address, decStatus)
-        values (#{ID},
-                #{type},
-                #{itemName},
-                #{price},
-                #{img},
-                #{itemFrom},
-                #{info},
-                #{address},
-                #{decStatus});
-    </insert>
-
-    <delete id="delete" parameterType="building">
-        delete
-        from building
-        where ID = #{ID};
-        <if test="#{type} = 1">
-            delete
-            from property_building
-            where ID = #{ID};
-        </if>
-        <if test="#{type} = 2">
-            delete
-            from rent
-            where ID = #{ID};
-        </if>
-    </delete>
-
-    <delete id="delete" parameterType="int">
-        delete
-        from building
-        where ID = #{ID};
-        <if test="#{type} = 1">
-            delete
-            from property_building
-            where ID = #{ID};
-        </if>
-        <if test="#{type} != 1">
-            delete
-            from rent
-            where ID = #{ID};
-        </if>
-    </delete>
-
-    <update id="update">
-        update building
-        <set>
-            <if test="email !=null and email != '' ">
-                email = #{email},
-            </if>
-            <if test="info !=null and info != '' ">
-                info = #{info},
-            </if>
-            <if test="icon !=null and icon != '' ">
-                icon = #{icon},
-            </if>
-            <if test="address !=null ">
-                address = #{address},
-            </if>
-            <if test="tele != null">
-                tele = #{tele}
-            </if>
-        </set>
-        where ID = #{ID}
-        <if test="#{type} = 1">
-            update
-            property_building
-            <set>
-                saleStatus = #{saleStatus}
-            </set>
-            where ID = #{ID};
-        </if>
-        <if test="#{type} != 1">
-            update
-            rent
-            <set>
-                area = #{area}
-            </set>
-            where ID = #{ID};
-        </if>
-    </update>
 
 </mapper>
