@@ -2,6 +2,8 @@ package org.csu.sfteam.house.biz.mapper;
 
 import org.csu.sfteam.house.common.model.account.User;
 
+import java.util.List;
+
 /**
  * @email 1694522669@qq.com
  * @author: A
@@ -18,7 +20,11 @@ public interface UserMapper {
 
     public int addToCollection(int userId, int buildingId, String time);
 
-    public User getUsers(String email, String pw);
+    public List<User> getUsersList(String keywords);
+
+    public User getUser(String username);
+
+    public User getUserByUsernameAndPassword(String username, String pw);
 
     public long selectUserCount();
 }

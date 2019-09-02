@@ -3,41 +3,43 @@
 <mapper namespace="org.csu.sfteam.house.biz.mapper.BuildingMapper">
 
     <select id="getBuilding" parameterType="int" resultType="building">
-        select
-        id, type, itemname, price, img, itemfrom, info, address, decstatus
-        from building
-        <where>
-            <if test="type != null">
-                type = #{type}
-            </if>
-        </where>
+        <if test="#{type} = 1">
+            select
+            building.id, building.itemname, building.price, building.img, building.itemfrom, building.info,
+            building.address, building.decstatus, property_building.saleStatus
+            from building,property_building
+            where building.ID = property_building.buildingID
+            <where>
+                <if test="type != null">
+                    type = #{type}
+                </if>
+            </where>
+        </if>
+        <if test="#{type} = 2">
+            select
+            building.id, building.itemname, building.price, building.img, building.itemfrom, building.info,
+            building.address, building.decstatus, rent.area
+            from building,rent
+            where building.ID = rent.buildingID
+            <where>
+                <if test="type != null">
+                    type = #{type}
+                </if>
+            </where>
+        </if>
     </select>
 
-
-
-    <insert id="addToCollection">
-        insert into user_collections (userid, itemid, time)
-        values (#{userID},
-                #{itemID},
-                #{time})
-    </insert>
-
     <insert id="insert">
-        insert into user_important (ID, realname, IDnumber, pw, email)
+        insert into building (ID, type, itemName, price, img, itemFrom, info, address, decStatus)
         values (#{ID},
-                #{realname},
-                #{IDnumber},
-                #{pw});
-        insert into user_standrad (ID, username, type, email, info, icon, sex, address, tele)
-        values (#{ID},
-                #{username},
                 #{type},
-                #{email},
+                #{itemName},
+                #{price},
+                #{img},
+                #{itemFrom},
                 #{info},
-                #{icon},
-                #{sex},
                 #{address},
-                #{tele});
+                #{decStatus});
     </insert>
 
     <delete id="delete" parameterType="building">
@@ -46,15 +48,14 @@
         where ID = #{ID};
         <if test="#{type} = 1">
             delete
-            from property
+            from property_building
             where ID = #{ID};
         </if>
-        <if test="#{type} != 1">
+        <if test="#{type} = 2">
             delete
             from rent
             where ID = #{ID};
         </if>
-
     </delete>
 
     <delete id="delete" parameterType="int">
@@ -63,7 +64,7 @@
         where ID = #{ID};
         <if test="#{type} = 1">
             delete
-            from property
+            from property_building
             where ID = #{ID};
         </if>
         <if test="#{type} != 1">
@@ -93,10 +94,22 @@
             </if>
         </set>
         where ID = #{ID}
+        <if test="#{type} = 1">
+            update
+            property_building
+            <set>
+                saleStatus = #{saleStatus}
+            </set>
+            where ID = #{ID};
+        </if>
+        <if test="#{type} != 1">
+            update
+            rent
+            <set>
+                area = #{area}
+            </set>
+            where ID = #{ID};
+        </if>
     </update>
 
-    <select id="selectUserCount" resultType="long">
-        select count(*)
-        from user_important
-    </select>
 </mapper>
