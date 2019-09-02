@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.sfteam.house.biz.mapper.UserMapper">
+
+    <select id="getAdmin" parameterType="string" resultType="Admin">
+        select ID, userID, pw
+        from admin
+        where userID = #{userID}
+          and pw = #{pw}
+    </select>
+</mapper>
