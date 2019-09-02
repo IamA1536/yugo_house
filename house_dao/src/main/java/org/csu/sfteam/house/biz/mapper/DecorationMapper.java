@@ -18,9 +18,9 @@ public interface DecorationMapper {
 
     public int update(Decoration decoration);
 
-    public Decoration getDecoration();
+    public Decoration getDecoration(String company);
 
-    public List<Decoration> getDecorationList();
+    public List<Decoration> getDecorationListByKeywords(String keywords);
 
     public List<Decoration> showDecorations();
 }

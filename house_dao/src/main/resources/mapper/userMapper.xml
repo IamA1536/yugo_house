@@ -8,7 +8,7 @@
         from user_standrad where username = #{username}
     </select>
 
-    <select id="getUsersList" parameterType="string" resultType="user">
+    <select id="getUsersListByKeywords" parameterType="string" resultType="user">
         select ID, username, type, email, info, icon, sex, address, tele
         from user_standrad where username like '${keywords}';
     </select>
@@ -25,7 +25,7 @@
 
     <insert id="addToCollection">
         insert into user_collections (
-               userid, itemid, time
+               userid, itemid, "time"
                )
                values(
                #{userID},
@@ -100,5 +100,12 @@
     <select id="selectUserCount" resultType="long">
         select count(*)
         from user_important
+    </select>
+
+    <select id="showCollections" parameterType="int" resultType="collections">
+        select
+        ID, userID, itemID, "time"
+        from user_collections
+        where userID = #{userID}
     </select>
 </mapper>
