@@ -2,7 +2,79 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.csu.sfteam.house.biz.mapper.BuildingMapper">
 
-    <select id="getBuilding" parameterType="int" resultType="building">
+    <select id="getPropertyListByKeywords" parameterType="string" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               property_building.saleStatus
+        from building,
+             property_building
+        where itemName like '${keywords}'
+          and building.ID = property_building.buildingID
+          and building.type = 1;
+    </select>
+
+    <select id="getPropertyListByKeywords" parameterType="string" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               rent.area
+        from building,
+             rent
+        where itemName like '${keywords}'
+          and building.ID = rent.buildingID
+          and building.type = 2;
+    </select>
+
+    <select id="getPropertyByItemName" parameterType="string" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               property_building.saleStatus
+        from building,
+             property_building
+        where itemName = #{itemName}
+          and building.ID = property_building.buildingID
+          and building.type = 1;
+    </select>
+
+    <select id="getRentByItemName" parameterType="string" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               rent.area
+        from building,
+             rent
+        where itemName = #{itemName}
+          and building.ID = rent.buildingID
+          and building.type = 2;
+    </select>
+
+    <select id="showBuilding" parameterType="int" resultType="building">
         <if test="#{type} = 1">
             select
             building.id, building.itemname, building.price, building.img, building.itemfrom, building.info,

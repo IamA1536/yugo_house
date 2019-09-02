@@ -18,6 +18,14 @@ public interface BuildingMapper {
 
     public int update(Building building);
 
-    public List<Building> getBuilding(int type);
+    public List<Building> getPropertyListByKeywords(String keywords);
+
+    public List<Building> getRentListByKeywords(String keywords);
+
+    public Building getPropertyByItemName(String itemName);
+
+    public Building getRentByItemName(String itemName);
+
+    public List<Building> showBuilding(int type);
 
 }

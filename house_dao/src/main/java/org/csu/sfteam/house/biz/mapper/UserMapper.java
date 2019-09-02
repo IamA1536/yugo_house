@@ -1,6 +1,8 @@
 package org.csu.sfteam.house.biz.mapper;
 
 import org.csu.sfteam.house.common.model.account.User;
+import org.csu.sfteam.house.common.model.utils.Collections;
+import org.w3c.dom.ls.LSInput;
 
 import java.util.List;
 
@@ -20,7 +22,9 @@ public interface UserMapper {
 
     public int addToCollection(int userId, int buildingId, String time);
 
-    public List<User> getUsersList(String keywords);
+    public List<Collections> showCollections(int userID);
+
+    public List<User> getUsersListByKeywords(String keywords);
 
     public User getUser(String username);
 
