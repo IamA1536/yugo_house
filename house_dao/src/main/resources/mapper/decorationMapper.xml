@@ -2,31 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.csu.sfteam.house.biz.mapper.DecorationMapper">
 
-    <select id="getDecoration" parameterType="string" resultType="decoration">
-        select ID, company, address, tele, img, itemFrom, info, style, link
-        from decoration
-        where company = #{company}
-    </select>
-
-    <select id="getDecorationListByKeywords" parameterType="string" resultType="decoration">
-        select ID, company, address, tele, img, itemFrom, info, style, link
-        from decoration
-        where company like '${keywords}';
-    </select>
-
-    <select id="showDecorations" resultType="decoration">
-        select ID,
-               company,
-               address,
-               tele,
-               img,
-               itemFrom,
-               info,
-               style,
-               link
-        from decoration
-    </select>
-
     <insert id="insert">
         insert into decoration (id, company, address, tele, img, itemfrom, info, style, link)
         VALUES (#{id}, #{company}, #{address}, #{tele}, #{img}, #{itemfrom}, #{info}, #{style}, #{link})
@@ -74,5 +49,74 @@
         </set>
         where ID = #{ID}
     </update>
+
+    <select id="getDecoration" parameterType="string" resultType="decoration">
+        select ID,
+               company,
+               address,
+               tele,
+               img,
+               itemFrom,
+               info,
+               style,
+               link
+        from decoration
+        where company = #{company}
+    </select>
+
+    <select id="getDecorationListByKeywords" parameterType="string" resultType="decoration">
+        select ID,
+               company,
+               address,
+               tele,
+               img,
+               itemFrom,
+               info,
+               style,
+               link
+        from decoration
+        where company like '${keywords}';
+    </select>
+
+    <select id="showDecorations" resultType="decoration">
+        select ID,
+               company,
+               address,
+               tele,
+               img,
+               itemFrom,
+               info,
+               style,
+               link
+        from decoration
+    </select>
+
+    <select id="showDecorationsByStyle" parameterType="int" resultType="decoration">
+        select ID,
+               company,
+               address,
+               tele,
+               img,
+               itemFrom,
+               info,
+               style,
+               link
+        from decoration
+        where decoration.style = #{style}
+    </select>
+
+    <select id="showDecorationsByAddress" parameterType="string" resultType="decoration">
+        select ID,
+               company,
+               address,
+               tele,
+               img,
+               itemFrom,
+               info,
+               style,
+               link
+        from decoration
+        where decoration.address = #{address}
+    </select>
 
 </mapper>

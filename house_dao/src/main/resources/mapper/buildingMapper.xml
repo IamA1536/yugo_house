@@ -164,24 +164,148 @@
             building.address, building.decstatus, property_building.saleStatus
             from building,property_building
             where building.ID = property_building.buildingID
-            <where>
-                <if test="type != null">
-                    type = #{type}
-                </if>
-            </where>
+            and type = #{type}
+
         </if>
-        <if test="#{type} = 2">
+        <if test="#{type} != 1">
             select
             building.id, building.itemname, building.price, building.img, building.itemfrom, building.info,
             building.address, building.decstatus, rent.area
             from building,rent
             where building.ID = rent.buildingID
-            <where>
-                <if test="type != null">
-                    type = #{type}
-                </if>
-            </where>
+            and type = #{type}
+
         </if>
     </select>
 
+    <select id="showPropertyByAddress" parameterType="string" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               property_building.saleStatus
+        from building,
+             property_building
+        where building.ID = property_building.buildingID
+          and type = 1 and building.address = #{address}
+    </select>
+
+    <select id="showRentByAddress" parameterType="string" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and type = 2 and building.address = #{address}
+
+    </select>
+
+    <select id="showOldHouseByAddress" parameterType="string" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and type = 3 and building.address = #{address}
+
+    </select>
+
+    <select id="showPropertyByPrice" parameterType="double" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               property_building.saleStatus
+        from building,
+             property_building
+        where building.ID = property_building.buildingID
+          and type = 1 and building.price > #{priceMin} and building.price < #{priceMax}
+    </select>
+
+    <select id="showRentByPrice" parameterType="double" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and type = 2 and building.price > #{priceMin} and building.price < #{priceMax}
+
+    </select>
+
+    <select id="showOldHouseByPrice" parameterType="double" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and type = 3 and building.price > #{priceMin} and building.price < #{priceMax}
+    </select>
+    <select id="showRentByPrice" parameterType="double" resultType="building">
+        select building.id,
+        building.itemname,
+        building.price,
+        building.img,
+        building.itemfrom,
+        building.info,
+        building.address,
+        building.decstatus,
+        rent.area
+        from building,
+        rent
+        where building.ID = rent.buildingID
+        and type = 2 and rent.area > #{areaMin} and rent.area < #{areaMax}
+
+    </select>
+
+    <select id="showOldHouseByPrice" parameterType="double" resultType="building">
+        select building.id,
+        building.itemname,
+        building.price,
+        building.img,
+        building.itemfrom,
+        building.info,
+        building.address,
+        building.decstatus,
+        rent.area
+        from building,
+        rent
+        where building.ID = rent.buildingID
+        and type = 3 and rent.area > #{areaMin} and rent.area < #{areaMax}
+    </select>
 </mapper>
