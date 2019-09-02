@@ -6,5 +6,5 @@ package org.csu.sfteam.house.biz.mapper;
  * @date: 2019/9/2 10:06
  */
 public interface AdminMapper {
-    public int selectAdmin();
+    public int getAdminByUserIDAndPassword(String userID, String password);
 }

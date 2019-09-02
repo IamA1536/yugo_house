@@ -23,12 +23,9 @@
     </typeAliases>
 
     <mappers>
-                <mapper resource="mapper/userMapper.xml"/>
-        <!--        <mapper resource="mapper/admin.xml"/>-->
-        <!--        <mapper resource="mapper/blog.xml"/>-->
-        <!--        <mapper resource="mapper/house.xml"/>-->
-        <!--        <mapper resource="mapper/comment.xml"/>-->
-        <!--        <mapper resource="mapper/agency.xml"/>-->
+        <mapper resource="mapper/userMapper.xml"/>
+        <mapper resource="mapper/adminMapper.xml"/>
+        <mapper resource="mapper/buildingMapper.xml"/>
+        <mapper resource="mapper/decorationMapper.xml"/>
     </mappers>
-
 </configuration>
