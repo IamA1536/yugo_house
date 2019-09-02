@@ -1,6 +1,3 @@
-# yugo_house
-一个培训项目
-***
 # 优购房
 ## 需求
 ### 1. 开发商通过在平台上申请发布自己楼盘信息
@@ -89,7 +86,7 @@ itemID|int||商品ID|NOT NULL|否
 time|varchar|255|收藏时间|NOT NULL|否
 
 * 房产/租房/装修管理
->property
+>property_building
 
 字段名称|数据类型|长度|描述|允许空|主键
 --|:--:|:--:|:--:|:--:|:--:
@@ -103,7 +100,7 @@ saleStatus|int|2|销售状态|NOT NULL|否
 --|:--:|:--:|:--:|:--:|:--:
 ID|int||编号|NOT NULL|是
 buildingID|varchar|255|房产序列号|NOT NULL|否
-area|float|20|面积|NOT NULL|否
+area|double|20|面积|NOT NULL|否
 
 >building
 
@@ -112,7 +109,7 @@ area|float|20|面积|NOT NULL|否
 ID|int||编号|NOT NULL|是
 type|int|10|状态(买/租/楼盘)|NOT NULL|否
 itemName|varchar|255|商品名|NOT NULL|否
-price|float||商品价格|NOT NULL|否
+price|double||商品价格|NOT NULL|否
 img|varchar|255|商品图片链接||否
 itemFrom|int||供应商ID|NOT NULL|否
 info|varchar|255|商品介绍||否
@@ -130,7 +127,7 @@ tele|varchar|30|联系方式|NOT NULL|否
 img|varchar|255|公司图片||否
 itemFrom|int||供应商ID|NOT NULL|否
 info|varchar|255|商品介绍||否
-style|int|10|风格||否
+style|int|2|风格||否
 link|varchar|255|官网链接||否
 
 * 论坛
@@ -182,3 +179,25 @@ pw|varchar|255|密码|NOT NULL|否
 * 持久层——house_dao
 * 模型等接口及类——house_common
 * web部分——house_web
+
+## 9.2
+### 工作
+1. 完善接口文件
+2. 前端加油
+3. 后端实现数据读写
+* ### 后端数据的各种值
+>ID——大种类+随机数，例如:1+114514(随机生成六位数)
+ID就是1114514
+>\
+1——楼盘
+\
+2——租房
+\
+3——装修
+
+>type
+\
+用户:1(一般用户),2(开发商)
+\
+房产:1(楼盘),2(二手房),3(租房)
+
