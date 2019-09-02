@@ -18,5 +18,9 @@ public interface DecorationMapper {
 
     public int update(Decoration decoration);
 
-    public List<Decoration> getBuilding();
+    public Decoration getDecoration();
+
+    public List<Decoration> getDecorationList();
+
+    public List<Decoration> showDecorations();
 }

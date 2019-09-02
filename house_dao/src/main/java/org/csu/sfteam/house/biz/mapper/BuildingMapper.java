@@ -19,4 +19,5 @@ public interface BuildingMapper {
     public int update(Building building);
 
     public List<Building> getBuilding(int type);
+
 }
