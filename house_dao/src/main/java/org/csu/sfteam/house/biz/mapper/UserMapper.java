@@ -22,8 +22,6 @@ public interface UserMapper {
 
     public int addToCollection(int userId, int buildingId, String time);
 
-    public List<Collections> showCollections(int userID);
-
     public List<User> getUsersListByKeywords(String keywords);
 
     public User getUser(String username);
@@ -31,4 +29,6 @@ public interface UserMapper {
     public User getUserByUsernameAndPassword(String username, String pw);
 
     public long selectUserCount();
+
+    public List<Collections> showCollections(int userID);
 }
