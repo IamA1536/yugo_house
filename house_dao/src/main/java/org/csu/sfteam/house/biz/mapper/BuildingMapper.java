@@ -1,6 +1,7 @@
 package org.csu.sfteam.house.biz.mapper;
 
 import org.csu.sfteam.house.common.model.items.Building;
+import org.w3c.dom.ls.LSInput;
 
 import java.util.List;
 
@@ -27,5 +28,22 @@ public interface BuildingMapper {
     public Building getRentByItemName(String itemName);
 
     public List<Building> showBuilding(int type);
+
+    public List<Building> showRentByAddress(String address);
+
+    public List<Building> showPropertyByAddress(String address);
+
+    public List<Building> showOldHouseByAddress(String address);
+
+    public List<Building> showRentByPrice(double priceMax,double priceMin);
+
+    public List<Building> showPropertyByPrice(double priceMax,double priceMin);
+
+    public List<Building> showOldHouseByPrice(double priceMax,double priceMin);
+
+    public List<Building> showRentByArea(double areaMax,double areaMin);
+
+    public List<Building> showOldHouseByArea(double areaMax,double areaMin);
+
 
 }
