@@ -103,7 +103,7 @@
           and building.type = 1;
     </select>
 
-    <select id="getPropertyListByKeywords" parameterType="string" resultType="building">
+    <select id="getRentListByKeywords" parameterType="string" resultType="building">
         select building.ID,
                building.type,
                building.itemName,
@@ -119,6 +119,24 @@
         where itemName like '${keywords}'
           and building.ID = rent.buildingID
           and building.type = 2;
+    </select>
+
+    <select id="getOldHouseListByKeywords" parameterType="string" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               rent.area
+        from building,
+             rent
+        where itemName like '${keywords}'
+          and building.ID = rent.buildingID
+          and building.type = 3;
     </select>
 
     <select id="getPropertyByItemName" parameterType="string" resultType="building">

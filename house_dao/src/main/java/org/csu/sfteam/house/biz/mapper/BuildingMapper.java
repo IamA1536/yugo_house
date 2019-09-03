@@ -23,6 +23,8 @@ public interface BuildingMapper {
 
     public List<Building> getRentListByKeywords(String keywords);
 
+    public List<Building> getOldHouseListByKeywords(String keywords);
+
     public Building getPropertyByItemName(String itemName);
 
     public Building getRentByItemName(String itemName);
