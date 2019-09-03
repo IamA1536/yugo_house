@@ -9,7 +9,6 @@
         <module>house_dao</module>
         <module>house_common</module>
         <module>house_web</module>
-        <module>house-biz</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -46,7 +45,6 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
-
 
 
 </project>
