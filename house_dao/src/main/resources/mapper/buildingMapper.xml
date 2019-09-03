@@ -308,4 +308,53 @@
         where building.ID = rent.buildingID
         and type = 3 and rent.area > #{areaMin} and rent.area < #{areaMax}
     </select>
+
+    <select id="showPropertyByItemFrom" parameterType="string" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               property_building.saleStatus
+        from building,
+             property_building
+        where building.ID = property_building.buildingID
+          and type = 1 and building.itemFrom = #{ID}
+    </select>
+
+    <select id="showRentByAddress" parameterType="string" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and type = 2 and building.itemFrom = #{ID}
+
+    </select>
+
+    <select id="showOldHouseByAddress" parameterType="string" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and type = 3 and building.itemFrom = #{ID}
+    </select>
 </mapper>
