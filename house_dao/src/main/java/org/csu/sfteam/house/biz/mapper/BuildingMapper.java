@@ -45,5 +45,9 @@ public interface BuildingMapper {
 
     public List<Building> showOldHouseByArea(double areaMax,double areaMin);
 
+    public List<Building> showRentByItemFrom(int ID);
 
+    public List<Building> showPropertyByItemFrom(int ID);
+
+    public List<Building> showOldHouseByItemFrom(int ID);
 }
