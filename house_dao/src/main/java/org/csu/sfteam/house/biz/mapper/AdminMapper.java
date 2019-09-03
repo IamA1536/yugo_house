@@ -7,4 +7,6 @@ package org.csu.sfteam.house.biz.mapper;
  */
 public interface AdminMapper {
     public int getAdminByUserIDAndPassword(String userID, String password);
+
+    public String toString();
 }
