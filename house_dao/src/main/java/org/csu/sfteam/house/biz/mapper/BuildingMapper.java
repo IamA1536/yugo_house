@@ -29,6 +29,8 @@ public interface BuildingMapper {
 
     public Building getRentByItemName(String itemName);
 
+    public Building getOldHouseByItemName(String keywords);
+
     public List<Building> showBuilding(int type);
 
     public List<Building> showRentByAddress(String address);

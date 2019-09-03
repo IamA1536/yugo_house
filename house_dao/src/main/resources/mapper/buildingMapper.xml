@@ -5,14 +5,23 @@
     <insert id="insert">
         insert into building (ID, type, itemName, price, img, itemFrom, info, address, decStatus)
         values (#{ID},
-                #{type},
-                #{itemName},
-                #{price},
-                #{img},
-                #{itemFrom},
-                #{info},
-                #{address},
-                #{decStatus});
+        #{type},
+        #{itemName},
+        #{price},
+        #{img},
+        #{itemFrom},
+        #{info},
+        #{address},
+        #{decStatus});
+
+        <if test="#{type} = 1">
+            insert into property_building(buildingID, saleStatus)
+            values (#{ID},#{saleStatus});
+        </if>
+        <if test="#{type} != 1">
+            insert into rent(buildingID, area)
+            values (#{ID},#{area})
+        </if>
     </insert>
 
     <delete id="delete" parameterType="building">
@@ -118,7 +127,7 @@
              rent
         where itemName like '${keywords}'
           and building.ID = rent.buildingID
-          and building.type = 2;
+          and building.type = 3;
     </select>
 
     <select id="getOldHouseListByKeywords" parameterType="string" resultType="building">
@@ -136,7 +145,7 @@
              rent
         where itemName like '${keywords}'
           and building.ID = rent.buildingID
-          and building.type = 3;
+          and building.type = 2;
     </select>
 
     <select id="getPropertyByItemName" parameterType="string" resultType="building">
@@ -172,6 +181,24 @@
              rent
         where itemName = #{itemName}
           and building.ID = rent.buildingID
+          and building.type = 3;
+    </select>
+
+    <select id="getOldHouseByItemName" parameterType="string" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               rent.area
+        from building,
+             rent
+        where itemName = #{itemName}
+          and building.ID = rent.buildingID
           and building.type = 2;
     </select>
 
@@ -182,7 +209,7 @@
             building.address, building.decstatus, property_building.saleStatus
             from building,property_building
             where building.ID = property_building.buildingID
-            and type = #{type}
+            and building.type = #{type}
 
         </if>
         <if test="#{type} != 1">
@@ -191,7 +218,7 @@
             building.address, building.decstatus, rent.area
             from building,rent
             where building.ID = rent.buildingID
-            and type = #{type}
+            and building.type = #{type}
 
         </if>
     </select>
@@ -209,7 +236,7 @@
         from building,
              property_building
         where building.ID = property_building.buildingID
-          and type = 1
+          and building.type = 1
           and building.address = #{address}
     </select>
 
@@ -226,7 +253,7 @@
         from building,
              rent
         where building.ID = rent.buildingID
-          and type = 2
+          and building.type = 3
           and building.address = #{address}
 
     </select>
@@ -244,7 +271,7 @@
         from building,
              rent
         where building.ID = rent.buildingID
-          and type = 3
+          and building.type = 2
           and building.address = #{address}
 
     </select>
@@ -262,7 +289,7 @@
         from building,
         property_building
         where building.ID = property_building.buildingID
-        and type = 1 and building.price > #{priceMin} and building.price
+        and building.type = 1 and building.price > #{priceMin} and building.price
         <
         #{priceMax}
     </select>
@@ -280,7 +307,7 @@
         from building,
         rent
         where building.ID = rent.buildingID
-        and type = 2 and building.price > #{priceMin} and building.price
+        and building.type = 2 and building.price > #{priceMin} and building.price
         <
         #{priceMax}
 
@@ -316,7 +343,7 @@
         from building,
         rent
         where building.ID = rent.buildingID
-        and type = 2 and rent.area > #{areaMin} and rent.area
+        and building.type = 2 and rent.area > #{areaMin} and rent.area
         <
         #{areaMax}
 
@@ -335,7 +362,7 @@
         from building,
         rent
         where building.ID = rent.buildingID
-        and type = 3 and rent.area > #{areaMin} and rent.area
+        and building.type = 3 and rent.area > #{areaMin} and rent.area
         <
         #{areaMax}
     </select>
@@ -353,7 +380,7 @@
         from building,
              property_building
         where building.ID = property_building.buildingID
-          and type = 1
+          and building.type = 1
           and building.itemFrom = #{ID}
     </select>
 
@@ -370,7 +397,7 @@
         from building,
              rent
         where building.ID = rent.buildingID
-          and type = 2
+          and building.type = 2
           and building.itemFrom = #{ID}
 
     </select>
@@ -388,7 +415,7 @@
         from building,
              rent
         where building.ID = rent.buildingID
-          and type = 3
+          and building.type = 3
           and building.itemFrom = #{ID}
     </select>
 </mapper>
