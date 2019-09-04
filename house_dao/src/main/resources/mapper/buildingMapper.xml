@@ -73,7 +73,7 @@
     </update>
 
     <update id="updateRent">
-        update property_building
+        update rent
         <set>
             <if test="area !=null">
                 area = #{area},
@@ -306,7 +306,7 @@
         from building,
              rent
         where building.ID = rent.buildingID
-          and building.type = 2
+          and building.type = 3
           and building.price &gt; #{priceMin}
           and building.price &lt; #{priceMax}
 
@@ -325,7 +325,7 @@
         from building,
              rent
         where building.ID = rent.buildingID
-          and type = 3
+          and type = 2
           and building.price &gt; #{priceMin}
           and building.price &lt; #{priceMax}
     </select>
@@ -381,4 +381,41 @@
           and building.type = 2
           and building.itemFrom = #{ID}
     </select>
+
+    <select id="showRentByArea" parameterType="double" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and building.type = 3
+          and rent.area &gt; #{areaMin}
+          and rent.area &lt; #{areaMax}
+    </select>
+
+    <select id="showOldHouseByArea" parameterType="double" resultType="building">
+        select building.id,
+               building.itemname,
+               building.price,
+               building.img,
+               building.itemfrom,
+               building.info,
+               building.address,
+               building.decstatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and building.type = 2
+          and rent.area &gt; #{areaMin}
+          and rent.area &lt; #{areaMax}
+    </select>
+
 </mapper>

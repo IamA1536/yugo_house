@@ -103,4 +103,17 @@ public class TestSalePropertyController {
         System.out.println(7777);
         return salePropertyService.ShowProperty();
     }
+
+    @RequestMapping(value = "/ShowPropertyByAddress", method = RequestMethod.GET)
+    public List<Building> ShowPropertyByAddress() {
+        System.out.println(8888);
+        return salePropertyService.ShowPropertyByAddress("333");
+    }
+
+    @RequestMapping(value = "/ShowPropertyByItemFrom", method = RequestMethod.GET)
+    public List<Building> ShowPropertyByItemFrom() {
+        System.out.println(9999);
+        return salePropertyService.ShowPropertyByItemFrom(2114514);
+    }
+
 }

@@ -58,11 +58,6 @@ public class SalePropertyServiceImpl implements SalePropertyService {
     }
 
     @Override
-    public List<Building> ShowPropertyByPrice(double priceMax, double priceMin) {
-        return buildingMapper.showOldHouseByPrice(priceMax, priceMin);
-    }
-
-    @Override
     public List<Building> ShowPropertyByAddress(String address) {
         return buildingMapper.showPropertyByAddress(address);
     }

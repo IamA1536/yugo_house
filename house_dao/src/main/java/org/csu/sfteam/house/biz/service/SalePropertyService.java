@@ -16,6 +16,7 @@ public interface SalePropertyService {
     //删除楼盘
     //可用
     public int DeleteByID(int ID);
+
     //可用
     public int Delete(Building building);
 
@@ -31,11 +32,10 @@ public interface SalePropertyService {
     //可用
     public List<Building> ShowProperty();
 
-    //通过价格显示楼盘
-    public List<Building> ShowPropertyByPrice(double priceMax, double priceMin);
-
     //通过地址显示楼盘
+    //可用
     public List<Building> ShowPropertyByAddress(String address);
 
+    //可用
     public List<Building> ShowPropertyByItemFrom(int ID);
 }
