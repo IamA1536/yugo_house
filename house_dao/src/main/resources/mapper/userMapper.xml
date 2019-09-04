@@ -2,16 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.csu.sfteam.house.biz.mapper.UserMapper">
 
-    <insert id="insert">
-        insert into user_important (
-                ID, realname, IDnumber, pw, email
-                )
-                values(
-                #{ID},
-                #{realname},
-                #{IDnumber},
-                #{pw}
-                );
+    <insert id="insert_standard">
         insert into user_standrad (
                 ID, username, type, email, info, icon, sex, address, tele
                 )
@@ -28,18 +19,31 @@
                 );
     </insert>
 
-    <delete id="deleteByID" parameterType="int">
+    <insert id="insert_important">
+        insert into user_important (
+                ID, realname, IDnumber, pw, email
+                )
+                values(
+                #{ID},
+                #{realname},
+                #{IDnumber},
+                #{pw},
+                #{email}
+                );
+    </insert>
+
+    <delete id="deleteByID">
         delete from user_standrad
-        where ID=#{ID};
-        delete from user_important
-        where ID=#{ID};
+        where ID = #{ID}
+--         delete from user_important
+--         where ID=#{ID};
     </delete>
 
     <delete id="delete" parameterType="user">
         delete from user_standrad
-        where ID=#{ID};
-        delete from user_important
-        where ID=#{ID};
+        where ID=#{ID}
+--         delete from user_important
+--         where ID=#{ID};
     </delete>
 
     <update id="update">
@@ -60,6 +64,7 @@
             <if test="tele != null">
                 tele = #{tele}
             </if>
+
         </set>
         where ID = #{ID}
     </update>
@@ -71,7 +76,7 @@
 
     <select id="getUsersListByKeywords" parameterType="string" resultType="user">
         select ID, username, type, email, info, icon, sex, address, tele
-        from user_standrad where username like '${keywords}';
+        from user_standrad where username like CONCAT(CONCAT('%', #{keywords}), '%');
     </select>
 
     <select id="getUserByUsernameAndPassword" parameterType="string" resultType="user">
@@ -86,7 +91,7 @@
 
     <insert id="addToCollection">
         insert into user_collections (
-               userid, itemid, "time"
+               userid, itemid, time
                )
                values(
                #{userID},
@@ -100,9 +105,16 @@
         from user_important
     </select>
 
+    <select id="showUsers" resultType="user">
+        select user_important.ID, user_important.realname, user_important.IDnumber, user_important.pw, user_important.email,
+        user_standrad.username, user_standrad.type, user_standrad.info, user_standrad.icon, user_standrad.sex, user_standrad.address, user_standrad.tele
+        from user_standrad,user_important
+        where user_important.ID = user_standrad.ID;
+    </select>
+
     <select id="showCollections" parameterType="int" resultType="collections">
         select
-        ID, userID, itemID, "time"
+        ID, userID, itemID, time
         from user_collections
         where userID = #{userID}
     </select>

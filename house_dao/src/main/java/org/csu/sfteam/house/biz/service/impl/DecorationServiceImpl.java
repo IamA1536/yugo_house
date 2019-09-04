@@ -58,4 +58,9 @@ public class DecorationServiceImpl implements DecorationService {
     public List<Decoration> ShowDecorationsByAddress(String address) {
         return decorationMapper.showDecorationsByAddress(address);
     }
+
+    @Override
+    public List<Decoration> showDecorationsByItemFrom(int ID) {
+        return decorationMapper.showDecorationsByItemFrom(ID);
+    }
 }

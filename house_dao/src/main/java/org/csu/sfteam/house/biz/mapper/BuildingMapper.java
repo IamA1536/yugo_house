@@ -2,6 +2,9 @@ package org.csu.sfteam.house.biz.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.csu.sfteam.house.common.model.items.Building;
+import org.csu.sfteam.house.common.model.items.Building_standard;
+import org.csu.sfteam.house.common.model.items.Property;
+import org.csu.sfteam.house.common.model.items.Rent;
 import org.w3c.dom.ls.LSInput;
 
 import java.util.List;
@@ -13,13 +16,21 @@ import java.util.List;
  */
 @Mapper
 public interface BuildingMapper {
-    public int insert(Building building);
+    public int insertBuilding(Building_standard building_standard);
 
-    public int delete(Building building);
+    public int insertProperty(Property property);
 
-    public int deleteByID(int id, int type);
+    public int insertRent(Rent rent);
 
-    public int update(Building building);
+    public int delete(Building_standard Building_standard);
+
+    public int deleteByID(int id);
+
+    public int updateBuilding(Building_standard building_standard);
+
+    public int updateProperty(Property property);
+
+    public int updateRent(Rent rent);
 
     public List<Building> getPropertyListByKeywords(String keywords);
 
@@ -33,7 +44,11 @@ public interface BuildingMapper {
 
     public Building getOldHouseByItemName(String keywords);
 
-    public List<Building> showBuilding(int type);
+    public List<Building> showProperty();
+
+    public List<Building> showRent();
+
+    public List<Building> showOldHouse();
 
     public List<Building> showRentByAddress(String address);
 
@@ -41,15 +56,13 @@ public interface BuildingMapper {
 
     public List<Building> showOldHouseByAddress(String address);
 
-    public List<Building> showRentByPrice(double priceMax,double priceMin);
+    public List<Building> showRentByPrice(double priceMax, double priceMin);
 
-    public List<Building> showPropertyByPrice(double priceMax,double priceMin);
+    public List<Building> showOldHouseByPrice(double priceMax, double priceMin);
 
-    public List<Building> showOldHouseByPrice(double priceMax,double priceMin);
+    public List<Building> showRentByArea(double areaMax, double areaMin);
 
-    public List<Building> showRentByArea(double areaMax,double areaMin);
-
-    public List<Building> showOldHouseByArea(double areaMax,double areaMin);
+    public List<Building> showOldHouseByArea(double areaMax, double areaMin);
 
     public List<Building> showRentByItemFrom(int ID);
 

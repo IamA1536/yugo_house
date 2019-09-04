@@ -2,96 +2,84 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.csu.sfteam.house.biz.mapper.BuildingMapper">
 
-    <insert id="insert">
+    <insert id="insertBuilding">
         insert into building (ID, type, itemName, price, img, itemFrom, info, address, decStatus)
         values (#{ID},
-        #{type},
-        #{itemName},
-        #{price},
-        #{img},
-        #{itemFrom},
-        #{info},
-        #{address},
-        #{decStatus});
-
-        <if test="#{type} = 1">
-            insert into property_building(buildingID, saleStatus)
-            values (#{ID},#{saleStatus});
-        </if>
-        <if test="#{type} != 1">
-            insert into rent(buildingID, area)
-            values (#{ID},#{area})
-        </if>
+                #{type},
+                #{itemName},
+                #{price},
+                #{img},
+                #{itemFrom},
+                #{info},
+                #{address},
+                #{decStatus});
     </insert>
 
-    <delete id="delete" parameterType="building">
+    <insert id="insertProperty">
+        insert into property_building (ID, buildingID, saleStatus)
+        VALUES (#{ID}, #{buildingID}, #{saleStatus})
+    </insert>
+
+    <insert id="insertRent">
+        insert into rent (ID, buildingID, area)
+        VALUES (#{ID}, #{buildingID}, #{area})
+    </insert>
+
+    <delete id="delete">
         delete
         from building
         where ID = #{ID};
-        <if test="#{type} = 1">
-            delete
-            from property_building
-            where ID = #{ID};
-        </if>
-        <if test="#{type} = 2">
-            delete
-            from rent
-            where ID = #{ID};
-        </if>
     </delete>
 
     <delete id="deleteByID" parameterType="int">
         delete
         from building
         where ID = #{ID};
-        <if test="#{type} = 1">
-            delete
-            from property_building
-            where ID = #{ID};
-        </if>
-        <if test="#{type} != 1">
-            delete
-            from rent
-            where ID = #{ID};
-        </if>
     </delete>
 
-    <update id="update">
+    <update id="updateBuilding">
         update building
         <set>
-            <if test="email !=null and email != '' ">
-                email = #{email},
+            <if test="itemName !=null and itemName != '' ">
+                itemName = #{itemName},
             </if>
-            <if test="info !=null and info != '' ">
+            <if test="price !=null">
+                price = #{price},
+            </if>
+            <if test="img !=null and img != '' ">
+                img = #{img},
+            </if>
+            <if test="info !=null">
                 info = #{info},
             </if>
-            <if test="icon !=null and icon != '' ">
-                icon = #{icon},
-            </if>
-            <if test="address !=null ">
+            <if test="address != null and address != ''">
                 address = #{address},
             </if>
-            <if test="tele != null">
-                tele = #{tele}
+            <if test="decStatus != null">
+                decStatus = #{decStatus}
             </if>
         </set>
         where ID = #{ID}
-        <if test="#{type} = 1">
-            update
-            property_building
-            <set>
-                saleStatus = #{saleStatus}
-            </set>
-            where ID = #{ID};
-        </if>
-        <if test="#{type} != 1">
-            update
-            rent
-            <set>
-                area = #{area}
-            </set>
-            where ID = #{ID};
-        </if>
+    </update>
+
+    <update id="updateProperty">
+        update property_building
+        <set>
+            <if test="saleStatus !=null">
+                saleStatus = #{saleStatus},
+            </if>
+        </set>
+        where ID = #{ID}
+    </update>
+
+    <update id="updateRent">
+        update property_building
+        <set>
+            <if test="area !=null">
+                area = #{area},
+            </if>
+        </set>
+        where ID = #{ID}
     </update>
 
     <select id="getPropertyListByKeywords" parameterType="string" resultType="building">
@@ -107,7 +95,7 @@
                property_building.saleStatus
         from building,
              property_building
-        where itemName like '${keywords}'
+        where itemName like CONCAT(CONCAT('%', #{keywords}), '%')
           and building.ID = property_building.buildingID
           and building.type = 1;
     </select>
@@ -125,7 +113,7 @@
                rent.area
         from building,
              rent
-        where itemName like '${keywords}'
+        where itemName like CONCAT(CONCAT('%', #{keywords}), '%')
           and building.ID = rent.buildingID
           and building.type = 3;
     </select>
@@ -143,7 +131,7 @@
                rent.area
         from building,
              rent
-        where itemName like '${keywords}'
+        where itemName like CONCAT(CONCAT('%', #{keywords}), '%')
           and building.ID = rent.buildingID
           and building.type = 2;
     </select>
@@ -202,25 +190,54 @@
           and building.type = 2;
     </select>
 
-    <select id="showBuilding" parameterType="int" resultType="building">
-        <if test="#{type} = 1">
-            select
-            building.id, building.itemname, building.price, building.img, building.itemfrom, building.info,
-            building.address, building.decstatus, property_building.saleStatus
-            from building,property_building
-            where building.ID = property_building.buildingID
-            and building.type = #{type}
+    <select id="showProperty" parameterType="int" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               property_building.saleStatus
+        from building,
+             property_building
+        where building.ID = property_building.buildingID
+    </select>
 
-        </if>
-        <if test="#{type} != 1">
-            select
-            building.id, building.itemname, building.price, building.img, building.itemfrom, building.info,
-            building.address, building.decstatus, rent.area
-            from building,rent
-            where building.ID = rent.buildingID
-            and building.type = #{type}
+    <select id="showRent" parameterType="int" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and building.type = 3
+    </select>
 
-        </if>
+    <select id="showOldHouse" parameterType="int" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = rent.buildingID
+          and building.type = 2
     </select>
 
     <select id="showPropertyByAddress" parameterType="string" resultType="building">
@@ -274,24 +291,6 @@
           and building.type = 2
           and building.address = #{address}
 
-    </select>
-
-    <select id="showPropertyByPrice" parameterType="double" resultType="building">
-        select building.id,
-               building.itemname,
-               building.price,
-               building.img,
-               building.itemfrom,
-               building.info,
-               building.address,
-               building.decstatus,
-               property_building.saleStatus
-        from building,
-             property_building
-        where building.ID = property_building.buildingID
-          and building.type = 1
-          and building.price &gt; #{priceMin}
-          and building.price &lt; #{priceMax}
     </select>
 
     <select id="showRentByPrice" parameterType="double" resultType="building">

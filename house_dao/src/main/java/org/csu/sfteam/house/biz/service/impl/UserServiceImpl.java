@@ -4,6 +4,8 @@ package org.csu.sfteam.house.biz.service.impl;
 import org.csu.sfteam.house.biz.service.UserService;
 import org.csu.sfteam.house.biz.mapper.UserMapper;
 import org.csu.sfteam.house.common.model.account.User;
+import org.csu.sfteam.house.common.model.account.User_important;
+import org.csu.sfteam.house.common.model.account.User_standard;
 import org.csu.sfteam.house.common.model.utils.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int CreateUser(User user) {
-        return userMapper.insert(user);
+        User_standard user_standard = new User_standard(user);
+        User_important user_important = new User_important(user);
+        userMapper.insert_important(user_important);
+        userMapper.insert_standard(user_standard);
+        return 0;
     }
 
     @Override
@@ -77,11 +83,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int Delete(User user) {
+
         return userMapper.delete(user);
     }
 
     @Override
     public long selectUserCount() {
         return userMapper.selectUserCount();
+    }
+
+    @Override
+    public List<User> showUser() {
+        return userMapper.showUsers();
     }
 }

@@ -21,4 +21,6 @@ public interface DecorationService {
     public List<Decoration> ShowDecorationsByStyle(int style);
 
     public List<Decoration> ShowDecorationsByAddress(String address);
+
+    public List<Decoration> showDecorationsByItemFrom(int ID);
 }

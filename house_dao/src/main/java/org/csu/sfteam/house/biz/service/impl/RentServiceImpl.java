@@ -1,6 +1,8 @@
 package org.csu.sfteam.house.biz.service.impl;
 
 import org.csu.sfteam.house.common.model.items.Building;
+import org.csu.sfteam.house.common.model.items.Building_standard;
+import org.csu.sfteam.house.common.model.items.Rent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.csu.sfteam.house.biz.service.RentService;
@@ -16,22 +18,26 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public int CreateRent(Building building) {
-        return buildingMapper.insert(building);
+        buildingMapper.insertBuilding(new Building_standard(building));
+        buildingMapper.insertRent(new Rent(building));
+        return 0;
     }
 
     @Override
     public int UpdateRent(Building building) {
-        return buildingMapper.update(building);
+        buildingMapper.updateBuilding(new Building_standard(building));
+        buildingMapper.updateRent(new Rent(building));
+        return 0;
     }
 
     @Override
-    public int DeleteByIDAndType(int ID, int type) {
-        return buildingMapper.deleteByID(ID, type);
+    public int DeleteByID(int ID) {
+        return buildingMapper.deleteByID(ID);
     }
 
     @Override
     public int Delete(Building building) {
-        return buildingMapper.delete(building);
+        return buildingMapper.delete(new Building_standard(building));
     }
 
     @Override
@@ -45,8 +51,8 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
-    public List<Building> ShowRent(int type) {
-        return buildingMapper.showBuilding(type);
+    public List<Building> ShowRent() {
+        return buildingMapper.showRent();
     }
 
     @Override
@@ -62,5 +68,10 @@ public class RentServiceImpl implements RentService {
     @Override
     public List<Building> ShowRentByAddress(String address) {
         return buildingMapper.showRentByAddress(address);
+    }
+
+    @Override
+    public List<Building> ShowRentByItemFrom(int ID) {
+        return buildingMapper.showRentByItemFrom(ID);
     }
 }
