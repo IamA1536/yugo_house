@@ -4,6 +4,8 @@ import org.csu.sfteam.house.common.model.items.Building;
 
 import java.util.List;
 
+//都可用
+
 public interface RentService {
     //发布租房房源
     public int CreateRent(Building building);
