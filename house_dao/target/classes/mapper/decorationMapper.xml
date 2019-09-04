@@ -4,7 +4,7 @@
 
     <insert id="insert">
         insert into decoration (id, company, address, tele, img, itemfrom, info, style, link)
-        VALUES (#{id}, #{company}, #{address}, #{tele}, #{img}, #{itemfrom}, #{info}, #{style}, #{link})
+        VALUES (#{ID}, #{company}, #{address}, #{tele}, #{img}, #{itemFrom}, #{info}, #{style}, #{link})
     </insert>
 
     <delete id="delete" parameterType="decoration">
@@ -35,13 +35,13 @@
                 img = #{img},
             </if>
             <if test="itemFrom != null">
-                itemFrom = #{itemFrom}
+                itemFrom = #{itemFrom},
             </if>
             <if test="info != null and info != '' ">
-                info = #{info}
+                info = #{info},
             </if>
             <if test="style != null">
-                style = #{style}
+                style = #{style},
             </if>
             <if test="link != null and link != '' ">
                 link = #{link}
@@ -75,7 +75,7 @@
                style,
                link
         from decoration
-        where company like '${keywords}';
+        where company like CONCAT(CONCAT('%', #{keywords}), '%');
     </select>
 
     <select id="showDecorations" resultType="decoration">

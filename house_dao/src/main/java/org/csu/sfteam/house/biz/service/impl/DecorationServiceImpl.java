@@ -30,8 +30,8 @@ public class DecorationServiceImpl implements DecorationService {
     }
 
     @Override
-    public int delete(int id, int type) {
-        return decorationMapper.deleteByID(id, type);
+    public int delete(int id) {
+        return decorationMapper.deleteByID(id);
     }
 
     @Override

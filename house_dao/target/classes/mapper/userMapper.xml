@@ -32,18 +32,14 @@
                 );
     </insert>
 
-    <delete id="deleteByID">
-        delete from user_standrad
+    <delete id="deleteByID" parameterType="int">
+        delete from user_important
         where ID = #{ID}
---         delete from user_important
---         where ID=#{ID};
     </delete>
 
     <delete id="delete" parameterType="user">
-        delete from user_standrad
+        delete from user_important
         where ID=#{ID}
---         delete from user_important
---         where ID=#{ID};
     </delete>
 
     <update id="update">

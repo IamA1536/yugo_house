@@ -20,10 +20,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int CreateUser(User user) {
-        User_standard user_standard = new User_standard(user);
-        User_important user_important = new User_important(user);
-        userMapper.insert_important(user_important);
-        userMapper.insert_standard(user_standard);
+        userMapper.insert_important(new User_important(user));
+        userMapper.insert_standard(new User_standard(user));
         return 0;
     }
 
@@ -83,8 +81,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int Delete(User user) {
-
-        return userMapper.delete(user);
+        return userMapper.delete(new User_important(user));
     }
 
     @Override

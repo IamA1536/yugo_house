@@ -20,7 +20,7 @@ public interface UserMapper {
 
     public int insert_important(User_important user_important);
 
-    public int delete(User user);
+    public int delete(User_important user_important);
 
     public int deleteByID(int ID);
 

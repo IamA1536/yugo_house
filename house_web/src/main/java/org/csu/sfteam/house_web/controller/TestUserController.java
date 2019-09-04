@@ -108,7 +108,7 @@ public class TestUserController {
     @RequestMapping(value = "/DeleteByID", method = RequestMethod.GET)
     public int DeleteByID() {
         System.out.println(7777);
-        userService.DeleteById(1111);
+        userService.DeleteById(123);
         return 777;
     }
 

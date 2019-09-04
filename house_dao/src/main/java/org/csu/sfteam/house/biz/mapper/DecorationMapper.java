@@ -16,7 +16,7 @@ public interface DecorationMapper {
 
     public int delete(Decoration decoration);
 
-    public int deleteByID(int id, int type);
+    public int deleteByID(int id);
 
     public int update(Decoration decoration);
 
