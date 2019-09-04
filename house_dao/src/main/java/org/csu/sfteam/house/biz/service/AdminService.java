@@ -1,7 +1,9 @@
 package org.csu.sfteam.house.biz.service;
 
+import org.csu.sfteam.house.common.model.utils.Admin;
+
 public interface AdminService {
 
-    public int getAdminByUserIDAndPassword(String userID, String password);
+    public Admin getAdminByUserIDAndPassword(String userID, String password);
 
 }

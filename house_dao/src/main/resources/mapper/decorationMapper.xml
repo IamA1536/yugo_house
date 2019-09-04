@@ -13,7 +13,7 @@
         where ID = #{ID};
     </delete>
 
-    <delete id="delete" parameterType="int">
+    <delete id="deleteByID" parameterType="int">
         delete
         from decoration
         where ID = #{ID};

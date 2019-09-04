@@ -1,5 +1,6 @@
 package org.csu.sfteam.house.biz.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.csu.sfteam.house.common.model.items.Decoration;
 
 import java.util.List;
@@ -9,12 +10,13 @@ import java.util.List;
  * @author: A
  * @date: 2019/9/2 14:07
  */
+@Mapper
 public interface DecorationMapper {
     public int insert(Decoration decoration);
 
     public int delete(Decoration decoration);
 
-    public int delete(int id, int type);
+    public int deleteByID(int id, int type);
 
     public int update(Decoration decoration);
 

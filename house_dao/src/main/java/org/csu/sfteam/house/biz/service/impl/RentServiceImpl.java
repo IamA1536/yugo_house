@@ -26,7 +26,7 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public int DeleteByIDAndType(int ID, int type) {
-        return buildingMapper.delete(ID, type);
+        return buildingMapper.deleteByID(ID, type);
     }
 
     @Override

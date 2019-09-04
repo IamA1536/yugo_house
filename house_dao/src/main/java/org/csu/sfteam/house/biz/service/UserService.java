@@ -14,6 +14,7 @@ public interface UserService {
     public User GetUserByUsernameAndPassword(String username, String password);
 
     //使用用户名取User
+    //可用
     public User GetUserByUsername(String username);
 
     //关键字查找用户
@@ -36,5 +37,6 @@ public interface UserService {
 
     //查找用户上传的装修
 
-    
+    public long selectUserCount();
+
 }

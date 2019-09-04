@@ -127,7 +127,7 @@ tele|varchar|30|联系方式|NOT NULL|否
 img|varchar|255|公司图片||否
 itemFrom|int||供应商ID|NOT NULL|否
 info|varchar|255|商品介绍||否
-style|int|2|风格||否
+style|int|10|风格||否
 link|varchar|255|官网链接||否
 
 * 论坛
@@ -201,3 +201,15 @@ ID就是1114514
 \
 房产:1(楼盘),2(二手房),3(租房)
 
+>装修风格
+\
+现代
+中式
+欧式
+混搭
+其他
+## 9.3
+### 工作
+1. github调好，进行版本管理
+2. 持久层写好，进行测试
+3. 前端加油

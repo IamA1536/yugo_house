@@ -26,7 +26,7 @@ public class SalePropertyServiceImpl implements SalePropertyService {
 
     @Override
     public int DeleteByIDAndType(int ID, int type) {
-        return buildingMapper.delete(ID, type);
+        return buildingMapper.deleteByID(ID, type);
     }
 
     @Override

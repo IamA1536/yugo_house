@@ -1,5 +1,6 @@
 package org.csu.sfteam.house.biz.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.csu.sfteam.house.common.model.account.User;
 import org.csu.sfteam.house.common.model.utils.Collections;
 import org.w3c.dom.ls.LSInput;
@@ -11,12 +12,13 @@ import java.util.List;
  * @author: A
  * @date: 2019/9/1 12:22
  */
+@Mapper
 public interface UserMapper {
     public int insert(User user);
 
     public int delete(User user);
 
-    public int delete(int id);
+    public int deleteByID(int id);
 
     public int update(User user);
 

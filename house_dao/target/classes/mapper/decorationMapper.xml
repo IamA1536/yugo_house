@@ -13,7 +13,7 @@
         where ID = #{ID};
     </delete>
 
-    <delete id="delete" parameterType="int">
+    <delete id="deleteByID" parameterType="int">
         delete
         from decoration
         where ID = #{ID};
@@ -117,6 +117,19 @@
                link
         from decoration
         where decoration.address = #{address}
+    </select>
+    <select id="showDecorationsByItemFrom" parameterType="int" resultType="decoration">
+        select ID,
+               company,
+               address,
+               tele,
+               img,
+               itemFrom,
+               info,
+               style,
+               link
+        from decoration
+        where decoration.itemFrom = #{ID}
     </select>
 
 </mapper>

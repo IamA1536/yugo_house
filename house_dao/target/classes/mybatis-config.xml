@@ -19,13 +19,5 @@
         <typeAlias type="org.csu.sfteam.house.common.model.utils.Admin" alias="admin"/>
         <typeAlias type="org.csu.sfteam.house.common.model.items.Building" alias="building"/>
         <typeAlias type="org.csu.sfteam.house.common.model.items.Decoration" alias="decoration"/>
-        <typeAlias type="org.csu.sfteam.house.common.model.account.Login" alias="login"/>
     </typeAliases>
-
-    <mappers>
-        <mapper resource="mapper/userMapper.xml"/>
-        <mapper resource="mapper/adminMapper.xml"/>
-        <mapper resource="mapper/buildingMapper.xml"/>
-        <mapper resource="mapper/decorationMapper.xml"/>
-    </mappers>
 </configuration>
