@@ -12,13 +12,9 @@
         <module name="house_common" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="house-biz" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="house-biz" options="-parameters" />
       <module name="house_dao" options="-parameters" />
       <module name="house_web" options="-parameters" />
     </option>

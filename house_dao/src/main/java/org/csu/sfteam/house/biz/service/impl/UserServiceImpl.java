@@ -7,6 +7,8 @@ import org.csu.sfteam.house.common.model.account.User;
 import org.csu.sfteam.house.common.model.account.User_important;
 import org.csu.sfteam.house.common.model.account.User_standard;
 import org.csu.sfteam.house.common.model.utils.Collections;
+import org.csu.sfteam.house.common.utils.JasyptTools;
+import org.jasypt.util.text.BasicTextEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int CreateUser(User user) {
+
+        user = new JasyptTools().UserEncryptor(user);
+
         userMapper.insert_important(new User_important(user));
         userMapper.insert_standard(new User_standard(user));
         return 0;
@@ -27,21 +32,25 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User GetUserByUsernameAndPassword(String username, String password) {
+        BasicTextEncryptor basicTextEncryptor = new BasicTextEncryptor();
+        basicTextEncryptor.setPassword(String.valueOf(username));
+        password = basicTextEncryptor.encrypt(password);
         return userMapper.getUserByUsernameAndPassword(username, password);
     }
 
     @Override
     public User GetUserByUsername(String username) {
-        return userMapper.getUser(username);
+        return new JasyptTools().UserDecryptor(userMapper.getUser(username));
     }
 
     @Override
     public List<User> GetUserByKeyword(String keyword) {
-        return userMapper.getUsersListByKeywords(keyword);
+        return new JasyptTools().UserListDecryptor(userMapper.getUsersListByKeywords(keyword));
     }
 
     @Override
     public int UpdateUser(User user) {
+        user = new JasyptTools().UserEncryptor(user);
         return userMapper.update(user);
     }
 
@@ -91,6 +100,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> showUser() {
-        return userMapper.showUsers();
+        return new JasyptTools().UserListDecryptor(userMapper.showUsers());
     }
 }

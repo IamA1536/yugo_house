@@ -108,7 +108,7 @@ public class TestUserController {
     @RequestMapping(value = "/DeleteByID", method = RequestMethod.GET)
     public int DeleteByID() {
         System.out.println(7777);
-        userService.DeleteById(123);
+        userService.DeleteById(2114514);
         return 777;
     }
 
@@ -143,5 +143,4 @@ public class TestUserController {
         System.out.println(10101010);
         return userService.showUser();
     }
-
 }
