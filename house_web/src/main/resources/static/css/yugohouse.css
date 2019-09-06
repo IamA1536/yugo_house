@@ -70,7 +70,7 @@ button#btn_register:hover { background-color: rgb(238,119,17);}
 .btn_search { height: 55px; width: 19%; position: relative; left: -4px; top:-1px; }
 .row_grey{ background-color: #eeeeee; }
 .recommend_row { padding-top:100px; padding-bottom: 100px; }
-#partlist { padding-top: 80px; padding-bottom: 80px  }
+#partlist { padding-top: 80px; padding-bottom: 80px }
 .part { height: 200px; box-shadow: 3px 3px 5px #bbbbbb; margin-right:2%; padding:5px 5px 43px 5px; background-color: white}
 .part_title { color:rgb(241,196,15); font-weight: 900; width:50px; margin: 10px auto 15px auto;}
 .part_info {height: 78px; padding:0px 10px; color: #777777;}
@@ -90,7 +90,7 @@ a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
 #user_nav { float: left; margin:20px 20px; background-color: white; padding:0;}
 #userinfo { float: left; background-color: white; padding: 5px 30px 10px 15px; margin-top:20px;}
 .my_title { border-left: 4px solid rgb(241,196,15); padding-left: 10px   }
-#userinfo_form { margin: 100px}
+#userinfo_form { }
 #btn_change_info { width: 100px; height: 40px; font-weight: 600; margin-top: 10px }
 .active { background-color:rgb(241,196,15); }
 
@@ -98,3 +98,6 @@ a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
 .apply_title { color: rgb(241,196,15); font-weight: 600; margin: auto; width: 150px; margin-top: 30px}
 .apply_form { margin-top: 40px; padding-left: 20px; }
 button.btn_apply { width: 200px; height: 45px; font-weight: 600; margin-top: 20px; font-size: 20px }
+
+/*商品展示*/
+#baidu_map {width: 400px;height: 300px;overflow: hidden;margin:0;font-family:"微软雅黑";}

@@ -7,9 +7,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="house_web" />
-        <module name="house_dao" />
         <module name="house_common" />
+        <module name="house_dao" />
+        <module name="house_web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8" />
