@@ -14,7 +14,7 @@ function isEmpty( id ) {
 }
 
 function isPswEquel(){
-    var password = $('[name=password]').val();
+    var password = $('[name=pw]').val();
     var confirmpsw = $('[name=confirmpsw]').val();
     if (password!=confirmpsw){
         $('#confirmpsw').addClass('has-error');
@@ -31,7 +31,7 @@ $(document).ready(function () {
     $("#register_form").on("submit",function (e) {
         e.preventDefault();
         // ajax向后端传值，取到data
-        var Emp = isEmpty('username') || isEmpty('address') || isEmpty('tele') || isEmpty('email') || isEmpty('password') || isEmpty('confirmpsw');
+        var Emp = isEmpty('username') || isEmpty('address') || isEmpty('tele') || isEmpty('email') || isEmpty('pw') || isEmpty('confirmpsw');
         if(!Emp && isPswEquel()){
             var details = $("#loginForm").serialize();
             $.post('#', details, function(data){

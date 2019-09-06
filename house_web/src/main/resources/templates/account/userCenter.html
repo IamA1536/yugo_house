@@ -22,6 +22,9 @@
         <ul class="nav nav-pills nav-stacked">
             <li><a href="#">我要卖房</a></li>
             <li><a href="#">我要出租</a></li>
+            <!--用户类型为开发商才有以下两项-->
+            <li th:if=""><a href="#">发布楼盘</a></li>
+            <li th:if=""><a href="#">发布装修</a></li>
             <li><a href="#">管理已发布信息</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">

@@ -29,12 +29,10 @@ button.btn_yellow:hover { background-color: rgb(238,119,17); color: white}
 					left: 0;
 					margin: 0;
 					padding: 0;
-					display: flex;
-					align-items: center;
 				  }
 
 #login_container { margin: auto; width: 360px; height: 380px; background: rgba(0,0,0,0.55); border-radius: 10px;
-				   top:-70px; position: relative; 
+				   top:130px; position: relative;
 				 }
 #login_title { margin:30px auto 0px auto; color: white; width: 160px;}
 #login_form {margin: 10px 20px 0px 20px;}
