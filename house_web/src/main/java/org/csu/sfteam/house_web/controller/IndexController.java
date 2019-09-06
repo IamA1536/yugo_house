@@ -14,7 +14,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String viewMain() {
-        
+
 
         return "index";
     }
