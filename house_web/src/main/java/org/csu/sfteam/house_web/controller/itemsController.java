@@ -4,7 +4,6 @@ import org.csu.sfteam.house.biz.service.*;
 import org.csu.sfteam.house.common.model.account.User;
 import org.csu.sfteam.house.common.model.items.Building;
 import org.csu.sfteam.house.common.model.items.Decoration;
-import org.csu.sfteam.house.common.model.items.Rent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
