@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.sfteam.house.biz.mapper.AdminMapper">
+    <select id="getAdmin" parameterType="string" resultType="org.csu.sfteam.house.common.model.utils.Admin">
+        select * from admin_info
+        <where>
+            <if test="userID != null and userID !='' ">
+                and userID = #{userID}
+            </if>
+            <if test="pw != null and pw !='' ">
+                and pw = #{pw}
+            </if>
+        </where>
+
+    </select>
+
+
+</mapper>

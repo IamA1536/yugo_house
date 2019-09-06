@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.sfteam.house.biz.mapper.UserMapper">
+
+    <insert id="insert_standard">
+        insert into user_standrad (
+                ID, username, type, email, info, icon, sex, address, tele
+                )
+                values(
+                #{ID},
+                #{username},
+                #{type},
+                #{email},
+                #{info},
+                #{icon},
+                #{sex},
+                #{address},
+                #{tele}
+                );
+    </insert>
+
+    <insert id="insert_important">
+        insert into user_important (
+                ID, realname, IDnumber, pw, email
+                )
+                values(
+                #{ID},
+                #{realname},
+                #{IDnumber},
+                #{pw},
+                #{email}
+                );
+    </insert>
+
+    <delete id="deleteByID" parameterType="int">
+        delete from user_important
+        where ID = #{ID}
+    </delete>
+
+    <delete id="delete" parameterType="user">
+        delete from user_important
+        where ID=#{ID}
+    </delete>
+
+    <update id="update">
+        update user_standrad
+        <set>
+            <if test="email !=null and email != '' ">
+                email = #{email},
+            </if>
+            <if test="info !=null and info != '' ">
+                info = #{info},
+            </if>
+            <if test="icon !=null and icon != '' ">
+                icon = #{icon},
+            </if>
+            <if test="address !=null ">
+                address = #{address},
+            </if>
+            <if test="tele != null">
+                tele = #{tele}
+            </if>
+
+        </set>
+        where ID = #{ID}
+    </update>
+
+    <select id="getUser" parameterType="string" resultType="user">
+        select ID, username, type, email, info, icon, sex, address, tele
+        from user_standrad where username = #{username};
+    </select>
+
+    <select id="getUsersListByKeywords" parameterType="string" resultType="user">
+        select ID, username, type, email, info, icon, sex, address, tele
+        from user_standrad where username like CONCAT(CONCAT('%', #{keywords}), '%');
+    </select>
+
+    <select id="getUserByUsernameAndPassword" parameterType="string" resultType="user">
+        select
+        user_important.realname, user_important.IDnumber, user_important.pw, user_important.email,
+        user_standrad.ID, user_standrad.username, user_standrad.type, user_standrad.info, user_standrad.icon, user_standrad.sex, user_standrad.address, user_standrad.tele
+        from user_important, user_standrad
+        where user_standrad.ID = user_important.ID
+        and user_standrad.username = #{username}
+        and user_important.pw = #{pw}
+    </select>
+
+    <insert id="addToCollection">
+        insert into user_collections (
+               userid, itemid, time
+               )
+               values(
+               #{userID},
+               #{itemID},
+               #{time}
+               )
+    </insert>
+
+    <select id="selectUserCount" resultType="long">
+        select count(*)
+        from user_important
+    </select>
+
+    <select id="showUsers" resultType="user">
+        select user_important.ID, user_important.realname, user_important.IDnumber, user_important.pw, user_important.email,
+        user_standrad.username, user_standrad.type, user_standrad.info, user_standrad.icon, user_standrad.sex, user_standrad.address, user_standrad.tele
+        from user_standrad,user_important
+        where user_important.ID = user_standrad.ID;
+    </select>
+
+    <select id="showCollections" parameterType="int" resultType="collections">
+        select
+        *
+        from user_collections
+        where userID = #{userID}
+    </select>
+</mapper>

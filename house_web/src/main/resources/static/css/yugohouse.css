@@ -1,0 +1,100 @@
+/*公用*/
+a.btn_yellow { background-color: rgb(241,196,15); color: white }
+a.btn_yellow:hover { background-color: rgb(238,119,17); text-decoration: none;}
+button.btn_yellow { background-color: rgb(241,196,15); color: white ; border: none}
+button.btn_yellow:hover { background-color: rgb(238,119,17); color: white}
+.banner { background-repeat: no-repeat; 
+		  background-position:  top center;
+		  background-size: cover;
+		  background-attachment: fixed;
+		  width: 100%;
+		  height: 550px;
+		  position: fixed;
+		  top: -30px;
+		  left: 0;
+		  margin: 0;
+		  padding: 0;
+		  display: flex;
+		  align-items: center;
+		}
+.banner_black { height: 550px; background-color: rgba(0,0,0,0.47); position: absolute; top:45px ; width: 100% }
+/*登录*/
+#login_background { background: url(../images/login03.jpg) no-repeat top center;
+					background-size: cover;
+					background-attachment: fixed;
+					width: 100%;
+					height: 100%;
+					position: fixed;
+					top: 0;
+					left: 0;
+					margin: 0;
+					padding: 0;
+					display: flex;
+					align-items: center;
+				  }
+
+#login_container { margin: auto; width: 360px; height: 380px; background: rgba(0,0,0,0.55); border-radius: 10px;
+				   top:-70px; position: relative; 
+				 }
+#login_title { margin:30px auto 0px auto; color: white; width: 160px;}
+#login_form {margin: 10px 20px 0px 20px;}
+.warning {height: 20px; color: white;}
+
+#login_inputs {margin-top:0px }
+.login_input {background-color: rgba(0,0,0,0.55); margin-top:12px; margin-bottom: 15px}
+#findpwd { float: right; margin-top: 5px}
+a.login_acher {color:rgb(241,214,18);}
+a.login_acher:hover, a.login_acher:active {color: rgb(238,119,17); text-decoration: none;}
+a.login_acher:visited {text-decoration: none;}
+
+button.btn_login { width: 190px; height: 33px; margin: 43px auto 0 auto; background-color: rgb(219,191,15); 
+			 border:none; font-weight: 600}
+button.btn_login:hover { background-color: rgb(238,119,17);}
+#have_no_account { color: white; width: 125px; margin: 48px auto 0;}
+
+/*注册*/
+#register_title { width: 165px; margin:40px auto 20px auto; color: rgb(241,196,15); font-weight: 600;}
+#register_form { width: 600px; margin: auto; border: 2px solid #bbbbbb ;border-radius: 5px;
+				 padding:20px 30px 35px 10px; background-color: white}
+button#btn_register { width: 170px; height: 40px; background-color: rgb(241,196,15); color: white;
+			 border:none; font-weight: 600; margin-top: 15px }
+button#btn_register:hover { background-color: rgb(238,119,17);}
+
+/*主页*/
+.carosel_home { position: relative; top:-20px; }
+#banner_home { background-image: url(../images/banner01.jpg) }
+#search_container { height: 170px; width:70%; margin: 290px auto 0px; max-width: 700px; min-width: 450px }
+.search_option { color: #bbbbbb; font-weight: 800 }
+.search_form {  }
+#keyword { display: inline; width: 80%; height: 55px }
+.btn_search { height: 55px; width: 19%; position: relative; left: -4px; top:-1px; }
+.row_grey{ background-color: #eeeeee; }
+.recommend_row { padding-top:100px; padding-bottom: 100px; }
+#partlist { padding-top: 80px; padding-bottom: 80px  }
+.part { height: 200px; box-shadow: 3px 3px 5px #bbbbbb; margin-right:2%; padding:5px 5px 43px 5px; background-color: white}
+.part_title { color:rgb(241,196,15); font-weight: 900; width:50px; margin: 10px auto 15px auto;}
+.part_info {height: 78px; padding:0px 10px; color: #777777;}
+a.learn_more { color: white; border: none; background-color: rgb(241,196,15); float: right; margin-right: 10px }
+a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
+.recommend_title_block {height: 180px ;color: white; background-color: rgb(241,196,15); padding: 2px 10px; margin-right:  10%} 
+.recommend {margin-right:  10%;}
+.my_thumbnail {}
+.price {float: right;}
+
+#foot { height: 300px; background-color:rgb(241,196,15); color: white}
+
+/*用户中心*/
+.user_center_background { background-color: #EEEEEE; }
+#user_top { height: 100px; background-color: white }
+#user_container {  }
+#user_nav { float: left; margin:20px 20px; background-color: white; padding:0;}
+#userinfo { float: left; background-color: white; padding: 5px 30px 10px 15px; margin-top:20px;}
+.my_title { border-left: 4px solid rgb(241,196,15); padding-left: 10px   }
+#userinfo_form { margin: 100px}
+#btn_change_info { width: 100px; height: 40px; font-weight: 600; margin-top: 10px }
+.active { background-color:rgb(241,196,15); }
+
+/*申请表单*/
+.apply_title { color: rgb(241,196,15); font-weight: 600; margin: auto; width: 150px; margin-top: 30px}
+.apply_form { margin-top: 40px; padding-left: 20px; }
+button.btn_apply { width: 200px; height: 45px; font-weight: 600; margin-top: 20px; font-size: 20px }
