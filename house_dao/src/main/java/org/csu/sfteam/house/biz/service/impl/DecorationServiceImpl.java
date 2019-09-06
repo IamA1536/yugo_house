@@ -63,4 +63,9 @@ public class DecorationServiceImpl implements DecorationService {
     public List<Decoration> showDecorationsByItemFrom(int ID) {
         return decorationMapper.showDecorationsByItemFrom(ID);
     }
+
+    @Override
+    public int selectDecorationCount() {
+        return decorationMapper.selectDecorationCount() - 1;
+    }
 }

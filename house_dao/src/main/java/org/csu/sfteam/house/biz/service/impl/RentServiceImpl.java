@@ -74,4 +74,9 @@ public class RentServiceImpl implements RentService {
     public List<Building> ShowRentByItemFrom(int ID) {
         return buildingMapper.showRentByItemFrom(ID);
     }
+
+    @Override
+    public int selectRentCount() {
+        return buildingMapper.selectRentCount();
+    }
 }

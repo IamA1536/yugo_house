@@ -70,6 +70,11 @@
         from user_standrad where username = #{username};
     </select>
 
+    <select id="getUserByID" resultType="user">
+        select ID, username, type, email, info, icon, sex, address, tele
+        from user_standrad where ID = #{ID}
+    </select>
+
     <select id="getUsersListByKeywords" parameterType="string" resultType="user">
         select ID, username, type, email, info, icon, sex, address, tele
         from user_standrad where username like CONCAT(CONCAT('%', #{keywords}), '%');
@@ -87,11 +92,12 @@
 
     <insert id="addToCollection">
         insert into user_collections (
-               userid, itemid, time
+                userID, buildingID, time, decorationID
                )
                values(
                #{userID},
-               #{itemID},
+               #{buildingID},
+               #{decorationID},
                #{time}
                )
     </insert>

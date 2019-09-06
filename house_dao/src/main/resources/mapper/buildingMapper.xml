@@ -418,4 +418,21 @@
           and rent.area &lt; #{areaMax}
     </select>
 
+
+    <select id="selectPropertyCount" resultType="int">
+        select count(*)
+        from property_building
+    </select>
+
+    <select id="selectRentCount" resultType="int">
+        select count(*)
+        from building
+        where type = 3
+    </select>
+
+    <select id="selectOldHouseCount" resultType="int">
+        select count(*)
+        from building
+        where type = 2
+    </select>
 </mapper>

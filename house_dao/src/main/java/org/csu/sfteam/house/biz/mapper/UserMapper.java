@@ -26,11 +26,13 @@ public interface UserMapper {
 
     public int update(User user);
 
-    public int addToCollection(int userID, int itemID, String time);
+    public int addToCollection(long userID, long buildingID,int decorationID, String time);
 
     public List<User> getUsersListByKeywords(String keywords);
 
     public User getUser(String username);
+
+    public User getUserByID(long ID);
 
     public User getUserByUsernameAndPassword(String username, String pw);
 

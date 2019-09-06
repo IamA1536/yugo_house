@@ -29,12 +29,12 @@
         </div>
         <div class="collapse navbar-collapse" id="example-navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="#">买新房</a></li>
-                <li><a href="#">二手房</a></li>
-                <li><a href="#">租房</a></li>
-                <li><a href="#">找装修</a></li>
-                <li><a href="#">论坛</a></li>
+                <li class="active"><a href="/">首页</a></li>
+                <li><a href="/showProperty">买新房</a></li>
+                <li><a href="/showOldHouse">二手房</a></li>
+                <li><a href="/showRent">租房</a></li>
+                <li><a href="/showDecoration">找装修</a></li>
+                <li><a href="http://www.foratest.com">论坛</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 
@@ -104,8 +104,8 @@
                 <li>找租房</li>
                 <li>找装修</li>
             </ul>
-            <form class="search_form" role="form">
-                <input type="text" class="form-control" id="keyword" placeholder="请输入查找关键字">
+            <form action="/showItemsByKeyword" method="post" class="search_form" role="form">
+                <input type="text" class="form-control" name="keyword" id="keyword" placeholder="请输入查找关键字">
                 <button type="submit" class="btn btn_search btn_yellow">搜索</button>
             </form>
         </div>
@@ -121,28 +121,28 @@
                 <div class="part">
                     <h3 class="part_title">买房</h3>
                     <p class="part_info">上我们这儿找好房.jpg我们为您精心挑选优质房源</p>
-                    <a class="btn btn-default learn_more" href="#">了解更多</a>
+                    <a class="btn btn-default learn_more" href="/showProperty">了解更多</a>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="part">
                     <h3 class="part_title">卖房</h3>
                     <p class="part_info">上我们这儿找好房.jpg</p>
-                    <a class="btn btn-default learn_more">了解更多</a>
+                    <a class="btn btn-default learn_more" href="#" >了解更多</a>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="part">
                     <h3 class="part_title">租房</h3>
                     <p class="part_info">上我们这儿找好房.jpg</p>
-                    <a class="btn btn-default learn_more">了解更多</a>
+                    <a class="btn btn-default learn_more" href="/showRent" >了解更多</a>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="part">
                     <h3 class="part_title">装修</h3>
                     <p class="part_info">上我们这儿找好房.jpg</p>
-                    <a class="btn btn-default learn_more">了解更多</a>
+                    <a class="btn btn-default learn_more" href="/showDecoration">了解更多</a>
                 </div>
             </div>
         </div>

@@ -69,4 +69,10 @@ public interface BuildingMapper {
     public List<Building> showPropertyByItemFrom(int ID);
 
     public List<Building> showOldHouseByItemFrom(int ID);
+
+    public int selectPropertyCount();
+
+    public int selectRentCount();
+
+    public int selectOldHouseCount();
 }

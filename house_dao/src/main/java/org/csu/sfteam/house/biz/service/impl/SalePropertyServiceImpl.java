@@ -66,4 +66,9 @@ public class SalePropertyServiceImpl implements SalePropertyService {
     public List<Building> ShowPropertyByItemFrom(int ID) {
         return buildingMapper.showPropertyByItemFrom(ID);
     }
+
+    @Override
+    public int selectPropertyCount() {
+        return buildingMapper.selectPropertyCount();
+    }
 }

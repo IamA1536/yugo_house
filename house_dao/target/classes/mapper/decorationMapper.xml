@@ -132,4 +132,8 @@
         where decoration.itemFrom = #{ID}
     </select>
 
+    <select id="selectDecorationCount" resultType="int">
+        select count(*)
+        from decoration
+    </select>
 </mapper>

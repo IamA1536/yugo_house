@@ -75,4 +75,9 @@ public class SaleOldHouseServiceImpl implements SaleOldHouseService {
     public List<Building> ShowOldHouseByItemFrom(int ID) {
         return buildingMapper.showOldHouseByItemFrom(ID);
     }
+
+    @Override
+    public int selectOldHouseCount() {
+        return buildingMapper.selectOldHouseCount() - 1;
+    }
 }

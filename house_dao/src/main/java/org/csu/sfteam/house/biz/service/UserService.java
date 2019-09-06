@@ -11,6 +11,8 @@ public interface UserService {
     //可用
     public int CreateUser(User user);
 
+    public User GetUserByID(long ID);
+
     //用户登录
     //可用
     public User GetUserByUsernameAndPassword(String username, String password);
@@ -29,7 +31,7 @@ public interface UserService {
 
     //添加用户收藏
     //可用
-    public int AddToCollection(int UserId, int BuildingId, String time);
+    public int AddToCollection(long UserId, long BuildingId,int decorationID, String time);
 
     //查找用户收藏
     //可用

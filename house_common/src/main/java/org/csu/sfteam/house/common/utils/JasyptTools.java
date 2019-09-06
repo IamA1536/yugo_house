@@ -48,12 +48,8 @@ public class JasyptTools {
     }
 
     public List<User> UserListDecryptor(List<User> userList) {
-
-
-        for (int j = 0; j < userList.size(); j++)
-            userList.set(j, UserDecryptor(userList.get(j)));
-
-
+        for (int i = 0; i < userList.size(); i++)
+            userList.set(i, UserDecryptor(userList.get(i)));
         return userList;
     }
 

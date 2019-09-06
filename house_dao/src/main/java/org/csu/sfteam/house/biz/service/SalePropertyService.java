@@ -38,4 +38,7 @@ public interface SalePropertyService {
 
     //可用
     public List<Building> ShowPropertyByItemFrom(int ID);
+
+    public int selectPropertyCount();
+
 }

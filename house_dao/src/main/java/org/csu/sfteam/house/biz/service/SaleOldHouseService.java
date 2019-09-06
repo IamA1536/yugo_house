@@ -44,4 +44,6 @@ public interface SaleOldHouseService {
     //可用
     public List<Building> ShowOldHouseByItemFrom(int ID);
 
+    public int selectOldHouseCount();
+
 }

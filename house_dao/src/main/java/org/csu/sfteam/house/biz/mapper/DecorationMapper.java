@@ -32,4 +32,6 @@ public interface DecorationMapper {
 
     public List<Decoration> showDecorationsByItemFrom(int ID);
 
+    public int selectDecorationCount();
+
 }

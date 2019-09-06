@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User GetUserByID(long ID) {
+        return userMapper.getUserByID(ID);
+    }
+
+    @Override
     public User GetUserByUsernameAndPassword(String username, String password) {
         BasicTextEncryptor basicTextEncryptor = new BasicTextEncryptor();
         basicTextEncryptor.setPassword(String.valueOf(username));
@@ -55,8 +60,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int AddToCollection(int UserId, int BuildingId, String time) {
-        return userMapper.addToCollection(UserId, BuildingId, time);
+    public int AddToCollection(long UserId, long BuildingId, int decorationID, String time) {
+        return userMapper.addToCollection(UserId, BuildingId, decorationID, time);
     }
 
     //
