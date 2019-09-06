@@ -45,8 +45,9 @@ $(document).ready(function () {
         }
     });
 
-    $("#loginForm").on("submit",function (e) {
+    $("#login_form").on("submit",function (e) {
         e.preventDefault();
+        // ajax向后端传值，取到data
         if(!isUsernameEmpty() && !isPasswordEmpty()){
             var details = $("#loginForm").serialize();
             $.post('#', details, function(data){

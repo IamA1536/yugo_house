@@ -109,7 +109,7 @@ public class TestUserController {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
         String time = dateFormat.format(date);
-        userService.AddToCollection(114514, 1919810, time);
+        userService.AddToCollection(114514, 1919810,0, time);
         return 555;
     }
 

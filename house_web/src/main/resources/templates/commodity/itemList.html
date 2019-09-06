@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title></title>
-    <link rel="StyleSheet" href="../css/yugohouse.css" type="text/css" media="screen"/>
-    <meta charset="utf-8">
-    <!-- 导入bootstrap -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head th:replace="common/template_head::head('优购房-搜索')">
 </head>
 <body>
+	<!-- 导航栏 -->
+	<nav th:replace="common/template_navbar::nav(99)"></nav>
+	<!-- 分类搜索栏位 -->
+	<div class="search_box">
+	<!-- 搜索框 -->
+	<div style="padding: 10px 10px 10px;">
+		<form class="bs-example bs-example-form" role="form">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="input-group">
+						<input type="text" class="form-control" id="search">
+						<span class="input-group-btn">
 <!-- 导航栏 -->
 <nav th:replace="common/template_navbar"></nav>
 <!-- 分类搜索栏位 -->

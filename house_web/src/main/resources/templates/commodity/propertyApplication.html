@@ -1,14 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title></title>
-	<link rel="StyleSheet" href="../../static/css/yugohouse.css" type="text/css" media="screen" />
-	<meta charset="utf-8">
-	        <!-- 导入bootstrap -->
-        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head th:replace="common/template_head::head('优购房-楼盘申请')">
 </head>
+
 <body>
 	<h1 class="apply_title">录入楼盘</h1>
 	<form class="form-horizontal  apply_form col-sm-offset-2 col-sm-8" role="form">

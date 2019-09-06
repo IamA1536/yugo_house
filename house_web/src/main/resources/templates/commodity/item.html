@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title></title>
-    <link rel="StyleSheet" href="../css/yugohouse.css" type="text/css" media="screen"/>
-    <meta charset="utf-8">
-    <!-- 导入bootstrap -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head th:replace="common/template_head::head('优购房-展示')">
 </head>
 
 <body>
@@ -32,7 +25,9 @@
     <span th:text="${username}"></span>
     <span th:text="${tele}">联系方式</span>
     <!-- 收藏按钮 -->
-    <button th:href="@{/addToCollection(ItemName=${item.getItemName()})}" class="btn ">添加收藏</button>
+
+    <button th:if="${type != 4}" th:href="@{/addToCollection(ItemName=${item.getItemName()})}" class="btn ">添加收藏</button>
+	<button th:if="${type == 4}" th:href="@{/addToCollection(ItemName=${item.getCompany()})}" class="btn ">添加收藏</button>
 </div>
 <!-- 介绍 -->
 <h2 name="itemName" th:text="${item.getItemName()}" th:if="${type != 4}">房源简介</h2>
@@ -45,6 +40,39 @@
 <!-- 百度地图 -->
 <h2>地图信息</h2>
 <div></div>
+	<!-- 导航栏 -->
+	<!--这里还得读取是从哪一块点进来的...-->
+	<nav th:replace="common/template_navbar"></nav>
+	<!-- 图片，希望有多张图片 -->
+	<div>
+		<img>
+		<!-- 如果有多张图片，这里有一个缩略图列 -->
+	</div>
+	<!-- 图片右侧简略信息 -->
+	<div>
+		<!-- 价格 -->
+		<div>
+			<span>总价</span>
+			<!-- 二手房可以写个多少钱一平。或者楼盘没有总价只有单价 -->
+		</div>
+		<!-- 地址 -->
+		<label>地址</label><span>地址</span>
+		<!-- 联系人及联系方式 -->
+		<label>联系人</label><span></span>
+		<span>联系方式</span>
+		<!-- 收藏按钮 -->
+		<button class="btn ">添加收藏</button>
+	</div>
+	<!-- 介绍 -->
+	<h2>房源简介</h2>
+	<!-- 详细信息 -->
+	<h2>详细信息</h2>
+	<!-- 把后台传来的数据以键（label）值（span）状态显示 -->
+	<div>
+	</div>
+	<!-- 百度地图 -->
+	<h2>地图信息</h2>
+	<div></div>
 </body>
 
 </html>
