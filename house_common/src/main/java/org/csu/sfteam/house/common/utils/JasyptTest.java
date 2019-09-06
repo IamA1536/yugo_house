@@ -14,8 +14,8 @@ public class JasyptTest {
         textEncryptor.setPassword("HAisiugsi123HSQsAHhbgsuYY5554ssdSSS4444");
         //要加密的数据（数据库的用户名或密码）
         String username = textEncryptor.encrypt("root");
-        String password = textEncryptor.encrypt("123456a");
-        String driver = textEncryptor.encrypt("jdbc:mysql://176.122.180.77:3306/house?serverTimezone=UTC");
+        String password = textEncryptor.encrypt("CSU2019lhj<>");
+        String driver = textEncryptor.encrypt("jdbc:mysql://176.122.180.77:3306/houses?serverTimezone=UTC");
         System.out.println("username:"+username);
         System.out.println("password:"+password);
         System.out.println("driver:"+driver);
