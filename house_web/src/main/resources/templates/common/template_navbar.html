@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 	<!-- 导航菜单，可重用 -->
-	<nav class="navbar navbar-default" role="navigation">
+	<nav  th:fragment="nav(active)" class="navbar navbar-default" role="navigation">
     <div class="container-fluid"> 
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -15,16 +15,25 @@
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">首页</a></li>
-            <li><a href="#">买新房</a></li>
-            <li><a href="#">二手房</a></li>
-            <li><a href="#">租房</a></li>
-            <li><a href="#">找装修</a></li>
+            <li th:classappend="${active==0}?'active'"><a href="#">首页</a></li>
+            <li th:classappend="${active==1}?'active'"><a href="#">买新房</a></li>
+            <li th:classappend="${active==2}?'active'"><a href="#">二手房</a></li>
+            <li th:classappend="${active==3}?'active'"><a href="#">租房</a></li>
+            <li th:classappend="${active==4}?'active'"><a href="#">找装修</a></li>
             <li><a href="#">论坛</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-        	<li><a href="account/login.html"><span class="glyphicon glyphicon-user"></span> 登录</a></li>
-        </ul>
+                <li><a href="/account/login" th:if="${session.account==null}" th:text="#{login}">
+                    <span class="glyphicon glyphicon-user"></span>Sign In
+                </a></li>
+
+                <a href="/account/logout" th:if="${session.account!=null}" th:text="#{signOut}">
+                    Sign Out
+                </a>
+                <a href="/account/userCenter" th:if="${session.account!=null}" th:text="#{myAccount}">
+                    My Account
+                </a>
+            </ul>
     </div>
     </div>
 	</nav>

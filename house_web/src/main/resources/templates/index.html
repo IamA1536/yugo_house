@@ -1,57 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title></title>
-    <link rel="StyleSheet" href="../css/yugohouse.css" type="text/css" media="screen"/>
-    <meta charset="utf-8">
-    <!-- 导入bootstrap -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!-- <meta http-equiv="refresh" content="0;url=你的action"/> -->
+<head th:replace="common/template_head::head('优购房-首页')">
 </head>
+<!--用这个来刷新页面获得推荐信息，不知道可行否-->
+<!-- <meta http-equiv="refresh" content="0;url=你的action"/> -->
 
 <body>
 <!-- 导航栏 -->
 <!-- 导航菜单，可重用 -->
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#example-navbar-collapse">
-                <span class="sr-only">切换导航</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">yugo优购房</a>
-        </div>
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="#">买新房</a></li>
-                <li><a href="#">二手房</a></li>
-                <li><a href="#">租房</a></li>
-                <li><a href="#">找装修</a></li>
-                <li><a href="#">论坛</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-
-                <li><a href="/account/login" th:if="${session.account==null}" th:text="#{login}">
-                    <span class="glyphicon glyphicon-user"></span>Sign In
-                </a></li>
-
-                <a href="/account/logout" th:if="${session.account!=null}" th:text="#{signOut}">
-                    Sign Out
-                </a>
-                <a href="/account/userCenter" th:if="${session.account!=null}" th:text="#{myAccount}">
-                    My Account
-                </a>
-            </ul>
-        </div>
-    </div>
-</nav>
+<nav th:replace="common/template_navbar::nav(0)"></nav>
 
 
 <!-- 轮播器是响应式的，不好与搜索框组合 -->

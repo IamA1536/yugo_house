@@ -1,19 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title></title>
-    <link rel="StyleSheet" href="../css/yugohouse.css" type="text/css" media="screen" />
-    <meta charset="utf-8">
-            <!-- 导入bootstrap -->
-        <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-        <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head th:replace="common/template_head::head('优购房-登录')">
 </head>
 
 <body id="login_background">
     <!-- 导航栏 -->
-    <nav th:replace="common/template_navbar"></nav>
+    <nav th:replace="common/template_navbar::nav(99)"></nav>
 
 	<!-- 登录框 -->
     <div id="login_container" class="container">
@@ -22,7 +15,7 @@
         <div id="login_form">
         	<!-- 显示错误信息 -->
             <div class="warning"> </div>
-            <form role="form" id="login_inputs" th:action="@{/account/login}" method="post" onsubmit="return validate()"> <!-- 这个id名和上面的重了 -->
+            <form role="form" id="login_inputs" th:action="@{/account/login}" method="post" onsubmit="return validate()">
                 <div class="form-group">
                 	<!-- 用户名文本框 -->
                     <div class="form-group" id="username">
@@ -42,6 +35,6 @@
             </form>
         </div>
     </div>
-    <script type="text/javascript" src="../js/login.js"></script>
+    <script type="text/javascript" src="/js/login.js"></script>
 </body>
 </html>
