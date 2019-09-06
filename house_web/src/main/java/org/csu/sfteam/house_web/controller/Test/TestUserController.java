@@ -36,7 +36,7 @@ public class TestUserController {
         User user = new User();
         user.setID(2114514);
         user.setAddress("123231");
-        user.setEmail("1233222@163.com");
+        user.setEmail("1233422@163.com");
         user.setIcon("asdasda");
         user.setIDnumber("43040019198101111");
         user.setInfo("24, des");
@@ -47,7 +47,8 @@ public class TestUserController {
         user.setType(1);
         user.setUsername("4654456");
         userService.CreateUser(user);
-        user.setID(2114514);
+        user = new User();
+        user.setID(2214514);
         user.setAddress("123231");
         user.setEmail("1233222@163.com");
         user.setIcon("asdasda");

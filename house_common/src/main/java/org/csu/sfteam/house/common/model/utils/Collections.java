@@ -8,7 +8,8 @@ package org.csu.sfteam.house.common.model.utils;
 public class Collections {
     private int ID;
     private int userID;
-    private int itemID;
+    private int buildingID;
+    private int decorationID;
     private String time;
 
     public Collections() {
@@ -32,19 +33,27 @@ public class Collections {
         this.userID = userID;
     }
 
-    public int getItemID() {
-        return itemID;
-    }
-
-    public void setItemID(int itemID) {
-        this.itemID = itemID;
-    }
-
     public String getTime() {
         return time;
     }
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public int getDecorationID() {
+        return decorationID;
+    }
+
+    public void setDecorationID(int decorationID) {
+        this.decorationID = decorationID;
+    }
+
+    public int getBuildingID() {
+        return buildingID;
+    }
+
+    public void setBuildingID(int buildingID) {
+        this.buildingID = buildingID;
     }
 }

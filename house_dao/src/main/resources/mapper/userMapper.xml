@@ -110,7 +110,7 @@
 
     <select id="showCollections" parameterType="int" resultType="collections">
         select
-        ID, userID, itemID, time
+        *
         from user_collections
         where userID = #{userID}
     </select>

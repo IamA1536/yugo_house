@@ -68,19 +68,20 @@ public class UserServiceImpl implements UserService {
             returnlist = list;
         } else if (type <= 4) {
             List<Collections> listChoice = null;
+            int ItemID;
             for (Collections collections : list) {
-                int ItemID = collections.getItemID();
+                if (collections.getBuildingID() != 0)
+                    ItemID = collections.getBuildingID();
+                else
+                    ItemID = collections.getDecorationID();
                 String tem = String.valueOf(ItemID);
                 int IDFirst = tem.charAt(0) - '0';
-                if (IDFirst == type) {
-                    assert listChoice != null;
+                if (IDFirst == type)
                     listChoice.add(collections);
-                }
                 returnlist = listChoice;
             }
-        } else {
+        } else
             System.out.println("type is the problem");
-        }
         return returnlist;
     }
 
