@@ -42,6 +42,10 @@
         where ID=#{ID}
     </delete>
 
+    <delete id="deleteCollection">
+        delete from user_collections
+        where userID=#{userID} and builidngID = #{builidngID} and decorationID = #{decorationID}
+    </delete>
     <update id="update">
         update user_standrad
         <set>

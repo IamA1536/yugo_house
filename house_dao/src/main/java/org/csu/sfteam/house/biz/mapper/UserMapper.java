@@ -28,6 +28,8 @@ public interface UserMapper {
 
     public int addToCollection(long userID, long buildingID,int decorationID, String time);
 
+    public int deleteCollection(long userID, long buildingID,int decorationID);
+
     public List<User> getUsersListByKeywords(String keywords);
 
     public User getUser(String username);

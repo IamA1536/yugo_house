@@ -31,11 +31,13 @@ public interface UserService {
 
     //添加用户收藏
     //可用
-    public int AddToCollection(long UserId, long BuildingId,int decorationID, String time);
+    public int AddToCollection(long UserId, long BuildingId, int decorationID, String time);
 
     //查找用户收藏
     //可用
     public List<Collections> ShowCollections(int UserId, int type);
+
+    public int deleteCollection(long UserId, long BuildingId, int decorationID);
 
     //用户注销
     //蜜汁问题
@@ -46,6 +48,7 @@ public interface UserService {
 
     //可用
     public long selectUserCount();
+
     //可用
     public List<User> showUser();
 

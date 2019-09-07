@@ -91,6 +91,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public int deleteCollection(long UserId, long BuildingId, int decorationID) {
+        return userMapper.deleteCollection(UserId, BuildingId, decorationID);
+    }
+
+    @Override
     public int DeleteById(int id) {
         return userMapper.deleteByID(id);
     }
