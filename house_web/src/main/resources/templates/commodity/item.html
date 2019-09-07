@@ -26,9 +26,9 @@
     <span th:text="${tele}">联系方式</span>
     <!-- 收藏按钮 -->
 
-    <button th:if="${type != 4}" th:href="@{/addToCollection(ItemName=${item.getItemName()})}" class="btn ">添加收藏
+    <button th:if="${type != 4 || session.account != null}" th:href="@{/addToCollection(ItemName=${item.getItemName()})}" class="btn ">添加收藏
     </button>
-    <button th:if="${type == 4}" th:href="@{/addToCollection(ItemName=${item.getCompany()})}" class="btn ">添加收藏</button>
+    <button th:if="${type == 4 || session.account != null}" th:href="@{/addToCollection(ItemName=${item.getCompany()})}" class="btn ">添加收藏</button>
 </div>
 <!-- 介绍 -->
 <h2 name="itemName" th:text="${item.getItemName()}" th:if="${type != 4}">房源简介</h2>
