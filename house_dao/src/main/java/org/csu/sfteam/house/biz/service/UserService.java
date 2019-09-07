@@ -36,7 +36,7 @@ public interface UserService {
     //查找用户收藏
     //可用
     public List<Collections> ShowCollections(int UserId, int type);
-
+    //
     public int deleteCollection(long UserId, long BuildingId, int decorationID);
 
     //用户注销

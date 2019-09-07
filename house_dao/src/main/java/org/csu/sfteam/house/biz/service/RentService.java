@@ -24,6 +24,9 @@ public interface RentService {
     //通过名字获得租房信息
     public Building GetRentByItemname(String itemname);
 
+    public Building GetRentByID(int ID);
+
+
     //展示房源信息
     public List<Building> ShowRent();
 

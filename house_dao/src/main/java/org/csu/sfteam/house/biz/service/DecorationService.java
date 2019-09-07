@@ -12,12 +12,14 @@ public interface DecorationService {
     public int UpdateDecoration(Decoration decoration);
     //
     public int delete(Decoration decoration);
-
+    //
     public int delete(int id);
     //
     public Decoration GetDecoration(String company);
     //
     public List<Decoration> GetDecorationListByKeywords(String keywords);
+
+    public Decoration GetDecorationByID(int ID);
 
     public List<Decoration> ShowDecorations();
 

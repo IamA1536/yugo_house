@@ -3,11 +3,8 @@
 <mapper namespace="org.csu.sfteam.house.biz.mapper.UserMapper">
 
     <insert id="insert_standard">
-        insert into user_standrad (
-                ID, username, type, email, info, icon, sex, address, tele
-                )
-                values(
-                #{ID},
+        insert into user_standrad (ID, username, type, email, info, icon, sex, address, tele)
+        values (#{ID},
                 #{username},
                 #{type},
                 #{email},
@@ -15,36 +12,36 @@
                 #{icon},
                 #{sex},
                 #{address},
-                #{tele}
-                );
+                #{tele});
     </insert>
 
     <insert id="insert_important">
-        insert into user_important (
-                ID, realname, IDnumber, pw, email
-                )
-                values(
-                #{ID},
+        insert into user_important (ID, realname, IDnumber, pw, email)
+        values (#{ID},
                 #{realname},
                 #{IDnumber},
                 #{pw},
-                #{email}
-                );
+                #{email});
     </insert>
 
     <delete id="deleteByID" parameterType="int">
-        delete from user_important
+        delete
+        from user_important
         where ID = #{ID}
     </delete>
 
     <delete id="delete" parameterType="user">
-        delete from user_important
-        where ID=#{ID}
+        delete
+        from user_important
+        where ID = #{ID}
     </delete>
 
     <delete id="deleteCollection">
-        delete from user_collections
-        where userID=#{userID} and builidngID = #{builidngID} and decorationID = #{decorationID}
+        delete
+        from user_collections
+        where userID = #{userID}
+          and builidngID = #{builidngID}
+          and decorationID = #{decorationID}
     </delete>
     <update id="update">
         update user_standrad
@@ -70,40 +67,74 @@
     </update>
 
     <select id="getUser" parameterType="string" resultType="user">
-        select ID, username, type, email, info, icon, sex, address, tele
-        from user_standrad where username = #{username};
+        select ID,
+               username,
+               type,
+               email,
+               info,
+               icon,
+               sex,
+               address,
+               tele
+        from user_standrad
+        where username = #{username};
     </select>
 
     <select id="getUserByID" resultType="user">
-        select ID, username, type, email, info, icon, sex, address, tele
-        from user_standrad where ID = #{ID}
+        select ID,
+               username,
+               type,
+               email,
+               info,
+               icon,
+               sex,
+               address,
+               tele
+        from user_standrad
+        where ID = #{ID}
     </select>
 
     <select id="getUsersListByKeywords" parameterType="string" resultType="user">
-        select ID, username, type, email, info, icon, sex, address, tele
-        from user_standrad where username like CONCAT(CONCAT('%', #{keywords}), '%');
+        select ID,
+               username,
+               type,
+               email,
+               info,
+               icon,
+               sex,
+               address,
+               tele
+        from user_standrad
+        where username like CONCAT(CONCAT('%', #{keywords}), '%');
     </select>
 
     <select id="getUserByUsernameAndPassword" parameterType="string" resultType="user">
         select
-        user_important.realname, user_important.IDnumber, user_important.pw, user_important.email,
-        user_standrad.ID, user_standrad.username, user_standrad.type, user_standrad.info, user_standrad.icon, user_standrad.sex, user_standrad.address, user_standrad.tele
-        from user_important, user_standrad
+            user_important.realname,
+            user_important.IDnumber,
+            user_important.pw,
+            user_important.email,
+            user_standrad.ID,
+            user_standrad.username,
+            user_standrad.type,
+            user_standrad.info,
+            user_standrad.icon,
+            user_standrad.sex,
+            user_standrad.address,
+            user_standrad.tele
+        from user_important,
+             user_standrad
         where user_standrad.ID = user_important.ID
-        and user_standrad.username = #{username}
-        and user_important.pw = #{pw}
+          and user_standrad.username = #{username}
+          and user_important.pw = #{pw}
     </select>
 
     <insert id="addToCollection">
-        insert into user_collections (
-                userID, buildingID, time, decorationID
-               )
-               values(
-               #{userID},
-               #{buildingID},
-               #{decorationID},
-               #{time}
-               )
+        insert into user_collections (userID, buildingID, decorationID, time)
+        values (#{userID},
+                #{buildingID},
+                #{decorationID},
+                #{time})
     </insert>
 
     <select id="selectUserCount" resultType="long">
@@ -112,15 +143,26 @@
     </select>
 
     <select id="showUsers" resultType="user">
-        select user_important.ID, user_important.realname, user_important.IDnumber, user_important.pw, user_important.email,
-        user_standrad.username, user_standrad.type, user_standrad.info, user_standrad.icon, user_standrad.sex, user_standrad.address, user_standrad.tele
-        from user_standrad,user_important
+        select user_important.ID,
+               user_important.realname,
+               user_important.IDnumber,
+               user_important.pw,
+               user_important.email,
+               user_standrad.username,
+               user_standrad.type,
+               user_standrad.info,
+               user_standrad.icon,
+               user_standrad.sex,
+               user_standrad.address,
+               user_standrad.tele
+        from user_standrad,
+             user_important
         where user_important.ID = user_standrad.ID;
     </select>
 
     <select id="showCollections" parameterType="int" resultType="collections">
         select
-        *
+            *
         from user_collections
         where userID = #{userID}
     </select>

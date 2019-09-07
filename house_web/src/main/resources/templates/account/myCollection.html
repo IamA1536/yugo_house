@@ -241,23 +241,24 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="decoration">
+            <div class="tab-pane fade" id="Decoration" name="Decoration" >
                 <!-- 排序方式 -->
                 <!-- 使用th迭代标签显示每一条项目 -->
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
-                <div th:each="" th:id="">
-                    <div>
+                <div th:each="decorationlist:${DecorationList}" th:id="decoration">
+                    <div >
                         <!-- 预览图片 -->
-                        <img th:src="">
+                        <img th:href="@{/showusercollection(ItemID=${decorationlist.getID()},type=4)}"
+							 th:src="${decorationlist.getImg()}">
                         <!-- 信息盒子 -->
                         <div>
                             <!-- 标题 -->
-                            <h2 th:text=""></h2>
+                            <h2 th:text="${decorationlist.getCompany()}" ></h2>
                             <!-- 地址 -->
-                            <p th:text=""></p>
+                            <p th:text="${decorationlist.getAddress()}"></p>
                             <!-- 装修风格 -->
-                            <p th:text=""></p>
+                            <p th:text="${decorationlist.getStyle()}"></p>
                         </div>
                     </div>
                 </div>
