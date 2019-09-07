@@ -24,6 +24,8 @@ public interface DecorationMapper {
 
     public List<Decoration> getDecorationListByKeywords(String keywords);
 
+    public Decoration getDecorationByID(int ID);
+
     public List<Decoration> showDecorations();
 
     public List<Decoration> showDecorationsByStyle(int style);

@@ -28,6 +28,8 @@ public interface SalePropertyService {
     //可用
     public Building GetPropertyByItemname(String itemname);
 
+    public Building GetPropertyByID(int ID);
+
     //展示楼盘
     //可用
     public List<Building> ShowProperty();

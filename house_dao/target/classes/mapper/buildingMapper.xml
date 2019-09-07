@@ -136,6 +136,60 @@
           and building.type = 2;
     </select>
 
+    <select id="getPropertyListByID" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               property_building.saleStatus
+        from building,
+             property_building
+        where building.ID = #{ID}
+          and building.ID = property_building.buildingID
+          and building.type = 1;
+    </select>
+
+    <select id="getRentListByID" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = #{ID}
+          and building.ID = rent.buildingID
+          and building.type = 3;
+    </select>
+
+    <select id="getOldHouseListByID" resultType="building">
+        select building.ID,
+               building.type,
+               building.itemName,
+               building.price,
+               building.img,
+               building.itemFrom,
+               building.info,
+               building.address,
+               building.decStatus,
+               rent.area
+        from building,
+             rent
+        where building.ID = #{ID}
+          and building.ID = rent.buildingID
+          and building.type = 2;
+    </select>
+
     <select id="getPropertyByItemName" parameterType="string" resultType="building">
         select building.ID,
                building.type,

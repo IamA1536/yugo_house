@@ -45,6 +45,11 @@ public class DecorationServiceImpl implements DecorationService {
     }
 
     @Override
+    public Decoration GetDecorationByID(int ID) {
+        return decorationMapper.getDecorationByID(ID);
+    }
+
+    @Override
     public List<Decoration> ShowDecorations() {
         return decorationMapper.showDecorations();
     }

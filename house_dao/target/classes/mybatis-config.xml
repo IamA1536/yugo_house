@@ -19,5 +19,6 @@
         <typeAlias type="org.csu.sfteam.house.common.model.utils.Admin" alias="admin"/>
         <typeAlias type="org.csu.sfteam.house.common.model.items.Building" alias="building"/>
         <typeAlias type="org.csu.sfteam.house.common.model.items.Decoration" alias="decoration"/>
+        <typeAlias type="org.csu.sfteam.house.common.model.utils.Collections" alias="collections"/>
     </typeAliases>
 </configuration>

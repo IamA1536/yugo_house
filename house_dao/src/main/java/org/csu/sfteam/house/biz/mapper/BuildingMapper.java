@@ -5,6 +5,7 @@ import org.csu.sfteam.house.common.model.items.Building;
 import org.csu.sfteam.house.common.model.items.Building_standard;
 import org.csu.sfteam.house.common.model.items.Property;
 import org.csu.sfteam.house.common.model.items.Rent;
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.w3c.dom.ls.LSInput;
 
 import java.util.List;
@@ -37,6 +38,12 @@ public interface BuildingMapper {
     public List<Building> getRentListByKeywords(String keywords);
 
     public List<Building> getOldHouseListByKeywords(String keywords);
+
+    public Building getPropertyByID(int ID);
+
+    public Building getOldHouseByID(int ID);
+
+    public Building getRentByID(int ID);
 
     public Building getPropertyByItemName(String itemName);
 

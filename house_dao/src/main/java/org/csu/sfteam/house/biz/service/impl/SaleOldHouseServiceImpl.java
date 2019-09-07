@@ -52,6 +52,11 @@ public class SaleOldHouseServiceImpl implements SaleOldHouseService {
     }
 
     @Override
+    public Building GetOldHouseByID(int ID) {
+        return buildingMapper.getOldHouseByID(ID);
+    }
+
+    @Override
     public List<Building> ShowOldHouse() {
         return buildingMapper.showOldHouse();
     }

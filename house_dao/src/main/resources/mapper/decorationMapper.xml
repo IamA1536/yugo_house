@@ -64,6 +64,20 @@
         where company = #{company}
     </select>
 
+    <select id="getDecorationByID" resultType="decoration">
+        select ID,
+               company,
+               address,
+               tele,
+               img,
+               itemFrom,
+               info,
+               style,
+               link
+        from decoration
+        where ID = #{ID}
+    </select>
+
     <select id="getDecorationListByKeywords" parameterType="string" resultType="decoration">
         select ID,
                company,

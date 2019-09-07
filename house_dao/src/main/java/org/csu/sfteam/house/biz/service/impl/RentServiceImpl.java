@@ -51,6 +51,11 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
+    public Building GetRentByID(int ID) {
+        return buildingMapper.getOldHouseByID(ID);
+    }
+
+    @Override
     public List<Building> ShowRent() {
         return buildingMapper.showRent();
     }

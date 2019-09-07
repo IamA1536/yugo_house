@@ -27,6 +27,8 @@ public interface SaleOldHouseService {
     //可用
     public Building GetOldHouseByItemname(String itemname);
 
+    public Building GetOldHouseByID(int ID);
+
     //展示房源信息
     //可用
     public List<Building> ShowOldHouse();
