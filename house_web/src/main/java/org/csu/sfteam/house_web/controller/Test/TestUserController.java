@@ -24,14 +24,14 @@ public class TestUserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/getUser/{code}", method = RequestMethod.GET)
+    @RequestMapping(value = "/getUserTest/{code}", method = RequestMethod.GET)
     public User getUser(@PathVariable("code") String code) {
         User user = userService.GetUserByUsername(code);
         System.out.println(user.getEmail());
         return user;
     }
 
-    @RequestMapping(value = "/createUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/createUserTest", method = RequestMethod.GET)
     public int getUser() {
         User user = new User();
         user.setID(2114514);
@@ -65,14 +65,14 @@ public class TestUserController {
         return 111;
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginTest", method = RequestMethod.GET)
     public int getUserByUsernameAndPassword() {
         userService.GetUserByUsernameAndPassword("haoer", "1919810");
         System.out.println(2222);
         return 222;
     }
 
-    @RequestMapping(value = "/searchUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/searchUserTest", method = RequestMethod.GET)
     public List<User> GetUserByKeyword() {
         System.out.println(3333);
         List<User> users = userService.GetUserByKeyword("4");
@@ -82,7 +82,7 @@ public class TestUserController {
     }
 
 
-    @RequestMapping(value = "/updateUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/updateUserTest", method = RequestMethod.GET)
     public int UpdateUser() {
         System.out.println(4444);
         User user = new User();
@@ -103,7 +103,7 @@ public class TestUserController {
         return 444;
     }
 
-    @RequestMapping(value = "/addCollections", method = RequestMethod.GET)
+    @RequestMapping(value = "/addCollectionsTest", method = RequestMethod.GET)
     public int AddCollections() {
         System.out.println(5555);
         Date date = new Date();
@@ -113,20 +113,20 @@ public class TestUserController {
         return 555;
     }
 
-    @RequestMapping(value = "/showCollections", method = RequestMethod.GET)
+    @RequestMapping(value = "/showCollectionsTest", method = RequestMethod.GET)
     public List<Collections> ShowCollections() {
         System.out.println(6666);
         return userService.ShowCollections(111, 0);
     }
 
-    @RequestMapping(value = "/DeleteByID", method = RequestMethod.GET)
+    @RequestMapping(value = "/DeleteByIDTest", method = RequestMethod.GET)
     public int DeleteByID() {
         System.out.println(7777);
         userService.DeleteById(123);
         return 777;
     }
 
-    @RequestMapping(value = "/DeleteUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/DeleteUserTest", method = RequestMethod.GET)
     public int DeleteBy() {
         System.out.println(8888);
         User user = new User();
@@ -146,13 +146,13 @@ public class TestUserController {
         return 888;
     }
 
-    @RequestMapping(value = "/selectUserCount", method = RequestMethod.GET)
+    @RequestMapping(value = "/selectUserCountTest", method = RequestMethod.GET)
     public long SelectUserCount() {
         System.out.println(9999);
         return userService.selectUserCount();
     }
 
-    @RequestMapping(value = "/showUsers", method = RequestMethod.GET)
+    @RequestMapping(value = "/showUsersTest", method = RequestMethod.GET)
     public List<User> showUser() {
         System.out.println(10101010);
         return userService.showUser();

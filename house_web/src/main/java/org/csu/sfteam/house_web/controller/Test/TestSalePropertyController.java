@@ -23,7 +23,7 @@ public class TestSalePropertyController {
     @Autowired
     SalePropertyService salePropertyService;
 
-    @RequestMapping(value = "/CreateProperty", method = RequestMethod.GET)
+    @RequestMapping(value = "/CreatePropertyTest", method = RequestMethod.GET)
     public int CreateProperty() {
         Building building = new Building();
         building.setAddress("123312");
@@ -41,7 +41,7 @@ public class TestSalePropertyController {
         return 111;
     }
 
-    @RequestMapping(value = "/UpdateProperty", method = RequestMethod.GET)
+    @RequestMapping(value = "/UpdatePropertyTest", method = RequestMethod.GET)
     public int UpdateProperty() {
         System.out.println(2222);
         Building building = new Building();
@@ -60,7 +60,7 @@ public class TestSalePropertyController {
         return 111;
     }
 
-    @RequestMapping(value = "/DeleteBuilding", method = RequestMethod.GET)
+    @RequestMapping(value = "/DeleteBuildingTest", method = RequestMethod.GET)
     public int Delete() {
         System.out.println(3333);
         Building building = new Building();
@@ -79,38 +79,38 @@ public class TestSalePropertyController {
         return 111;
     }
 
-    @RequestMapping(value = "/DeleteBuildingByID", method = RequestMethod.GET)
+    @RequestMapping(value = "/DeleteBuildingByIDTest", method = RequestMethod.GET)
     public int DeleteByID() {
         System.out.println(4444);
         salePropertyService.DeleteByID(123);
         return 111;
     }
 
-    @RequestMapping(value = "/SearchPropertyByKeyword", method = RequestMethod.GET)
+    @RequestMapping(value = "/SearchPropertyByKeywordTest", method = RequestMethod.GET)
     public List<Building> SearchPropertyByKeyword() {
         System.out.println(5555);
         return salePropertyService.SearchPropertyByKeyword("3");
     }
 
-    @RequestMapping(value = "/GetPropertyByItemname", method = RequestMethod.GET)
+    @RequestMapping(value = "/GetPropertyByItemnameTest", method = RequestMethod.GET)
     public Building GetPropertyByItemname() {
         System.out.println(6666);
         return salePropertyService.GetPropertyByItemname("3333");
     }
 
-    @RequestMapping(value = "/ShowProperty", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowPropertyTest", method = RequestMethod.GET)
     public List<Building> ShowProperty() {
         System.out.println(7777);
         return salePropertyService.ShowProperty();
     }
 
-    @RequestMapping(value = "/ShowPropertyByAddress", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowPropertyByAddressTest", method = RequestMethod.GET)
     public List<Building> ShowPropertyByAddress() {
         System.out.println(8888);
         return salePropertyService.ShowPropertyByAddress("333");
     }
 
-    @RequestMapping(value = "/ShowPropertyByItemFrom", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowPropertyByItemFromTest", method = RequestMethod.GET)
     public List<Building> ShowPropertyByItemFrom() {
         System.out.println(9999);
         return salePropertyService.ShowPropertyByItemFrom(2114514);

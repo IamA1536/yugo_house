@@ -18,7 +18,7 @@ public class TestAdminController {
     AdminService adminService;
 
 
-    @RequestMapping(value = "/getAdminByUserIDAndPassword", method = RequestMethod.GET)
+    @RequestMapping(value = "/getAdminByUserIDAndPasswordTest", method = RequestMethod.GET)
     public Admin getAdminByUserIDAndPassword() {
         System.out.println(1111);
         return adminService.getAdminByUserIDAndPassword("a", "123");

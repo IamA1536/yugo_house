@@ -19,7 +19,7 @@ public class TestDecorationController {
     @Autowired
     DecorationService decorationService;
 
-    @RequestMapping(value = "/CreateDecoration", method = RequestMethod.GET)
+    @RequestMapping(value = "/CreateDecorationTest", method = RequestMethod.GET)
     public int CreateDecoration() {
         System.out.println(1111);
 
@@ -38,7 +38,7 @@ public class TestDecorationController {
     }
 
 
-    @RequestMapping(value = "/UpdateDecoration", method = RequestMethod.GET)
+    @RequestMapping(value = "/UpdateDecorationTest", method = RequestMethod.GET)
     public int UpdateDecoration() {
         System.out.println(2222);
         Decoration decoration = new Decoration();
@@ -55,7 +55,7 @@ public class TestDecorationController {
         return 111;
     }
 
-    @RequestMapping(value = "/DeleteDecoration", method = RequestMethod.GET)
+    @RequestMapping(value = "/DeleteDecorationTest", method = RequestMethod.GET)
     public int DeleteDecoration() {
         System.out.println(3333);
         Decoration decoration = new Decoration();
@@ -72,44 +72,44 @@ public class TestDecorationController {
         return 111;
     }
 
-    @RequestMapping(value = "/DeleteDecorationByID", method = RequestMethod.GET)
+    @RequestMapping(value = "/DeleteDecorationByIDTest", method = RequestMethod.GET)
     public int DeleteDecorationByID() {
         System.out.println(4444);
         decorationService.delete(12313);
         return 111;
     }
 
-    @RequestMapping(value = "/GetDecoration", method = RequestMethod.GET)
+    @RequestMapping(value = "/GetDecorationTest", method = RequestMethod.GET)
     public Decoration GetDecoration() {
         System.out.println(5555);
         return decorationService.GetDecoration("44444");
     }
 
-    @RequestMapping(value = "/GetDecorationListByKeywords", method = RequestMethod.GET)
+    @RequestMapping(value = "/GetDecorationListByKeywordsTest", method = RequestMethod.GET)
     public List<Decoration> GetDecorationListByKeywords() {
         System.out.println(5555);
         return decorationService.GetDecorationListByKeywords("4");
     }
 
-    @RequestMapping(value = "/ShowDecorations", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowDecorationsTest", method = RequestMethod.GET)
     public List<Decoration> ShowDecorations() {
         System.out.println(5555);
         return decorationService.ShowDecorations();
     }
 
-    @RequestMapping(value = "/ShowDecorationsByStyle", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowDecorationsByStyleTest", method = RequestMethod.GET)
     public List<Decoration> ShowDecorationsByStyle() {
         System.out.println(5555);
         return decorationService.ShowDecorationsByStyle(1);
     }
 
-    @RequestMapping(value = "/ShowDecorationsByAddress", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowDecorationsByAddressTest", method = RequestMethod.GET)
     public List<Decoration> ShowDecorationsByAddress() {
         System.out.println(5555);
         return decorationService.ShowDecorationsByAddress("4444");
     }
 
-    @RequestMapping(value = "/showDecorationsByItemFrom", method = RequestMethod.GET)
+    @RequestMapping(value = "/showDecorationsByItemFromTest", method = RequestMethod.GET)
     public List<Decoration> showDecorationsByItemFrom() {
         System.out.println(5555);
         return decorationService.showDecorationsByItemFrom(2114514);

@@ -20,7 +20,7 @@ public class TestRentControlller {
     @Autowired
     RentService rentService;
 
-    @RequestMapping(value = "/CreateRent", method = RequestMethod.GET)
+    @RequestMapping(value = "/CreateRentTest", method = RequestMethod.GET)
     public int CreateOldHouse() {
         System.out.println(1111);
         Building building = new Building();
@@ -39,7 +39,7 @@ public class TestRentControlller {
         return 111;
     }
 
-    @RequestMapping(value = "/UpdateRent", method = RequestMethod.GET)
+    @RequestMapping(value = "/UpdateRentTest", method = RequestMethod.GET)
     public int UpdateRent() {
         System.out.println(2222);
         Building building = new Building();
@@ -58,43 +58,43 @@ public class TestRentControlller {
         return 111;
     }
 
-    @RequestMapping(value = "/SearchRentListByKeyword", method = RequestMethod.GET)
+    @RequestMapping(value = "/SearchRentListByKeywordTest", method = RequestMethod.GET)
     public List<Building> SearchRentListByKeyword() {
         System.out.println(3333);
         return rentService.SearchRentListByKeyword("3");
     }
 
-    @RequestMapping(value = "/GetRentByItemname", method = RequestMethod.GET)
+    @RequestMapping(value = "/GetRentByItemnameTest", method = RequestMethod.GET)
     public Building GetRentByItemname() {
         System.out.println(4444);
         return rentService.GetRentByItemname("33333");
     }
 
-    @RequestMapping(value = "/ShowRent", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowRentTest", method = RequestMethod.GET)
     public List<Building> ShowOldHouse() {
         System.out.println(5555);
         return rentService.ShowRent();
     }
 
-    @RequestMapping(value = "/ShowRentByPrice", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowRentByPriceTest", method = RequestMethod.GET)
     public List<Building> ShowRentByPrice() {
         System.out.println(6666);
         return rentService.ShowRentByPrice(10000, 300);
     }
 
-    @RequestMapping(value = "/ShowRentByArea", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowRentByAreaTest", method = RequestMethod.GET)
     public List<Building> ShowRentByArea() {
         System.out.println(7777);
         return rentService.ShowRentByArea(20000, 500);
     }
 
-    @RequestMapping(value = "/ShowRentByAddress", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowRentByAddressTest", method = RequestMethod.GET)
     public List<Building> ShowRentByAddress() {
         System.out.println(8888);
         return rentService.ShowRentByAddress("3333");
     }
 
-    @RequestMapping(value = "/ShowRentByItemFrom", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowRentByItemFromTest", method = RequestMethod.GET)
     public List<Building> ShowOldHouseByItemFrom() {
         System.out.println(9999);
         return rentService.ShowRentByItemFrom(123);

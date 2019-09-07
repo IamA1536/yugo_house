@@ -19,7 +19,7 @@ public class TestOldHouseController {
     @Autowired
     SaleOldHouseService saleOldHouseService;
 
-    @RequestMapping(value = "/CreateOldHouse", method = RequestMethod.GET)
+    @RequestMapping(value = "/CreateOldHouseTest", method = RequestMethod.GET)
     public int CreateOldHouse() {
         System.out.println(1111);
         Building building = new Building();
@@ -38,7 +38,7 @@ public class TestOldHouseController {
         return 111;
     }
 
-    @RequestMapping(value = "/UpdateOldHouse", method = RequestMethod.GET)
+    @RequestMapping(value = "/UpdateOldHouseTest", method = RequestMethod.GET)
     public int UpdateOldHouse() {
         System.out.println(2222);
         Building building = new Building();
@@ -57,43 +57,43 @@ public class TestOldHouseController {
         return 111;
     }
 
-    @RequestMapping(value = "/SearchOldHouseListByKeyword", method = RequestMethod.GET)
+    @RequestMapping(value = "/SearchOldHouseListByKeywordTest", method = RequestMethod.GET)
     public List<Building> SearchOldHouseListByKeyword() {
         System.out.println(3333);
         return saleOldHouseService.SearchOldHouseListByKeyword("3");
     }
 
-    @RequestMapping(value = "/GetOldHouseByItemname", method = RequestMethod.GET)
+    @RequestMapping(value = "/GetOldHouseByItemnameTest", method = RequestMethod.GET)
     public Building GetOldHouseByItemname() {
         System.out.println(4444);
         return saleOldHouseService.GetOldHouseByItemname("12321");
     }
 
-    @RequestMapping(value = "/ShowOldHouse", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowOldHouseTest", method = RequestMethod.GET)
     public List<Building> ShowOldHouse() {
         System.out.println(5555);
         return saleOldHouseService.ShowOldHouse();
     }
 
-    @RequestMapping(value = "/ShowOldHouseByPrice", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowOldHouseByPriceTest", method = RequestMethod.GET)
     public List<Building> ShowOldHouseByPrice() {
         System.out.println(6666);
         return saleOldHouseService.ShowOldHouseByPrice(2000, 1000);
     }
 
-    @RequestMapping(value = "/ShowOldHouseByArea", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowOldHouseByAreaTest", method = RequestMethod.GET)
     public List<Building> ShowOldHouseByArea() {
         System.out.println(7777);
         return saleOldHouseService.ShowOldHouseByArea(20000, 10000);
     }
 
-    @RequestMapping(value = "/ShowOldHouseByAddress", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowOldHouseByAddressTest", method = RequestMethod.GET)
     public List<Building> ShowOldHouseByAddress() {
         System.out.println(8888);
         return saleOldHouseService.ShowOldHouseByAddress("1111");
     }
 
-    @RequestMapping(value = "/ShowOldHouseByItemFrom", method = RequestMethod.GET)
+    @RequestMapping(value = "/ShowOldHouseByItemFromTest", method = RequestMethod.GET)
     public List<Building> ShowOldHouseByItemFrom() {
         System.out.println(9999);
         return saleOldHouseService.ShowOldHouseByItemFrom(123);
