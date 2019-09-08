@@ -554,7 +554,7 @@ public class UserInformationController {
     }
 
     //更新租房信息
-    @PostMapping("/commodity/updaterENT")
+    @PostMapping("/commodity/updateRent")
     public String UpdateRent(@RequestParam("ID") long ID, MultipartFile file, HttpSession httpSession, Building building, Model model) {
         building.setID(ID);
         System.out.println(building.getID());
