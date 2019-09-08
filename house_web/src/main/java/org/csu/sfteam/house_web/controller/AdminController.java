@@ -8,46 +8,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-@Controller
+@RestController
 public class AdminController {
 
     @Autowired
     private AdminService adminService;
     @Autowired
     private UserService userService;
+
     //进行管理员的登录
     @PostMapping()
-    public String LoginAdmin(HttpServletRequest req, HttpSession session)
-    {
+    public String LoginAdmin(HttpServletRequest req, HttpSession session) {
         String userID = req.getParameter("userID");
         System.out.println("username" + userID);
         String password = req.getParameter("password");
         System.out.println("password" + password);
 
-        Admin admin = adminService.getAdminByUserIDAndPassword(userID,password);
+        Admin admin = adminService.getAdminByUserIDAndPassword(userID, password);
         return "admin";
 
     }
+
     /**
      * 用户功能
      * 展示 添加 修改 删除
      */
     //跳转到用户展示页面，展示所有用户
-    @GetMapping()
-    public String ViewAllUser()
-    {
+    @RequestMapping()
+    public String ViewAllUser() {
         List<User> userList = userService.showUser();
         return "userList";
     }
-    //进行用户的删除
-    public String DeleteUser()
-    {
 
+    //进行用户的删除
+    public String DeleteUser() {
+        return "";
     }
 
 }

@@ -41,6 +41,8 @@ public interface RentService {
 
     public List<Building> ShowRentByItemFrom(int ID);
 
+
+
     public int selectRentCount();
 
 }

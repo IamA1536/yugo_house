@@ -1,58 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head>
-    <title></title>
-    <link rel="StyleSheet" href="../css/yugohouse.css" type="text/css" media="screen"/>
-    <meta charset="utf-8">
-    <!-- 导入bootstrap -->
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<head th:replace="common/template_head::head('优购房-首页')">
     <!-- <meta http-equiv="refresh" content="0;url=你的action"/> -->
 </head>
 
 <body>
 <!-- 导航栏 -->
 <!-- 导航菜单，可重用 -->
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#example-navbar-collapse">
-                <span class="sr-only">切换导航</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">yugo优购房</a>
-        </div>
-        <div class="collapse navbar-collapse" id="example-navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">首页</a></li>
-                <li><a href="/showProperty">买新房</a></li>
-                <li><a href="/showOldHouse">二手房</a></li>
-                <li><a href="/showRent">租房</a></li>
-                <li><a href="/showDecoration">找装修</a></li>
-                <li><a href="www.foratest.com">论坛</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-
-                <li><a href="/account/login" th:if="${session.account==null}" th:text="#{login}">
-                    <span class="glyphicon glyphicon-user"></span>Sign In
-                </a></li>
-
-                <a href="/account/logout" th:if="${session.account!=null}" th:text="#{signOut}">
-                    Sign Out
-                </a>
-                <a href="/account/userCenter" th:if="${session.account!=null}" th:text="#{myAccount}">
-                    My Account
-                </a>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<nav th:replace="common/template_navbar::nav(0)"></nav>
 
 <!-- 轮播器是响应式的，不好与搜索框组合 -->
 <div>
@@ -128,7 +84,7 @@
                 <div class="part">
                     <h3 class="part_title">卖房</h3>
                     <p class="part_info">上我们这儿找好房.jpg</p>
-                    <a href="#" class="btn btn-default learn_more">了解更多</a>
+                    <a href="/account/login" class="btn btn-default learn_more">了解更多</a>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
@@ -303,7 +259,7 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(0).getImg()}"/>
                     <div>
                         <span th:text="${decorationList.get(0).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${decorationList.get(0).getItemName()]}">商品名称</h6>
+                        <h6 th:text="${decorationList.get(0).getCompany()]}">商品名称</h6>
                         <p th:text="${decorationList.get(0).getInfo()}">详细信息</p>
                     </div>
                 </div>
@@ -313,7 +269,7 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(1).getImg()}"/>
                     <div>
                         <span th:text="${decorationList.get(1).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${decorationList.get(1).getItemName()]}">商品名称</h6>
+                        <h6 th:text="${decorationList.get(1).getCompany()]}">商品名称</h6>
                         <p th:text="${decorationList.get(1).getInfo()}">详细信息</p>
                     </div>
                 </div>
@@ -323,7 +279,7 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(2).getImg()}"/>
                     <div>
                         <span th:text="${decorationList.get(2).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${decorationList.get(2).getItemName()]}">商品名称</h6>
+                        <h6 th:text="${decorationList.get(2).getCompany()]}">商品名称</h6>
                         <p th:text="${decorationList.get(2).getInfo()}">详细信息</p>
                     </div>
                 </div>

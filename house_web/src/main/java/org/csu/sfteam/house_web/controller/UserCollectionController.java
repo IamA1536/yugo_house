@@ -32,55 +32,57 @@ public class UserCollectionController {
 
     //跳往用户收藏界面，展示用户收藏
     @GetMapping("/showusercollection")
-    public String ShowUserCollection(HttpSession session ,Model model)
-    {
-        User user =(User)session.getAttribute("user");
+    public String ShowUserCollection(HttpSession session, Model model) {
+        User user = (User) session.getAttribute("user");
         //
-        List<Collections> PropertyCollectionList = userService.ShowCollections((int)user.getID() , 1);
+        List<Collections> PropertyCollectionList = userService.ShowCollections((int) user.getID(), 1);
         List<Building> PropertyList = null;
-        for(int i=0 ;i<PropertyCollectionList.size(); i++)
-        { PropertyList.add(salePropertyService.GetPropertyByID(PropertyCollectionList.get(i).getBuildingID())); }
-        model.addAttribute("PropertyList",PropertyList);
+        for (int i = 0; i < PropertyCollectionList.size(); i++) {
+            PropertyList.add(salePropertyService.GetPropertyByID(PropertyCollectionList.get(i).getBuildingID()));
+        }
+        model.addAttribute("PropertyList", PropertyList);
         //
-        List<Collections> OldHouseCollectionList = userService.ShowCollections((int)user.getID() , 2);
+        List<Collections> OldHouseCollectionList = userService.ShowCollections((int) user.getID(), 2);
         List<Building> OldHouseList = null;
-        for(int i=0 ;i<OldHouseCollectionList.size() ;i++)
-        { OldHouseList.add(saleOldHouseService.GetOldHouseByID(OldHouseCollectionList.get(i).getBuildingID())); }
-        model.addAttribute("OldHouseList",OldHouseList);
+        for (int i = 0; i < OldHouseCollectionList.size(); i++) {
+            OldHouseList.add(saleOldHouseService.GetOldHouseByID(OldHouseCollectionList.get(i).getBuildingID()));
+        }
+        model.addAttribute("OldHouseList", OldHouseList);
         //
-        List<Collections> RentCollectionList = userService.ShowCollections((int)user.getID() , 3);
+        List<Collections> RentCollectionList = userService.ShowCollections((int) user.getID(), 3);
         List<Building> RentList = null;
-        for(int i=0 ;i<RentCollectionList.size() ;i++)
-        { RentList.add(rentService.GetRentByID(RentCollectionList.get(i).getBuildingID())); }
-        model.addAttribute("RentList",RentList);
+        for (int i = 0; i < RentCollectionList.size(); i++) {
+            RentList.add(rentService.GetRentByID(RentCollectionList.get(i).getBuildingID()));
+        }
+        model.addAttribute("RentList", RentList);
         //
-        List<Collections> DecorationCollectionList = userService.ShowCollections((int)user.getID() , 4);
+        List<Collections> DecorationCollectionList = userService.ShowCollections((int) user.getID(), 4);
         List<Decoration> DecorationList = null;
-        for(int i=0 ;i<DecorationCollectionList.size() ;i++)
-        { DecorationList.add(decorationService.GetDecorationByID(DecorationCollectionList.get(i).getDecorationID())); }
-        model.addAttribute("DecorationList",DecorationList);
+        for (int i = 0; i < DecorationCollectionList.size(); i++) {
+            DecorationList.add(decorationService.GetDecorationByID(DecorationCollectionList.get(i).getDecorationID()));
+        }
+        model.addAttribute("DecorationList", DecorationList);
         //
         return "account/myCollection";
     }
 
     //删除用户收藏
     @PostMapping("")
-    public String DeleteCollection(@RequestParam("ItemID") int ItemID, @RequestParam("type") int type,HttpSession session)
-    {
-        User user = (User)session.getAttribute("user");
-        if(type==1){
-            userService.deleteCollection(user.getID(),ItemID,0);
-        }else if(type==2){
+    public String DeleteCollection(@RequestParam("ItemID") int ItemID, @RequestParam("type") int type, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        if (type == 1) {
+            userService.deleteCollection(user.getID(), ItemID, 0);
+        } else if (type == 2) {
             Building building = saleOldHouseService.GetOldHouseByID(ItemID);
-            userService.deleteCollection(user.getID(),ItemID,0);
-        }else if(type==3){
+            userService.deleteCollection(user.getID(), ItemID, 0);
+        } else if (type == 3) {
             Building building = rentService.GetRentByID(ItemID);
-            userService.deleteCollection(user.getID(),ItemID,0);
-        }else if(type==4){
-            userService.deleteCollection(user.getID(),0,ItemID); }
+            userService.deleteCollection(user.getID(), ItemID, 0);
+        } else if (type == 4) {
+            userService.deleteCollection(user.getID(), 0, ItemID);
+        }
         return "";
     }
-
 
 
 }

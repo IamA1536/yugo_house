@@ -71,6 +71,6 @@ public class DecorationServiceImpl implements DecorationService {
 
     @Override
     public int selectDecorationCount() {
-        return decorationMapper.selectDecorationCount() - 1;
+        return decorationMapper.selectDecorationCount();
     }
 }

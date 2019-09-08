@@ -20,7 +20,7 @@
                 <li th:classappend="${active==2}?'active'"><a href="/showOldHouse">二手房</a></li>
                 <li th:classappend="${active==3}?'active'"><a href="/showRent">租房</a></li>
                 <li th:classappend="${active==4}?'active'"><a href="/showDecoration">找装修</a></li>
-                <li><a href="www.foratest.com">论坛</a></li>
+                <li><a href="http://www.foratest.com">论坛</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/account/login" th:if="${session.account==null}" th:text="#{login}">
