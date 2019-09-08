@@ -84,7 +84,7 @@
                 <div class="part">
                     <h3 class="part_title">卖房</h3>
                     <p class="part_info">上我们这儿找好房.jpg</p>
-                    <a href="/account/login" class="btn btn-default learn_more">了解更多</a>
+                    <a href="/account/userCenter" class="btn btn-default learn_more">了解更多</a>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
@@ -214,8 +214,8 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingRent.get(0).getImg()}"/>
                     <div>
                         <span th:text="${buildingRent.get(0).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingRent.get(0).getItemName()}}">商品名称</h6>
-                        <p th:text="${buildingRent.get(0).getInfo()}}">详细信息</p>
+                        <h6 th:text="${buildingRent.get(0).getItemName()}">商品名称</h6>
+                        <p th:text="${buildingRent.get(0).getInfo()}">详细信息</p>
                     </div>
                 </div>
             </div>
@@ -224,8 +224,8 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingRent.get(1).getImg()}"/>
                     <div>
                         <span th:text="${buildingRent.get(1).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingRent.get(1).getItemName()}}">商品名称</h6>
-                        <p th:text="${buildingRent.get(1).getInfo()}}">详细信息</p>
+                        <h6 th:text="${buildingRent.get(1).getItemName()}">商品名称</h6>
+                        <p th:text="${buildingRent.get(1).getInfo()}">详细信息</p>
                     </div>
                 </div>
             </div>
@@ -234,8 +234,8 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingRent.get(2).getImg()}"/>
                     <div>
                         <span th:text="${buildingRent.get(2).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingRent.get(2).getItemName()}}">商品名称</h6>
-                        <p th:text="${buildingRent.get(2).getInfo()}}">详细信息</p>
+                        <h6 th:text="${buildingRent.get(2).getItemName()}">商品名称</h6>
+                        <p th:text="${buildingRent.get(2).getInfo()}">详细信息</p>
                     </div>
                 </div>
             </div>
@@ -253,13 +253,12 @@
                     <p>上我们这儿找好房.jpg</p>
                 </div>
             </div>
-            decorationList
             <div class="col-xs-6 col-sm-3">
                 <div class="recommend">
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(0).getImg()}"/>
                     <div>
-                        <span th:text="${decorationList.get(0).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${decorationList.get(0).getCompany()]}">商品名称</h6>
+                        <span class="price">暂无价格</span>
+                        <h6 th:text="${decorationList.get(0).getCompany()}">商品名称</h6>
                         <p th:text="${decorationList.get(0).getInfo()}">详细信息</p>
                     </div>
                 </div>
@@ -268,8 +267,8 @@
                 <div class="recommend">
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(1).getImg()}"/>
                     <div>
-                        <span th:text="${decorationList.get(1).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${decorationList.get(1).getCompany()]}">商品名称</h6>
+                        <span class="price">暂无价格</span>
+                        <h6 th:text="${decorationList.get(1).getCompany()}">商品名称</h6>
                         <p th:text="${decorationList.get(1).getInfo()}">详细信息</p>
                     </div>
                 </div>
@@ -278,8 +277,8 @@
                 <div class="recommend">
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(2).getImg()}"/>
                     <div>
-                        <span th:text="${decorationList.get(2).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${decorationList.get(2).getCompany()]}">商品名称</h6>
+                        <span class="price">暂无价格</span>
+                        <h6 th:text="${decorationList.get(2).getCompany()}">商品名称</h6>
                         <p th:text="${decorationList.get(2).getInfo()}">详细信息</p>
                     </div>
                 </div>

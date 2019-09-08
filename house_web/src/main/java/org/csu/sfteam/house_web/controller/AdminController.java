@@ -24,7 +24,7 @@ public class AdminController {
     private UserService userService;
 
     //进行管理员的登录
-    @PostMapping()
+    @PostMapping("/admin/login")
     public String LoginAdmin(HttpServletRequest req, HttpSession session) {
         String userID = req.getParameter("userID");
         System.out.println("username" + userID);
@@ -41,7 +41,7 @@ public class AdminController {
      * 展示 添加 修改 删除
      */
     //跳转到用户展示页面，展示所有用户
-    @RequestMapping()
+    @RequestMapping("/admin/viewAllUser")
     public String ViewAllUser() {
         List<User> userList = userService.showUser();
         return "userList";

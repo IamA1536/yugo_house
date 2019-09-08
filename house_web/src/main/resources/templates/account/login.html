@@ -5,36 +5,36 @@
 </head>
 
 <body id="login_background">
-    <!-- 导航栏 -->
-    <nav th:replace="common/template_navbar::nav(99)"></nav>
+<!-- 导航栏 -->
+<nav th:replace="common/template_navbar::nav(99)"></nav>
 
-	<!-- 登录框 -->
-    <div id="login_container" class="container">
-    	<h2 id="login_title">登录 优购房</h2>
-		<!-- 登录表单 -->
-        <div id="login_form">
-        	<!-- 显示错误信息 -->
-            <div class="warning"> </div>
-            <form role="form" id="login_inputs" th:action="@{/account/login}" method="post" onsubmit="return validate()">
-                <div class="form-group">
-                	<!-- 用户名文本框 -->
-                    <div class="form-group" id="username">
-                        <input name="username" class="form-control login_input" type="text" placeholder="输入用户名">
-                    </div>
-                    <!-- 密码文本框 -->
-                    <div class="form-group" id="password">
-                    <input name="password" class="form-control login_input" type="password" placeholder="输入密码">
-                    </div>
-                    <!-- 跳往找回密码页面 -->
-                    <div id="findpwd"><a href="#" class="login_acher">找回密码</a></div>
-                    <!-- 登录按钮 -->
-                    <button type="submit" class="btn btn-primary btn_login">登录</button>
-                    <!-- 跳往注册页面 -->
-                    <div id="have_no_account"><span>没有账号？</span><a class="login_acher" href="register"> 去注册</a></div>
+<!-- 登录框 -->
+<div id="login_container" class="container">
+    <h2 id="login_title">登录 优购房</h2>
+    <!-- 登录表单 -->
+    <div id="login_form">
+        <!-- 显示错误信息 -->
+        <div class="warning"></div>
+        <form role="form" id="login_inputs" action="/account/login" method="post" onsubmit="return validate()">
+            <div class="form-group">
+                <!-- 用户名文本框 -->
+                <div class="form-group" id="username">
+                    <input name="username" class="form-control login_input" type="text" placeholder="输入用户名">
                 </div>
-            </form>
-        </div>
+                <!-- 密码文本框 -->
+                <div class="form-group" id="password">
+                    <input name="password" class="form-control login_input" type="password" placeholder="输入密码">
+                </div>
+                <!-- 跳往找回密码页面 -->
+                <div id="findpwd"><a href="#" class="login_acher">找回密码</a></div>
+                <!-- 登录按钮 -->
+                <button type="submit" class="btn btn-primary btn_login">登录</button>
+                <!-- 跳往注册页面 -->
+                <div id="have_no_account"><span>没有账号？</span><a class="login_acher" href="register"> 去注册</a></div>
+            </div>
+        </form>
     </div>
-    <script type="text/javascript" src="/js/login.js"></script>
+</div>
+<script type="text/javascript" src="/js/login.js"></script>
 </body>
 </html>

@@ -66,10 +66,10 @@ public class TestUserController {
     }
 
     @RequestMapping(value = "/loginTest", method = RequestMethod.GET)
-    public int getUserByUsernameAndPassword() {
-        userService.GetUserByUsernameAndPassword("haoer", "1919810");
+    public User getUserByUsernameAndPassword() {
+
         System.out.println(2222);
-        return 222;
+        return userService.GetUserByUsernameAndPassword("11487", "2019");
     }
 
     @RequestMapping(value = "/searchUserTest", method = RequestMethod.GET)
@@ -109,7 +109,7 @@ public class TestUserController {
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd :hh:mm:ss");
         String time = dateFormat.format(date);
-        userService.AddToCollection(114514, 1919810,0, time);
+        userService.AddToCollection(0, 0,0, time);
         return 555;
     }
 

@@ -54,7 +54,7 @@ public class SalePropertyServiceImpl implements SalePropertyService {
 
     @Override
     public Building GetPropertyByID(int ID) {
-        return buildingMapper.getOldHouseByID(ID);
+        return buildingMapper.getPropertyByID(ID);
     }
 
     @Override

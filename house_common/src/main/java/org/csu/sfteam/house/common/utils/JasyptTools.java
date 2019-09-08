@@ -19,7 +19,6 @@ public class JasyptTools {
         //加密所需的salt为用户名
         basicTextEncryptorUserName.setPassword(String.valueOf(user.getUsername()));
         //加密密码
-
         user.setPw(basicTextEncryptorUserName.encrypt(user.getPw()));
 
         if (user.getIDnumber() != null) {
@@ -34,6 +33,9 @@ public class JasyptTools {
         BasicTextEncryptor basicTextEncryptorUserName = new BasicTextEncryptor();
         BasicTextEncryptor basicTextEncryptorID = new BasicTextEncryptor();
         //加密所需的salt为用户名
+
+        if (user == null)
+            return null;
         basicTextEncryptorUserName.setPassword(String.valueOf(user.getUsername()));
         //加密密码
 

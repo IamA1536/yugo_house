@@ -11,35 +11,37 @@
     <!-- 头像 -->
     <img src="" class="my_icon">
     <!-- 用户名 -->
-    <span class="my_username">username</span>
+    <span th:text="${session.user.getUsername()}" class="my_username">username</span>
 </div>
 <div id="user_container" class="col-sm-offset-2 col-sm-10">
     <div id="user_nav" class="col-sm-2">
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#">我的个人信息</a></li>
-            <li><a href="#">我的收藏</a></li>
+            <li><a href="/showusercollection">我的收藏</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">我要卖房</a></li>
-            <li><a href="#">我要出租</a></li>
+            <li><a href="/account/addOldHouse">我要卖房</a></li>
+            <li><a href="/account/addRent">我要出租</a></li>
             <!--用户类型为开发商才有以下两项-->
-            <li th:if=""><a href="#">发布楼盘</a></li>
-            <li th:if=""><a href="#">发布装修</a></li>
-            <li><a href="#">管理已发布信息</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="/account/addProperty">发布楼盘</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="/account/addDecoration">发布装修</a></li>
+            <li><a href="/account/publishedInfoManage">管理已发布信息</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">意见反馈</a></li>
+            <li><a href="/help">意见反馈</a></li>
         </ul>
     </div>
 
     <div id="userinfo" class="col-sm-6">
         <h2 class="my_title">我的信息</h2>
-        <form class="form-horizontal" id="userinfo_form" role="form">
+        <form th:action="@{/account/update_information}" method="post" class="form-horizontal" id="userinfo_form"
+              role="form">
             <!-- 用户名 -->
             <div class="form-group">
                 <label for="username" class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="username" disabled>
+                    <input type="text" th:value="${session.user.getUsername()}" class="form-control" id="username"
+                           disabled>
                 </div>
             </div>
             <!-- 性别,需要根据后端传值来决定选择项 -->
@@ -47,23 +49,23 @@
                 <label for="sex" class="col-sm-2 control-label">性别</label>
                 <div class="col-sm-10">
                     <label class="radio-inline">
-                        <input type="radio" name="sex" id="male" value="option1" checked disabled>男
+                        <input type="radio" id="male" value=1 checked disabled>男
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="sex" id="female" value="option2" disabled>女
+                        <input type="radio" id="female" value=2 disabled>女
                     </label>
                 </div>
             </div>
             <!-- 用户类型，需要根据后端传值来决定选择项，不可修改 -->
             <div class="form-group">
-                <label for="usertype" class="col-sm-2 control-label">用户类型</label>
+                <label for="type" class="col-sm-2 control-label">用户类型</label>
                 <div class="col-sm-10">
                     <label class="radio-inline">
                         <!-- 要确定传至后端的值 -->
-                        <input type="radio" name="usertype" id="ordinaryUser" value="ordinaryUser" checked disabled>普通用户
+                        <input type="radio" id="ordinaryUser" value=1 checked disabled>普通用户
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="usertype" id="developer" value="developer" disabled>开发商
+                        <input type="radio" id="developer" value=2 disabled>开发商
                     </label>
                 </div>
             </div>
@@ -71,35 +73,43 @@
             <div class="form-group">
                 <label for="address" class="col-sm-2 control-label">地址</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="address">
+                    <input type="text" th:value="${session.user.getAddress()}" class="form-control" name="address"
+                           id="address">
                 </div>
             </div>
             <!-- 电话 -->
             <div class="form-group">
                 <label for="tele" class="col-sm-2 control-label">电话</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="tele">
+                    <input type="text" th:value="${session.user.getTele()}" name="tele" class="form-control" id="tele">
                 </div>
             </div>
             <!-- email -->
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">邮箱</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="email">
+                    <input type="text" th:value="${session.user.getEmail()}" class="form-control" id="email"
+                           name="email">
                 </div>
             </div>
             <!-- 真实姓名 -->
             <div class="form-group">
                 <label for="realName" class="col-sm-2 control-label">真实姓名</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="realName">
+                    <input type="text" class="form-control" id="realname" name="realname"
+                           th:if="${session.user.getRealname()==null}">
+                    <input type="text" th:value="${session.user.getRealname()}" class="form-control" id="realname"
+                           name="realname" th:if="${session.user.getRealname()!=null}" disabled>
                 </div>
             </div>
             <!-- 身份证号 -->
             <div class="form-group">
                 <label for="IDNumber" class="col-sm-2 control-label">身份证号</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="IDNumber">
+                    <input type="text" class="form-control" id="IDnumber" name="IDnumber"
+                           th:if="${session.user.getIDnumber()==null}">
+                    <input type="password" th:value="${session.user.getIDnumber()}" class="form-control" id="IDnumber"
+                           name="IDnumber" th:if="${session.user.getIDnumber()!=null}" disabled>
                 </div>
             </div>
             <!-- 提交按钮 -->

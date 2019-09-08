@@ -31,7 +31,7 @@ public interface UserService {
 
     //添加用户收藏
     //可用
-    public int AddToCollection(long UserId, long BuildingId, int decorationID, String time);
+    public int AddToCollection(long UserId, long BuildingID, int decorationID, String time);
 
     //查找用户收藏
     //可用

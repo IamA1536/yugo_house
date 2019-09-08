@@ -51,7 +51,9 @@ public class DecorationServiceImpl implements DecorationService {
 
     @Override
     public List<Decoration> ShowDecorations() {
-        return decorationMapper.showDecorations();
+        List<Decoration> decorationList = decorationMapper.showDecorations();
+        decorationList.remove(0);
+        return decorationList;
     }
 
     @Override
@@ -71,6 +73,6 @@ public class DecorationServiceImpl implements DecorationService {
 
     @Override
     public int selectDecorationCount() {
-        return decorationMapper.selectDecorationCount();
+        return decorationMapper.selectDecorationCount() - 1;
     }
 }

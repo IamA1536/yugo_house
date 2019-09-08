@@ -26,6 +26,8 @@ public interface UserMapper {
 
     public int update(User user);
 
+    public int updateImportant(User user);
+
     public int addToCollection(long userID, long buildingID,int decorationID, String time);
 
     public int deleteCollection(long userID, long buildingID,int decorationID);
@@ -35,8 +37,6 @@ public interface UserMapper {
     public User getUser(String username);
 
     public User getUserByID(long ID);
-
-    public User getUserByUsernameAndPassword(String username, String pw);
 
     public long selectUserCount();
 
