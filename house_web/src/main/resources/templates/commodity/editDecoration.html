@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common/template_head::head('优购房-装修申请')">
+</head>
+
+
+<body>
+<h1 class="apply_title">修改信息</h1>
+
+<form enctype="multipart/form-data" th:action="@{/commodity/updateDecoration(ID=${decoration.getID()})}" method="post"
+      class="form-horizontal apply_form col-sm-offset-2 col-sm-8" role="form">
+    <!-- 标题 -->
+    <div class="form-group">
+        <label for="company" class="col-sm-2 control-label">公司名</label>
+        <div class="col-sm-10">
+            <input type="text" th:value="${decoration.getCompany()}" class="form-control" id="company" name="company"
+                   placeholder="请输入公司名">
+        </div>
+    </div>
+    <!-- 地址，可能要改成选择的 -->
+    <div class="form-group">
+        <label for="address" class="col-sm-2 control-label">公司地址</label>
+        <div class="col-sm-10">
+            <input type="text" th:value="${decoration.getAddress()}" class="form-control" id="address" name="address"
+                   placeholder="请输入公司地址">
+        </div>
+    </div>
+    <!-- 面积 -->
+    <div class="form-group">
+        <label for="tele" class="col-sm-2 control-label">联系方式</label>
+        <div class="col-sm-10">
+            <input type="text" th:value="${decoration.getTele()}" class="form-control" id="tele" name="tele"
+                   placeholder="请输入联系方式">
+        </div>
+    </div>
+    <!-- 售价 -->
+    <div class="form-group">
+        <label for="style" class="col-sm-2 control-label">主要风格</label>
+        <div class="col-sm-10">
+            <label class="radio-inline">
+                <input type="radio" name="style" id="modern" value=1 checked>现代
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="style" id="chinese" value=2>中式
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="style" id="Europe" value=3>欧式
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="style" id="mix" value=4>混搭
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="style" id="other" value=5>其他
+            </label>
+        </div>
+    </div>
+    </div>
+    <!-- 简介 -->
+    <div class="form-group">
+        <label for="info" class="col-sm-2 control-label">公司简介</label>
+        <div class="col-sm-10">
+            <textarea class="form-control" th:text="${decoration.getInfo()}" rows="3" id="info" name="info"
+                      placeholder="介绍一下公司情况"></textarea>
+        </div>
+    </div>
+    <!-- 图片 -->
+    <div class="form-group">
+        <label for="inputimg" class="col-sm-2 control-label">上传样例图片</label>
+        <div class="col-sm-10">
+            <input type="file" id="inputimg">
+        </div>
+    </div>
+    <!-- 提交按钮 -->
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default btn_apply btn_yellow" id="btn_submit">提交</button>
+        </div>
+    </div>
+</form>
+</body>
+
+</html>

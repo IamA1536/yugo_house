@@ -20,12 +20,12 @@
             <li><a href="#">我的收藏</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#oldHouse" data-toggle="tab">二手房</a></li>
+            <li><a href="#oldHouse" data-toggle="tab" class="active">二手房</a></li>
             <li><a href="#rent" data-toggle="tab">出租房</a></li>
             <!--用户类型为开发商才有以下两项-->
             <li th:if="${session.user.getType()==2}"><a href="#newHouse" data-toggle="tab">楼盘</a></li>
             <li th:if="${session.user.getType()==2}"><a href="#decoration" data-toggle="tab">装修</a></li>
-            <li class="active"><a href="/account/publishedInfoManage">已发布信息</a></li>
+            <li><a href="/account/publishedInfoManage">已发布信息</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
             <li><a href="/help">意见反馈</a></li>
@@ -68,7 +68,8 @@
                     <!-- 删除和修改按钮 -->
                     <div>
                         <a class="btn btn_yellow">修改</a>
-                        <a class="btn btn_yellow">删除</a>
+                        <a th:href="@{/account/deleteProprety(itemName=${property.getItemName()})}"
+                           class="btn btn_yellow">删除</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +94,8 @@
                     </div>
                     <!-- 删除和修改按钮 -->
                     <div>
-                        <a class="btn btn_yellow">修改</a>
+                        <a th:href="@{/account/viewOldHouse(itemName=${oldHouse.getItemName()})}"
+                           class="btn btn_yellow">修改</a>
                         <a th:href="@{/account/deleteOldHouse(itemName=${oldHouse.getItemName()})}"
                            class="btn btn_yellow">删除</a>
                     </div>
@@ -122,7 +124,8 @@
                     <!-- 删除和修改按钮 -->
                     <div>
                         <a class="btn btn_yellow">修改</a>
-                        <a class="btn btn_yellow">删除</a>
+                        <a th:href="@{/account/deleteRent(itemName=${rent.getItemName()})}"
+                           class="btn btn_yellow">删除</a>
                     </div>
                 </div>
             </div>
@@ -146,7 +149,8 @@
                     <!-- 删除和修改按钮 -->
                     <div>
                         <a class="btn btn_yellow">修改</a>
-                        <a class="btn btn_yellow">删除</a>
+                        <a th:href="@{/account/deleteDecoration(company=${decoration.getCompany()})}"
+                           class="btn btn_yellow">删除</a>
                     </div>
                 </div>
             </div>

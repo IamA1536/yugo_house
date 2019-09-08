@@ -93,55 +93,65 @@ public class UserInformationController {
     //显示所有楼盘
     //跳往楼盘信息界面
     @GetMapping("/account/viewProperty")
-    public String ViewProperty(HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user");
-        int ID = (int) user.getID();
-        List<Building> propertyList = salePropertyService.ShowPropertyByItemFrom(ID);
-        model.addAttribute("properList", propertyList);
-        return "/account/viewProperty";
+    public String ViewProperty(@RequestParam("itemName") String itemName, Model model) {
+        Building building = salePropertyService.GetPropertyByItemname(itemName);
+
+        model.addAttribute("type", 1);
+        model.addAttribute("building", building);
+
+        return "commodity/editProperty";
     }
 
     //更新楼盘信息 成功
-    @PostMapping("/account/updateProperty")
-    public String UpdateProperty(@RequestParam("file") MultipartFile file, Building building, Property property, Model model) {
-        building.setSaleStatus(property.getSaleStatus());
+    @PostMapping("/commodity/updateProperty")
+    public String UpdateProperty(@RequestParam("ID") long ID, MultipartFile file, HttpSession httpSession, Building building, Model model) {
+        building.setID(ID);
+        System.out.println(building.getID());
+        System.out.println(building.getItemName());
         //判断是否上传文件
-        if (file.isEmpty())
-            System.out.println("文件为空");
+        if (file != null) {
+            if (file.isEmpty()) {
+                System.out.println("文件为空");
+            }
+            String fileName = file.getOriginalFilename();
+            String filePath = "F:/imgs/";
+            System.out.println(filePath);
+            File dest = new File(filePath + fileName);
+            try {
+                file.transferTo(dest);
+                System.out.println("上传成功");
+            } catch (IOException e) {
+                System.out.println("上传失败");
+            }
+            //获得原有图片url，并删除原有图片
+            String orgimghurl = salePropertyService.GetPropertyByID((int) ID).getImg();
+            System.out.println(" orgimghurl" + orgimghurl);
+            //删除原有文件
+            File temfile = new File(orgimghurl);
+            if (temfile.exists() && temfile.isFile())
+                temfile.delete();
 
-        String fileName = file.getOriginalFilename();
-        String filePath = "F:/imgs/";
-        System.out.println(filePath);
-        File dest = new File(filePath + fileName);
-        try {
-            file.transferTo(dest);
-            System.out.println("上传成功");
-        } catch (IOException e) {
-            System.out.println("上传失败");
+            //把新图片的uml放入新的对象中
+            building.setImg(filePath + fileName);
+            System.out.println("url " + filePath + fileName);
+            //赋给更新的楼盘信息
         }
-        //获得原有图片url，并删除原有图片
-        String orgimghurl = salePropertyService.GetPropertyByItemname(building.getItemName()).getImg();
-        System.out.println(" orgimghurl" + orgimghurl);
-        //删除原有文件
-        File temfile = new File(orgimghurl);
-        if (temfile.exists() && temfile.isFile())
-            temfile.delete();
-        //把新图片的uml放入新的对象中
-        building.setImg(filePath + fileName);
-        System.out.println("url " + filePath + fileName);
-        //获取原有楼盘信息的ID
-        String Itemname = building.getItemName();
-        Building orgbuliding = salePropertyService.GetPropertyByItemname(Itemname);
-        System.out.println("orgbuilding" + orgbuliding.getItemName());
-
-        building.setItemName(orgbuliding.getItemName());
-        //赋给更新的楼盘信息
-        building.setID(orgbuliding.getID());
+        //返回更新结果
         int result = salePropertyService.UpdateProperty(building);
-
         System.out.println("result is" + result);
-        System.out.println("success");
-        //model.addAttribute("building",building);
+
+        User user = (User) httpSession.getAttribute("user");
+
+        List<Building> buildingProperty = salePropertyService.ShowPropertyByItemFrom((int) user.getID());
+        List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouseByItemFrom((int) user.getID());
+        List<Building> buildingRent = rentService.ShowRentByItemFrom((int) user.getID());
+        List<Decoration> decorationList = decorationService.showDecorationsByItemFrom((int) user.getID());
+
+        model.addAttribute("buildingProperty", buildingProperty);
+        model.addAttribute("buildingOldHouse", buildingOldHouse);
+        model.addAttribute("buildingRent", buildingRent);
+        model.addAttribute("decorationList", decorationList);
+
         return "account/publishedInfoManage";
     }
 
@@ -223,44 +233,66 @@ public class UserInformationController {
 
     //跳转至用户的管理界面，上传所有装修信息
     @GetMapping("/account/viewDecoration")
-    public String ViewDecoration(HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user");
-        int ID = (int) user.getID();
-        List<Decoration> decorationList = decorationService.showDecorationsByItemFrom(ID);
-        model.addAttribute("decorationList", decorationList);
-        return "";
+    public String ViewDecoration(@RequestParam("company") String company, Model model) {
+        Decoration decoration = decorationService.GetDecoration(company);
+
+        model.addAttribute("type", 4);
+        model.addAttribute("decoration", decoration);
+
+        return "commodity/editDecoration";
     }
 
     //更新装修信息
-    //@PostMapping("")
-    public String UpdateDecoration(@RequestParam("file") MultipartFile file, HttpSession session, Decoration decoration, Model model) {
-        User user = (User) session.getAttribute("user");
+    @PostMapping("/commodity/updateDecoration")
+    public String UpdateDecoration(@RequestParam("ID") int ID, MultipartFile file, HttpSession httpSession, Decoration decoration, Model model) {
+        decoration.setID(ID);
+        System.out.println(decoration.getID());
+        System.out.println(decoration.getCompany());
+        //判断是否上传文件
+        if (file != null) {
+            if (file.isEmpty()) {
+                System.out.println("文件为空");
+            }
+            String fileName = file.getOriginalFilename();
+            String filePath = "F:/imgs/";
+            System.out.println(filePath);
+            File dest = new File(filePath + fileName);
+            try {
+                file.transferTo(dest);
+                System.out.println("上传成功");
+            } catch (IOException e) {
+                System.out.println("上传失败");
+            }
+            //获得原有图片url，并删除原有图片
+            String orgimghurl = decorationService.GetDecorationByID(ID).getImg();
+            System.out.println(" orgimghurl" + orgimghurl);
+            //删除原有文件
+            File temfile = new File(orgimghurl);
+            if (temfile.exists() && temfile.isFile())
+                temfile.delete();
 
-        if (file.isEmpty()) {
-            System.out.println("文件为空");
+            //把新图片的uml放入新的对象中
+            decoration.setImg(filePath + fileName);
+            System.out.println("url " + filePath + fileName);
+            //赋给更新的楼盘信息
         }
-        String fileName = file.getOriginalFilename();
-        String filePath = "F:/imgs/";
-        System.out.println(filePath);
-        File dest = new File(filePath + fileName);
-        try {
-            file.transferTo(dest);
-            System.out.println("上传成功");
-        } catch (IOException e) {
-            System.out.println("上传失败");
-        }
-        //获得原有图片url，并删除原有图片
-        String orgimghurl = decorationService.GetDecoration(decoration.getCompany()).getImg();
-        File temfile = new File(orgimghurl);
-        if (temfile.exists() && temfile.isFile())
-            temfile.delete();
-        //把新图片的uml放入新的对象中
+        //返回更新结果
+        int result = decorationService.UpdateDecoration(decoration);
+        System.out.println("result is" + result);
 
-        decoration.setID(decorationService.GetDecoration(decoration.getCompany()).getID());
-        decoration.setImg(filePath + fileName);
-        decorationService.UpdateDecoration(decoration);
-        //model.addAttribute("decoration",decoration);
-        return "";
+        User user = (User) httpSession.getAttribute("user");
+
+        List<Building> buildingProperty = salePropertyService.ShowPropertyByItemFrom((int) user.getID());
+        List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouseByItemFrom((int) user.getID());
+        List<Building> buildingRent = rentService.ShowRentByItemFrom((int) user.getID());
+        List<Decoration> decorationList = decorationService.showDecorationsByItemFrom((int) user.getID());
+
+        model.addAttribute("buildingProperty", buildingProperty);
+        model.addAttribute("buildingOldHouse", buildingOldHouse);
+        model.addAttribute("buildingRent", buildingRent);
+        model.addAttribute("decorationList", decorationList);
+
+        return "account/publishedInfoManage";
     }
 
     //删除装修信息
@@ -352,51 +384,68 @@ public class UserInformationController {
 
     //显示所有二手房
     //跳往二手房信息界面
-    //@GetMapping("")
-    public String ViewOldHouse(HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user");
-        int ID = (int) user.getID();
-        List<Building> OldHouseList = saleOldHouseService.ShowOldHouseByItemFrom((int) user.getID());
-        model.addAttribute("OldHouseList", OldHouseList);
-        return "";
+    @GetMapping("/account/viewOldHouse")
+    public String ViewOldHouse(@RequestParam("itemName") String itemName, Model model) {
+        Building building = saleOldHouseService.GetOldHouseByItemname(itemName);
+
+        model.addAttribute("type", 2);
+        model.addAttribute("building", building);
+
+        return "commodity/editHouse";
     }
 
     //更新二手房信息
-    //@PostMapping("")
-    public String UpdateOldHouse(@RequestParam("file") MultipartFile file, Building building, Rent rent, Model model) {
-        building.setArea(rent.getArea());
-        //判断是否上传文件
-        if (file.isEmpty()) {
-            System.out.println("文件为空");
-        }
-        String fileName = file.getOriginalFilename();
-        String filePath = "F:/imgs/";
-        System.out.println(filePath);
-        File dest = new File(filePath + fileName);
-        try {
-            file.transferTo(dest);
-            System.out.println("上传成功");
-        } catch (IOException e) {
-            System.out.println("上传失败");
-        }
-        //获得原有图片url，并删除原有图片
-        String orgimghurl = saleOldHouseService.GetOldHouseByItemname(building.getItemName()).getImg();
-        System.out.println(" orgimghurl" + orgimghurl);
-        //删除原有文件
-        File temfile = new File(orgimghurl);
-        if (temfile.exists() && temfile.isFile())
-            temfile.delete();
+    @PostMapping("/commodity/updateOldHouse")
+    public String UpdateOldHouse(@RequestParam("ID") long ID, MultipartFile file, HttpSession httpSession, Building building, Model model) {
 
-        //把新图片的uml放入新的对象中
-        building.setImg(filePath + fileName);
-        System.out.println("url " + filePath + fileName);
-        //赋给更新的楼盘信息
-        building.setID(saleOldHouseService.GetOldHouseByItemname(building.getItemName()).getID());
+        building.setID(ID);
+        System.out.println(building.getID());
+        System.out.println(building.getItemName());
+        //判断是否上传文件
+        if (file != null) {
+            if (file.isEmpty()) {
+                System.out.println("文件为空");
+            }
+            String fileName = file.getOriginalFilename();
+            String filePath = "F:/imgs/";
+            System.out.println(filePath);
+            File dest = new File(filePath + fileName);
+            try {
+                file.transferTo(dest);
+                System.out.println("上传成功");
+            } catch (IOException e) {
+                System.out.println("上传失败");
+            }
+            //获得原有图片url，并删除原有图片
+            String orgimghurl = saleOldHouseService.GetOldHouseByID((int) ID).getImg();
+            System.out.println(" orgimghurl" + orgimghurl);
+            //删除原有文件
+            File temfile = new File(orgimghurl);
+            if (temfile.exists() && temfile.isFile())
+                temfile.delete();
+
+            //把新图片的uml放入新的对象中
+            building.setImg(filePath + fileName);
+            System.out.println("url " + filePath + fileName);
+            //赋给更新的楼盘信息
+        }
         //返回更新结果
         int result = saleOldHouseService.UpdateOldHouse(building);
         System.out.println("result is" + result);
-        //model.addAttribute("building",building);
-        return "index";
+
+        User user = (User) httpSession.getAttribute("user");
+
+        List<Building> buildingProperty = salePropertyService.ShowPropertyByItemFrom((int) user.getID());
+        List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouseByItemFrom((int) user.getID());
+        List<Building> buildingRent = rentService.ShowRentByItemFrom((int) user.getID());
+        List<Decoration> decorationList = decorationService.showDecorationsByItemFrom((int) user.getID());
+
+        model.addAttribute("buildingProperty", buildingProperty);
+        model.addAttribute("buildingOldHouse", buildingOldHouse);
+        model.addAttribute("buildingRent", buildingRent);
+        model.addAttribute("decorationList", decorationList);
+
+        return "account/publishedInfoManage";
     }
 
     //删除二手房信息
@@ -493,52 +542,68 @@ public class UserInformationController {
     }
 
     //显示所有二手房
-    //跳往二手房信息界面
-    //@GetMapping("")
-    public String ViewRent(HttpSession session, Model model) {
-        User user = (User) session.getAttribute("user");
-        int ID = (int) user.getID();
-        List<Building> OldHouseList = rentService.ShowRentByItemFrom((int) user.getID());
-        model.addAttribute("OldHouseList", OldHouseList);
-        return "";
+    //跳往租房信息界面
+    @GetMapping("/account/viewRent")
+    public String ViewRent(@RequestParam("itemName") String itemName, Model model) {
+        Building building = rentService.GetRentByItemname(itemName);
+
+        model.addAttribute("type", 3);
+        model.addAttribute("building", building);
+
+        return "commodity/editHouse";
     }
 
-    //更新二手房信息
-    //@PostMapping("")
-    public String UpdateRent(@RequestParam("file") MultipartFile file, Building building, Rent rent, Model model) {
-        building.setArea(rent.getArea());
+    //更新租房信息
+    @PostMapping("/commodity/updaterENT")
+    public String UpdateRent(@RequestParam("ID") long ID, MultipartFile file, HttpSession httpSession, Building building, Model model) {
+        building.setID(ID);
+        System.out.println(building.getID());
+        System.out.println(building.getItemName());
         //判断是否上传文件
-        if (file.isEmpty()) {
-            System.out.println("文件为空");
-        }
-        String fileName = file.getOriginalFilename();
-        String filePath = "F:/imgs/";
-        System.out.println(filePath);
-        File dest = new File(filePath + fileName);
-        try {
-            file.transferTo(dest);
-            System.out.println("上传成功");
-        } catch (IOException e) {
-            System.out.println("上传失败");
-        }
-        //获得原有图片url，并删除原有图片
-        String orgimghurl = rentService.GetRentByItemname(building.getItemName()).getImg();
-        System.out.println(" orgimghurl" + orgimghurl);
-        //删除原有文件
-        File temfile = new File(orgimghurl);
-        if (temfile.exists() && temfile.isFile())
-            temfile.delete();
+        if (file != null) {
+            if (file.isEmpty()) {
+                System.out.println("文件为空");
+            }
+            String fileName = file.getOriginalFilename();
+            String filePath = "F:/imgs/";
+            System.out.println(filePath);
+            File dest = new File(filePath + fileName);
+            try {
+                file.transferTo(dest);
+                System.out.println("上传成功");
+            } catch (IOException e) {
+                System.out.println("上传失败");
+            }
+            //获得原有图片url，并删除原有图片
+            String orgimghurl = rentService.GetRentByID((int) ID).getImg();
+            System.out.println(" orgimghurl" + orgimghurl);
+            //删除原有文件
+            File temfile = new File(orgimghurl);
+            if (temfile.exists() && temfile.isFile())
+                temfile.delete();
 
-        //把新图片的uml放入新的对象中
-        building.setImg(filePath + fileName);
-        System.out.println("url " + filePath + fileName);
-        //赋给更新的楼盘信息
-        building.setID(rentService.GetRentByItemname(building.getItemName()).getID());
+            //把新图片的uml放入新的对象中
+            building.setImg(filePath + fileName);
+            System.out.println("url " + filePath + fileName);
+            //赋给更新的楼盘信息
+        }
         //返回更新结果
         int result = rentService.UpdateRent(building);
         System.out.println("result is" + result);
-        //model.addAttribute("building",building);
-        return "index";
+
+        User user = (User) httpSession.getAttribute("user");
+
+        List<Building> buildingProperty = salePropertyService.ShowPropertyByItemFrom((int) user.getID());
+        List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouseByItemFrom((int) user.getID());
+        List<Building> buildingRent = rentService.ShowRentByItemFrom((int) user.getID());
+        List<Decoration> decorationList = decorationService.showDecorationsByItemFrom((int) user.getID());
+
+        model.addAttribute("buildingProperty", buildingProperty);
+        model.addAttribute("buildingOldHouse", buildingOldHouse);
+        model.addAttribute("buildingRent", buildingRent);
+        model.addAttribute("decorationList", decorationList);
+
+        return "account/publishedInfoManage";
     }
 
     //删除二手房信息
