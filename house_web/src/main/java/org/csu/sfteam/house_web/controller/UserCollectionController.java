@@ -67,7 +67,7 @@ public class UserCollectionController {
     }
 
     //删除用户收藏
-    @PostMapping("")
+   // @PostMapping("")
     public String DeleteCollection(@RequestParam("ItemID") int ItemID, @RequestParam("type") int type, HttpSession session) {
         User user = (User) session.getAttribute("user");
         if (type == 1) {

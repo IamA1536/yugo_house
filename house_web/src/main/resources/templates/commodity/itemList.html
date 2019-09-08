@@ -14,89 +14,73 @@
                 <div class="col-lg-6">
                     <div class="input-group">
                         <input type="text" class="form-control" id="search">
-                        <span class="input-group-btn"></span>
-                        <!-- 导航栏 -->
-                        <nav th:replace="common/template_navbar"></nav>
-                        <!-- 分类搜索栏位 -->
-                        <div class="search_box">
-                            <!-- 搜索框 -->0
-                            <div style="padding: 10px 10px 10px;">
-                                <form class="bs-example bs-example-form" role="form">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="search">
-                                                <span class="input-group-btn">
+                        <span class="input-group-btn">
 							<button class="btn btn-default" type="button">
 								搜索
 							</button>
 						</span>
-                                            </div><!-- /input-group -->
-                                        </div><!-- /.col-lg-6 -->
-                                    </div><!-- /.row -->
-                                </form>
-                            </div>
-                            <!-- 除搜索框的其他内容 -->
-                            <div>
-                                <!-- 分类栏 -->
-                                <div>
-                                    <!-- 不同页面分类还tmd不一样 -->
-                                    <label>位置</label>
-                                    <!-- 具体的位置应该动态写，读取地址的市，再得到该市有哪些地区 -->
-                                </div>
-                                <!-- 结果页面 -->
-                                <div>
-                                    <!-- 结果条数显示 -->
-                                    <p>为您找到<span th:text="${count}"></span>条结果</p>
-                                    <!-- 排序方式，点击切换正逆序 -->
-                                    <ul class="nav nav-tabs">
-                                        <li class="active"><a>发布时间</a></li>
-                                        <li><a>价格</a></li>
-                                    </ul>
-                                    <!-- 使用th迭代标签显示每一条项目 -->
-                                    <!-- 要设置数量，由后端控制 -->
-                                    <!-- 没有结果放张图片吧 -->
-                                    <div th:each="item:${itemList}" th:id="list">
-                                        <div>
-                                            <!-- 预览图片 -->
-                                            <img th:if="${type != 4}"
-                                                 th:href="@{/showItemInfo(ItemName=${item.getItemName()},type=${type})}"
-                                                 th:src="${item.getImg()}">
-                                            <!-- 预览图片 -->
-                                            <img th:if="${type == 4}"
-                                                 th:href="@{/showItemInfo(ItemName=${item.getCompany()},type=${type})}"
-                                                 th:src="${item.getImg()}">
-                                            <!-- 信息盒子 -->
-                                            <div>
-                                                <!-- 标题 -->
-                                                <a th:if="${type != 4}"
-                                                   th:href="@{/showItemInfo(ItemName=${item.getItemName()},type=${type})}">
-                                                    <h2 th:if="${type != 4}" th:text="${item.getItemName()}"></h2>
-                                                </a>
-                                                <a th:if="${type == 4}"
-                                                   th:href="@{/showItemInfo(ItemName=${item.getCompany()},type=${type})}">
-                                                    <h2 th:if="${type == 4}" th:text="${item.getCompany()}"></h2>
-                                                </a>
+                    </div><!-- /input-group -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </form>
+    </div>
+    <!-- 除搜索框的其他内容 -->
+    <div>
+        <!-- 分类栏 -->
+        <div>
+            <!-- 不同页面分类还tmd不一样 -->
+            <label>位置</label>
+            <!-- 具体的位置应该动态写，读取地址的市，再得到该市有哪些地区 -->
+        </div>
+        <!-- 结果页面 -->
+        <div>
+            <!-- 结果条数显示 -->
+            <p>为您找到<span th:text="${count}"></span>条结果</p>
+            <!-- 排序方式，点击切换正逆序 -->
+            <ul class="nav nav-tabs">
+                <li class="active"><a>发布时间</a></li>
+                <li><a>价格</a></li>
+            </ul>
+            <!-- 使用th迭代标签显示每一条项目 -->
+            <!-- 要设置数量，由后端控制 -->
+            <!-- 没有结果放张图片吧 -->
+            <div th:each="item:${itemList}" th:id="list">
+                <div>
+                    <!-- 预览图片 -->
+                    <img th:if="${type != 4}"
+                         th:href="@{/showItemInfo(ItemName=${item.getItemName()},type=${type})}"
+                         th:src="${item.getImg()}">
+                    <!-- 预览图片 -->
+                    <img th:if="${type == 4}"
+                         th:href="@{/showItemInfo(ItemName=${item.getCompany()},type=${type})}"
+                         th:src="${item.getImg()}">
+                    <!-- 信息盒子 -->
+                    <div>
+                        <!-- 标题 -->
+                        <a th:if="${type != 4}"
+                           th:href="@{/showItemInfo(ItemName=${item.getItemName()},type=${type})}">
+                            <h2 th:if="${type != 4}" th:text="${item.getItemName()}"></h2>
+                        </a>
+                        <a th:if="${type == 4}"
+                           th:href="@{/showItemInfo(ItemName=${item.getCompany()},type=${type})}">
+                            <h2 th:if="${type == 4}" th:text="${item.getCompany()}"></h2>
+                        </a>
 
-                                                <!-- 地址 -->
-                                                <p th:text="${item.getAddress()}"></p>
-                                                <!-- 价格，装修没有 -->
-                                                <p th:text="${item.getPrice()}" th:if="${type == 2 || type == 3} "></p>
-                                                <!-- 装修风格，只有装修有 -->
-                                                <p th:text="${item.getStyle()}" th:if="${type == 4}"></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- 分页 -->
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- 地址 -->
+                        <p th:text="${item.getAddress()}"></p>
+                        <!-- 价格，装修没有 -->
+                        <p th:text="${item.getPrice()}" th:if="${type == 2 || type == 3} "></p>
+                        <!-- 装修风格，只有装修有 -->
+                        <p th:text="${item.getStyle()}" th:if="${type == 4}"></p>
                     </div>
                 </div>
             </div>
-        </form>
+            <!-- 分页 -->
+            <div></div>
+        </div>
     </div>
+</div>
+<div>
 </div>
 
 </body>
