@@ -34,9 +34,6 @@
             <if test="img !=null and img != '' ">
                 img = #{img},
             </if>
-            <if test="itemFrom != null">
-                itemFrom = #{itemFrom},
-            </if>
             <if test="info != null and info != '' ">
                 info = #{info},
             </if>

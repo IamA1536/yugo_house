@@ -4,9 +4,9 @@
 </head>
 
 <body>
-<h1 class="apply_title">录入楼盘</h1>
+<h1 class="apply_title">修改信息</h1>
 <form enctype="multipart/form-data" th:action="@{/commodity/updateProperty(ID=${building.getID()})}" method="post"
-      th:if="${type==2}"
+
       class="form-horizontal apply_form col-sm-offset-2 col-sm-8"
       role="form">
     <!-- 标题（奇奇怪怪） -->
@@ -33,14 +33,6 @@
         <div class="col-sm-10">
             <input type="text" th:value="${building.getAddress()}" class="form-control" id="address" name="address"
                    placeholder="请输入房源地址" disabled>
-        </div>
-    </div>
-    <!-- 面积 -->
-    <div class="form-group">
-        <label for="area" class="col-sm-2 control-label">房源面积</label>
-        <div class="col-sm-10">
-            <input type="text" th:value="${building.getArea()}" class="form-control" id="area" name="area"
-                   placeholder="请输入房源面积">
         </div>
     </div>
     <!-- 装修状况 -->

@@ -20,7 +20,7 @@
             <li><a href="#">我的收藏</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#oldHouse" data-toggle="tab" class="active">二手房</a></li>
+            <li><a href="#oldHouse" data-toggle="tab">二手房</a></li>
             <li><a href="#rent" data-toggle="tab">出租房</a></li>
             <!--用户类型为开发商才有以下两项-->
             <li th:if="${session.user.getType()==2}"><a href="#newHouse" data-toggle="tab">楼盘</a></li>
@@ -51,7 +51,7 @@
                 <!-- 使用th迭代标签显示每一条项目 -->
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
-                <div th:if="${decorationList != null}" th:each="property:${buildingProperty}" th:id="property_List">
+                <div th:if="${buildingProperty != null}" th:each="property:${buildingProperty}" th:id="property_List">
                     <div>
                         <!-- 预览图片 -->
                         <img th:src="${property.getImg()}">
@@ -67,8 +67,9 @@
                     </div>
                     <!-- 删除和修改按钮 -->
                     <div>
-                        <a class="btn btn_yellow">修改</a>
-                        <a th:href="@{/account/deleteProprety(itemName=${property.getItemName()})}"
+                        <a th:href="@{/account/viewProperty(itemName=${property.getItemName()})}"
+                           class="btn btn_yellow">修改</a>
+                        <a th:href="@{/account/deleteProperty(itemName=${property.getItemName()})}"
                            class="btn btn_yellow">删除</a>
                     </div>
                 </div>
@@ -123,7 +124,7 @@
                     </div>
                     <!-- 删除和修改按钮 -->
                     <div>
-                        <a class="btn btn_yellow">修改</a>
+                        <a th:href="@{/account/viewRent(itemName=${rent.getItemName()})}" class="btn btn_yellow">修改</a>
                         <a th:href="@{/account/deleteRent(itemName=${rent.getItemName()})}"
                            class="btn btn_yellow">删除</a>
                     </div>
@@ -148,7 +149,8 @@
                     </div>
                     <!-- 删除和修改按钮 -->
                     <div>
-                        <a class="btn btn_yellow">修改</a>
+                        <a th:href="@{/account/viewDecoration(company=${decoration.getCompany()})}"
+                           class="btn btn_yellow">修改</a>
                         <a th:href="@{/account/deleteDecoration(company=${decoration.getCompany()})}"
                            class="btn btn_yellow">删除</a>
                     </div>

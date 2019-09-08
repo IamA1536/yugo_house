@@ -156,7 +156,7 @@ public class UserInformationController {
     }
 
     //删除楼盘信息
-    @PostMapping("/account/deleteProperty")
+    @GetMapping("/account/deleteProperty")
     public String DeleteProperty(@RequestParam("itemName") String itemName, HttpSession httpSession, Model model) {
 
         Building building = salePropertyService.GetPropertyByItemname(itemName);
