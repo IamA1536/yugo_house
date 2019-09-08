@@ -10,6 +10,7 @@
 <div id="user_top">
     <!-- 头像 -->
     <img src="" class="my_icon">
+    <!--用js控制点击头像弹出修改头像框，头像框写在最后面-->
     <!-- 用户名 -->
     <span class="my_username">username</span>
 </div>
@@ -109,6 +110,18 @@
                 </div>
             </div>
         </form>
+    </div>
+    <!--修改头像遮罩和修改头像表单-->
+    <div>
+    <!--显示当前头像(从account中取),选择图片后改变(js)-->
+    <img id="user_icon_in_form">
+    <!--表单-->
+    <form id="user_icon_form">
+    <!--选择图片按钮-->
+        <input type="file" id="choose_user_icon">
+    <!--提交按钮-->
+        <button type="submit" class="btn btn_yellow">提交</button>
+    </form>
     </div>
 </div>
 </body>
