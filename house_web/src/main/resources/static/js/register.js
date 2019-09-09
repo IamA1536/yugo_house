@@ -33,7 +33,7 @@ $(document).ready(function () {
         // ajax向后端传值，取到data
         var Emp = isEmpty('username') || isEmpty('address') || isEmpty('tele') || isEmpty('email') || isEmpty('pw') || isEmpty('confirmpsw');
         if(!Emp && isPswEquel()){
-            var details = $("#loginForm").serialize();
+            var details = $("#register_form").serialize();
             $.post('#', details, function(data){
                 $('.warning').text(data);
             });
