@@ -40,7 +40,7 @@
         delete
         from user_collections
         where userID = #{userID}
-          and builidngID = #{builidngID}
+          and buildingID = #{buildingID}
           and decorationID = #{decorationID}
     </delete>
     <update id="update">
@@ -66,49 +66,19 @@
         where ID = #{ID}
     </update>
 
-    <select id="getUser" parameterType="string" resultType="user">
-        select ID,
-               username,
-               type,
-               email,
-               info,
-               icon,
-               sex,
-               address,
-               tele
-        from user_standrad
-        where username = #{username};
-    </select>
-
-    <select id="getUserByID" resultType="user">
-        select ID,
-               username,
-               type,
-               email,
-               info,
-               icon,
-               sex,
-               address,
-               tele
-        from user_standrad
+    <update id="updateImportant">
+        update user_important
+        <set>
+            <if test="realname !=null and realname != '' ">
+                realname = #{realname},
+            </if>
+            <if test="IDnumber !=null and IDnumber != '' ">
+                IDnumber = #{IDnumber},
+            </if>
+        </set>
         where ID = #{ID}
-    </select>
-
-    <select id="getUsersListByKeywords" parameterType="string" resultType="user">
-        select ID,
-               username,
-               type,
-               email,
-               info,
-               icon,
-               sex,
-               address,
-               tele
-        from user_standrad
-        where username like CONCAT(CONCAT('%', #{keywords}), '%');
-    </select>
-
-    <select id="getUserByUsernameAndPassword" parameterType="string" resultType="user">
+    </update>
+    <select id="getUser" parameterType="string" resultType="user">
         select
             user_important.realname,
             user_important.IDnumber,
@@ -126,7 +96,40 @@
              user_standrad
         where user_standrad.ID = user_important.ID
           and user_standrad.username = #{username}
-          and user_important.pw = #{pw}
+    </select>
+
+    <select id="getUserByID" resultType="user">
+        select
+            user_important.realname,
+            user_important.IDnumber,
+            user_important.pw,
+            user_important.email,
+            user_standrad.ID,
+            user_standrad.username,
+            user_standrad.type,
+            user_standrad.info,
+            user_standrad.icon,
+            user_standrad.sex,
+            user_standrad.address,
+            user_standrad.tele
+        from user_important,
+             user_standrad
+        where user_standrad.ID = user_important.ID
+          and user_standrad.ID = #{ID}
+    </select>
+
+    <select id="getUsersListByKeywords" parameterType="string" resultType="user">
+        select ID,
+               username,
+               type,
+               email,
+               info,
+               icon,
+               sex,
+               address,
+               tele
+        from user_standrad
+        where username like CONCAT(CONCAT('%', #{keywords}), '%');
     </select>
 
     <insert id="addToCollection">

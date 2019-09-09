@@ -52,7 +52,7 @@ public class RentServiceImpl implements RentService {
 
     @Override
     public Building GetRentByID(int ID) {
-        return buildingMapper.getOldHouseByID(ID);
+        return buildingMapper.getRentByID(ID);
     }
 
     @Override

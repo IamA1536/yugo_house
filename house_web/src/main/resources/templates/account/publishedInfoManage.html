@@ -7,148 +7,160 @@
 <body>
 <!--导航栏-->
 <nav th:replace="common/template_navbar::nav(99)"></nav>
-	<!-- 这部分和用户中心一样，看看有什么方法可以引用 -->
-	<!-- 最上面用户栏 -->
-	<div id="user_top">
-		<!-- 头像 -->
-		<!-- 用户名 -->
-	</div>
-	<div id="user_container">
-		<div id="user_nav">
-			<ul class="nav nav-pills nav-stacked">
-				<li><a href="#">我的个人信息</a></li>
-				<li class="active"><a href="#">我的收藏</a></li>
-			</ul>
-			<ul class="nav nav-pills nav-stacked">
-				<li><a href="#">我要卖房</a></li>
-				<li><a href="#">我要出租</a></li>
-				<li><a href="#">管理已发布信息</a></li>
-			</ul>
-			<ul class="nav nav-pills nav-stacked">
-				<li><a href="#">意见反馈</a></li>
-			</ul>
-		</div>
+<!-- 这部分和用户中心一样，看看有什么方法可以引用 -->
+<!-- 最上面用户栏 -->
+<div id="user_top">
+    <!-- 头像 -->
+    <!-- 用户名 -->
+</div>
+<div id="user_container">
+    <div id="user_nav">
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#">我的个人信息</a></li>
+            <li><a href="#">我的收藏</a></li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="#oldHouse" data-toggle="tab">二手房</a></li>
+            <li><a href="#rent" data-toggle="tab">出租房</a></li>
+            <!--用户类型为开发商才有以下两项-->
+            <li th:if="${session.user.getType()==2}"><a href="#newHouse" data-toggle="tab">楼盘</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="#decoration" data-toggle="tab">装修</a></li>
+            <li><a href="/account/publishedInfoManage">已发布信息</a></li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="/help">意见反馈</a></li>
+        </ul>
+    </div>
 
-		<!-- 准确地说，除了这个部分，其他都是一样的 -->
-		<div id="my_collections">
-		<!-- 标签页 -->
-		<!-- 标签页头部 -->
-		<ul id="myTab" class="nav nav-tabs">
-			<!-- 如果是普通用户，没有楼盘和装修 -->
-			<li class="active">
-				<a href="#newHouse" data-toggle="tab">楼盘信息</a>
-			</li>
-			<li><a href="#secondary" data-toggle="tab">二手房信息</a></li>
-			<li><a href="#rent" data-toggle="tab">出租信息</a></li>
-			<li><a href="#decoration" data-toggle="tab">装修信息</a></li>
-		</ul>
-	<!-- 分页内容 -->
-		<div id="myTabContent" class="tab-content">
-			<div class="tab-pane fade in active" id="newHouse">
-				<!-- 排序方式 -->
-				<!-- 使用th迭代标签显示每一条项目 -->
-				<!-- 要设置数量，由后端控制，前台给一个上限 -->
-				<!-- 没有结果放张图片吧 -->
-				<div th:each="" th:id="">
-					<div>
-						<!-- 预览图片 -->
-						<img th:src="">
-						<!-- 信息盒子 -->
-						<div>
-							<!-- 标题 -->
-							<h2 th:text=""></h2>
-							<!-- 地址 -->
-							<p th:text=""></p>
-							<!-- 价格 -->
-							<p th:text=""></p>
-						</div>
-					</div>
-					<!-- 删除和修改按钮 -->
-					<div>
-						<a class="btn btn_yellow">修改</a>
-						<a class="btn btn_yellow">删除</a>
-					</div>
-				</div>
-			</div>
-			<div class="tab-pane fade" id="secondary">
-				<!-- 排序方式 -->
-				<!-- 使用th迭代标签显示每一条项目 -->
-				<!-- 要设置数量，由后端控制，前台给一个上限 -->
-				<!-- 没有结果放张图片吧 -->
-				<div th:each="" th:id="">
-					<div>
-						<!-- 预览图片 -->
-						<img th:src="">
-						<!-- 信息盒子 -->
-						<div>
-							<!-- 标题 -->
-							<h2 th:text=""></h2>
-							<!-- 地址 -->
-							<p th:text=""></p>
-							<!-- 价格 -->
-							<p th:text=""></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="tab-pane fade" id="rent">
-				<!-- 排序方式 -->
-				<!-- 使用th迭代标签显示每一条项目 -->
-				<!-- 要设置数量，由后端控制，前台给一个上限 -->
-				<!-- 没有结果放张图片吧 -->
-				<div th:each="" th:id="">
-					<div>
-						<!-- 预览图片 -->
-						<img th:src="">
-						<!-- 信息盒子 -->
-						<div>
-							<!-- 标题 -->
-							<h2 th:text=""></h2>
-							<!-- 地址 -->
-							<p th:text=""></p>
-							<!-- 价格 -->
-							<p th:text=""></p>
-						</div>
-					</div>
-					<!-- 删除和修改按钮 -->
-					<div>
-						<a class="btn btn_yellow">修改</a>
-						<a class="btn btn_yellow">删除</a>
-					</div>
-				</div>
-			</div>
-			<div class="tab-pane fade" id="decoration">
-				<!-- 排序方式 -->
-				<!-- 使用th迭代标签显示每一条项目 -->
-				<!-- 要设置数量，由后端控制，前台给一个上限 -->
-				<!-- 没有结果放张图片吧 -->
-				<div th:each="" th:id="">
-					<div>
-						<!-- 预览图片 -->
-						<img th:src="">
-						<!-- 信息盒子 -->
-						<div>
-							<!-- 标题 -->
-							<h2 th:text=""></h2>
-							<!-- 地址 -->
-							<p th:text=""></p>
-							<!-- 装修风格 -->
-							<p th:text=""></p>
-						</div>
-					</div>
-					<!-- 删除和修改按钮 -->
-					<div>
-						<a class="btn btn_yellow">修改</a>
-						<a class="btn btn_yellow">删除</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-		<!-- 分页 -->
-		<div></div>
-	</div>
+    <!-- 准确地说，除了这个部分，其他都是一样的 -->
+    <div id="my_collections">
+        <!-- 标签页 -->
+        <!-- 标签页头部 -->
+        <ul id="myTab" class="nav nav-tabs">
+            <!-- 如果是普通用户，没有楼盘和装修 -->
+            <li class="active"><a href="/account/addOldHouse">我要卖房</a></li>
+            <li><a href="/account/addRent">我要出租</a></li>
+            <!--用户类型为开发商才有以下两项-->
+            <li th:if="${session.user.getType()==2}"><a href="/account/addProperty">发布楼盘</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="/account/addDecoration">发布装修</a></li>
+        </ul>
+        <!-- 分页内容 -->
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade" id="newHouse">
+                <!-- 排序方式 -->
+                <!-- 使用th迭代标签显示每一条项目 -->
+                <!-- 要设置数量，由后端控制，前台给一个上限 -->
+                <!-- 没有结果放张图片吧 -->
+                <div th:if="${buildingProperty != null}" th:each="property:${buildingProperty}" th:id="property_List">
+                    <div>
+                        <!-- 预览图片 -->
+                        <img th:src="${property.getImg()}">
+                        <!-- 信息盒子 -->
+                        <div>
+                            <!-- 标题 -->
+                            <h2 th:text="${property.getItemName()}"></h2>
+                            <!-- 地址 -->
+                            <p th:text="${property.getAddress()}"></p>
+                            <!-- 价格 -->
+                            <p th:text="${property.getPrice()}"></p>
+                        </div>
+                    </div>
+                    <!-- 删除和修改按钮 -->
+                    <div>
+                        <a th:href="@{/account/viewProperty(itemName=${property.getItemName()})}"
+                           class="btn btn_yellow">修改</a>
+                        <a th:href="@{/account/deleteProperty(itemName=${property.getItemName()})}"
+                           class="btn btn_yellow">删除</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade in active" id="oldHouse">
+                <!-- 排序方式 -->
+                <!-- 使用th迭代标签显示每一条项目 -->
+                <!-- 要设置数量，由后端控制，前台给一个上限 -->
+                <!-- 没有结果放张图片吧 -->
+                <div th:if="${buildingOldHouse != null}" th:each="oldHouse:${buildingOldHouse}" th:id="oldHouse_List">
+                    <div>
+                        <!-- 预览图片 -->
+                        <img th:src="${oldHouse.getImg()}">
+                        <!-- 信息盒子 -->
+                        <div>
+                            <!-- 标题 -->
+                            <h2 th:text="${oldHouse.getItemName()}"></h2>
+                            <!-- 地址 -->
+                            <p th:text="${oldHouse.getAddress()}"></p>
+                            <!-- 价格 -->
+                            <p th:text="${oldHouse.getPrice()}"></p>
+                        </div>
+                    </div>
+                    <!-- 删除和修改按钮 -->
+                    <div>
+                        <a th:href="@{/account/viewOldHouse(itemName=${oldHouse.getItemName()})}"
+                           class="btn btn_yellow">修改</a>
+                        <a th:href="@{/account/deleteOldHouse(itemName=${oldHouse.getItemName()})}"
+                           class="btn btn_yellow">删除</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="rent">
+                <!-- 排序方式 -->
+                <!-- 使用th迭代标签显示每一条项目 -->
+                <!-- 要设置数量，由后端控制，前台给一个上限 -->
+                <!-- 没有结果放张图片吧 -->
+                <div th:if="${buildingRent != null}" th:each="rent:${buildingRent}" th:id="rent_List">
+                    <div>
+                        <!-- 预览图片 -->
+                        <img th:src="${rent.getImg()}">
+                        <!-- 信息盒子 -->
+                        <div>
+                            <!-- 标题 -->
+                            <h2 th:text="${rent.getItemName()}"></h2>
+                            <!-- 地址 -->
+                            <p th:text="${rent.getAddress()}"></p>
+                            <!-- 价格 -->
+                            <p th:text="${rent.getPrice()}"></p>
+                        </div>
+                    </div>
+                    <!-- 删除和修改按钮 -->
+                    <div>
+                        <a th:href="@{/account/viewRent(itemName=${rent.getItemName()})}" class="btn btn_yellow">修改</a>
+                        <a th:href="@{/account/deleteRent(itemName=${rent.getItemName()})}"
+                           class="btn btn_yellow">删除</a>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="decoration">
+                <!-- 排序方式 -->
+                <!-- 使用th迭代标签显示每一条项目 -->
+                <!-- 要设置数量，由后端控制，前台给一个上限 -->
+                <!-- 没有结果放张图片吧 -->
+                <div th:if="${decorationList != null}" th:each="decoration:${decorationList}" th:id="decoration_List">
+                    <div>
+                        <!-- 预览图片 -->
+                        <img th:src="${decoration.getImg()}">
+                        <!-- 信息盒子 -->
+                        <div>
+                            <!-- 标题 -->
+                            <h2 th:text="${decoration.getCompany()}"></h2>
+                            <!-- 地址 -->
+                            <p th:text="${decoration.getAddress()}"></p>
+                        </div>
+                    </div>
+                    <!-- 删除和修改按钮 -->
+                    <div>
+                        <a th:href="@{/account/viewDecoration(company=${decoration.getCompany()})}"
+                           class="btn btn_yellow">修改</a>
+                        <a th:href="@{/account/deleteDecoration(company=${decoration.getCompany()})}"
+                           class="btn btn_yellow">删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 分页 -->
+<div></div>
 </body>
 
 </html>

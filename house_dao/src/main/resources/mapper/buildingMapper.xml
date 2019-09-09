@@ -136,7 +136,7 @@
           and building.type = 2;
     </select>
 
-    <select id="getPropertyListByID" resultType="building">
+    <select id="getPropertyByID" resultType="building">
         select building.ID,
                building.type,
                building.itemName,
@@ -154,7 +154,7 @@
           and building.type = 1;
     </select>
 
-    <select id="getRentListByID" resultType="building">
+    <select id="getRentByID" resultType="building">
         select building.ID,
                building.type,
                building.itemName,
@@ -172,7 +172,7 @@
           and building.type = 3;
     </select>
 
-    <select id="getOldHouseListByID" resultType="building">
+    <select id="getOldHouseByID" resultType="building">
         select building.ID,
                building.type,
                building.itemName,

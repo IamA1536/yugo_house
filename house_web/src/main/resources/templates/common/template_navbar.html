@@ -23,14 +23,16 @@
                 <li><a href="http://www.foratest.com">论坛</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/account/login" th:if="${session.account==null}" th:text="#{login}">
-                    <span class="glyphicon glyphicon-user"></span>Sign In
-                </a></li>
+                <li>
+                    <a href="/account/login" th:if="${session.user==null}" th:text="#{login}">
+                        <span class="glyphicon glyphicon-user"></span>Sign In
+                    </a>
+                </li>
 
-                <a href="/account/logout" th:if="${session.account!=null}" th:text="#{signOut}">
+                <a href="/account/logout" th:if="${session.user!=null}" th:text="#{signOut}">
                     Sign Out
                 </a>
-                <a href="/account/userCenter" th:if="${session.account!=null}" th:text="#{myAccount}">
+                <a href="/account/userCenter" th:if="${session.user!=null}" th:text="#{myAccount}">
                     My Account
                 </a>
             </ul>

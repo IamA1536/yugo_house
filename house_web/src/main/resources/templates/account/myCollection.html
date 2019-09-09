@@ -4,165 +4,36 @@
 </head>
 
 <body>
-	<!--导航栏-->
-	<nav th:replace="common/template_navbar::nav(99)"></nav>
-	<!-- 这部分和用户中心一样，看看有什么方法可以引用 -->
-	<!-- 最上面用户栏 -->
-	<div id="user_top">
-		<!-- 头像 -->
-		<!-- 用户名 -->
-	</div>
-	<div id="user_container">
-		<div id="user_nav">
-			<ul class="nav nav-pills nav-stacked">
-				<li><a href="#">我的个人信息</a></li>
-				<li class="active"><a href="#">我的收藏</a></li>
-			</ul>
-			<ul class="nav nav-pills nav-stacked">
-				<li><a href="#">我要卖房</a></li>
-				<li><a href="#">我要出租</a></li>
-				<li><a href="#">管理我的房源</a></li>
-			</ul>
-			<ul class="nav nav-pills nav-stacked">
-				<li><a href="#">意见反馈</a></li>
-			</ul>
-		</div>
+<!--导航栏-->
+<nav th:replace="common/template_navbar::nav(99)"></nav>
 <!-- 这部分和用户中心一样，看看有什么方法可以引用 -->
 <!-- 最上面用户栏 -->
-<div id="user_top">
-    <!-- 头像 -->
-    <!-- 用户名 -->
-</div>
 <div id="user_container">
     <div id="user_nav">
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">我的个人信息</a></li>
-            <li class="active"><a href="#">我的收藏</a></li>
+            <li><a href="/account/userCenter">我的个人信息</a></li>
+            <li class="active"><a href="/showusercollection">我的收藏</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
-            <li><a href="#">我要卖房</a></li>
-            <li><a href="#">我要出租</a></li>
-            <li><a href="#">管理我的房源</a></li>
+            <li><a href="/account/addOldHouse">我要卖房</a></li>
+            <li><a href="/account/addRent">我要出租</a></li>
+            <!--用户类型为开发商才有以下两项-->
+            <li th:if="${session.user.getType()==2}"><a href="/account/addProperty">发布楼盘</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="/account/addDecoration">发布装修</a></li>
+            <li><a href="/account/publishedInfoManage">管理已发布信息</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
             <li><a href="#">意见反馈</a></li>
         </ul>
     </div>
+    <!-- 这部分和用户中心一样，看看有什么方法可以引用 -->
+    <!-- 最上面用户栏 -->
+    <div id="user_top">
+        <!-- 头像 -->
+        <!-- 用户名 -->
+    </div>
 
-		<!-- 准确地说，除了这个部分，其他都是一样的 -->
-		<!-- 这个部分和商品列那里很像 -->
-		<div id="my_collections">
-		<!-- 标签页 -->
-		<!-- 标签页头部 -->
-		<ul id="myTab" class="nav nav-tabs">
-			<li class="active">
-				<a href="#newHouse" data-toggle="tab">新房收藏</a>
-			</li>
-			<li><a href="#secondary" data-toggle="tab">二手房收藏</a></li>
-			<li><a href="#rent" data-toggle="tab">出租收藏</a></li>
-			<li><a href="#decoration" data-toggle="tab">装修收藏</a></li>
-		</ul>
-	<!-- 分页内容 -->
-		<div id="myTabContent" class="tab-content">
-			<div class="tab-pane fade in active" id="newHouse">
-				<!-- 排序方式 -->
-				<!-- 使用th迭代标签显示每一条项目 -->
-				<!-- 要设置数量，由后端控制，前台给一个上限 -->
-				<!-- 没有结果放张图片吧 -->
-				<div th:each="" th:id="">
-					<div>
-						<!-- 预览图片 -->
-						<img th:src="">
-						<!-- 信息盒子 -->
-						<div>
-							<!-- 标题 -->
-							<h2 th:text=""></h2>
-							<!-- 地址 -->
-							<p th:text=""></p>
-							<!-- 价格 -->
-							<p th:text=""></p>
-						</div>
-					</div>
-					<!--删除按钮-->
-					<a class="btn btn_yellow">删除</a>
-				</div>
-			</div>
-			<div class="tab-pane fade" id="secondary">
-				<!-- 排序方式 -->
-				<!-- 使用th迭代标签显示每一条项目 -->
-				<!-- 要设置数量，由后端控制，前台给一个上限 -->
-				<!-- 没有结果放张图片吧 -->
-				<div th:each="" th:id="">
-					<div>
-						<!-- 预览图片 -->
-						<img th:src="">
-						<!-- 信息盒子 -->
-						<div>
-							<!-- 标题 -->
-							<h2 th:text=""></h2>
-							<!-- 地址 -->
-							<p th:text=""></p>
-							<!-- 价格 -->
-							<p th:text=""></p>
-						</div>
-					</div>
-					<!--删除按钮-->
-					<a class="btn btn_yellow">删除</a>
-				</div>
-			</div>
-			<div class="tab-pane fade" id="rent">
-				<!-- 排序方式 -->
-				<!-- 使用th迭代标签显示每一条项目 -->
-				<!-- 要设置数量，由后端控制，前台给一个上限 -->
-				<!-- 没有结果放张图片吧 -->
-				<div th:each="" th:id="">
-					<div>
-						<!-- 预览图片 -->
-						<img th:src="">
-						<!-- 信息盒子 -->
-						<div>
-							<!-- 标题 -->
-							<h2 th:text=""></h2>
-							<!-- 地址 -->
-							<p th:text=""></p>
-							<!-- 价格 -->
-							<p th:text=""></p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="tab-pane fade" id="decoration">
-				<!-- 排序方式 -->
-				<!-- 使用th迭代标签显示每一条项目 -->
-				<!-- 要设置数量，由后端控制，前台给一个上限 -->
-				<!-- 没有结果放张图片吧 -->
-				<div th:each="" th:id="">
-					<div>
-						<!-- 预览图片 -->
-						<img th:src="">
-						<!-- 信息盒子 -->
-						<div>
-							<!-- 标题 -->
-							<h2 th:text=""></h2>
-							<!-- 地址 -->
-							<p th:text=""></p>
-							<!-- 装修风格 -->
-							<p th:text=""></p>
-						</div>
-					</div>
-					<!--删除按钮-->
-					<a class="btn btn_yellow">删除</a>
-				</div>
-			</div>
-		</div>
-	</div>
-		<!-- 分页 -->
-		<!-- 我们这里面根本就用不上我为什么要写呢 -->
-		<!-- 得到一共有多少页、当前是第几页 -->
-		<div>
 
-		</div>
-	</div>
     <!-- 准确地说，除了这个部分，其他都是一样的 -->
     <!-- 这个部分和商品列那里很像 -->
     <div id="my_collections">
@@ -183,20 +54,23 @@
                 <!-- 使用th迭代标签显示每一条项目 -->
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
-                <div th:each="" th:id="">
+                <div th:if="${PropertyList != null}" th:each="item:${PropertyList}" th:id="property_list">
                     <div>
                         <!-- 预览图片 -->
-                        <img th:src="">
+                        <img th:src="${item.getImg()}">
                         <!-- 信息盒子 -->
                         <div>
                             <!-- 标题 -->
-                            <h2 th:text=""></h2>
+                            <h2 th:text="${item.getItemName()}"></h2>
                             <!-- 地址 -->
-                            <p th:text=""></p>
+                            <p th:text="${item.getAddress()}"></p>
                             <!-- 价格 -->
-                            <p th:text=""></p>
+                            <p th:text="${item.getPrice()}"></p>
                         </div>
                     </div>
+                    <!--删除按钮-->
+                    <a th:href="@{/account/deleteMyCollections(itemID=${item.getID()},type=1)}"
+                       class="btn btn_yellow">删除</a>
                 </div>
             </div>
             <div class="tab-pane fade" id="secondary">
@@ -204,20 +78,23 @@
                 <!-- 使用th迭代标签显示每一条项目 -->
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
-                <div th:each="" th:id="">
+                <div th:if="${OldHouseList != null}" th:each="item:${OldHouseList}" th:id="secondary_list">
                     <div>
                         <!-- 预览图片 -->
-                        <img th:src="">
+                        <img th:src="${item.getImg()}">
                         <!-- 信息盒子 -->
                         <div>
                             <!-- 标题 -->
-                            <h2 th:text=""></h2>
+                            <h2 th:text="${item.getItemName()}"></h2>
                             <!-- 地址 -->
-                            <p th:text=""></p>
+                            <p th:text="${item.getAddress()}"></p>
                             <!-- 价格 -->
-                            <p th:text=""></p>
+                            <p th:text="${item.getPrice()}"></p>
                         </div>
                     </div>
+                    <!--删除按钮-->
+                    <a th:href="@{/account/deleteMyCollections(itemID=${item.getID()},type=2)}"
+                       class="btn btn_yellow">删除</a>
                 </div>
             </div>
             <div class="tab-pane fade" id="rent">
@@ -225,42 +102,53 @@
                 <!-- 使用th迭代标签显示每一条项目 -->
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
-                <div th:each="" th:id="">
+                <div th:if="${RentList != null}" th:each="item:${RentList}" th:id="rent_list">
                     <div>
                         <!-- 预览图片 -->
-                        <img th:src="">
+                        <img th:src="${item.getImg()}">
                         <!-- 信息盒子 -->
                         <div>
                             <!-- 标题 -->
-                            <h2 th:text=""></h2>
+                            <h2 th:text="${item.getItemName()}"></h2>
                             <!-- 地址 -->
-                            <p th:text=""></p>
+                            <p th:text="${item.getAddress()}"></p>
                             <!-- 价格 -->
-                            <p th:text=""></p>
+                            <p th:text="${item.getPrice()}"></p>
                         </div>
                     </div>
+                    <!--删除按钮-->
+                    <a th:href="@{/account/deleteMyCollections(itemID=${item.getID()},type=3)}"
+                       class="btn btn_yellow">删除</a>
                 </div>
+
             </div>
-            <div class="tab-pane fade" id="Decoration" name="Decoration" >
+            <div class="tab-pane fade" id="decoration">
                 <!-- 排序方式 -->
                 <!-- 使用th迭代标签显示每一条项目 -->
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
-                <div th:each="decorationlist:${DecorationList}" th:id="decoration">
-                    <div >
+                <div th:if="${DecorationList != null}" th:each="item:${DecorationList}" th:id="decoration_list">
+                    <div>
                         <!-- 预览图片 -->
-                        <img th:href="@{/showusercollection(ItemID=${decorationlist.getID()},type=4)}"
-							 th:src="${decorationlist.getImg()}">
+                        <img th:src="${item.getImg()}">
                         <!-- 信息盒子 -->
                         <div>
                             <!-- 标题 -->
-                            <h2 th:text="${decorationlist.getCompany()}" ></h2>
+                            <h2 th:text="${item.getCompany()}"></h2>
                             <!-- 地址 -->
-                            <p th:text="${decorationlist.getAddress()}"></p>
+                            <p th:text="${item.getAddress()}"></p>
                             <!-- 装修风格 -->
-                            <p th:text="${decorationlist.getStyle()}"></p>
+                            <p th:if="${item.getStyle() == 1}">现代</p>
+                            <p th:if="${item.getStyle() == 2}">中式</p>
+                            <p th:if="${item.getStyle() == 3}">欧式</p>
+                            <p th:if="${item.getStyle() == 4}">混搭</p>
+                            <p th:if="${item.getStyle() == 5}">其他</p>
+
                         </div>
                     </div>
+                    <!--删除按钮-->
+                    <a th:href="@{/account/deleteMyCollections(itemID=${item.getID()},type=4)}"
+                       class="btn btn_yellow">删除</a>
                 </div>
             </div>
         </div>
@@ -268,9 +156,19 @@
     <!-- 分页 -->
     <!-- 我们这里面根本就用不上我为什么要写呢 -->
     <!-- 得到一共有多少页、当前是第几页 -->
-    <div>
 
-    </div>
+
+</div>
+
+<!-- 准确地说，除了这个部分，其他都是一样的 -->
+<!-- 这个部分和商品列那里很像 -->
+
+<!-- 分页 -->
+<!-- 我们这里面根本就用不上我为什么要写呢 -->
+<!-- 得到一共有多少页、当前是第几页 -->
+<div>
+
+</div>
 </div>
 </body>
 

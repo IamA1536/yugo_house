@@ -28,31 +28,31 @@ function isPasswordEmpty(){
         return false;
     }
 }
-
-$(document).ready(function () {
-    console.log("ready");
-    $('[name="username"]').on('change',function () {
-        console.log("you input" + this.value);
-        if(!isUsernameEmpty() && !isPasswordEmpty()){
-            $('.warning').text("");
-        }
-    });
-
-    $('[name="password"]').on('change',function () {
-        console.log("you input "+ $('[name="password"]').val());
-        if(!isUsernameEmpty() && !isPasswordEmpty()){
-            $('.warning').text("");
-        }
-    });
-
-    $("#login_form").on("submit",function (e) {
-        e.preventDefault();
-        // ajax向后端传值，取到data
-        if(!isUsernameEmpty() && !isPasswordEmpty()){
-            var details = $("#loginForm").serialize();
-            $.post('#', details, function(data){
-                $('.warning').text(data);
-            });
-        }
-    });
-});
+//
+// $(document).ready(function () {
+//     console.log("ready");
+//     $('[name="username"]').on('change',function () {
+//         console.log("you input" + this.value);
+//         if(!isUsernameEmpty() && !isPasswordEmpty()){
+//             $('.warning').text("");
+//         }
+//     });
+//
+//     $('[name="password"]').on('change',function () {
+//         console.log("you input "+ $('[name="password"]').val());
+//         if(!isUsernameEmpty() && !isPasswordEmpty()){
+//             $('.warning').text("");
+//         }
+//     });
+//
+//     $("#login_form").on("submit",function (e) {
+//         e.preventDefault();
+//         // ajax向后端传值，取到data
+//         if(!isUsernameEmpty() && !isPasswordEmpty()){
+//             var details = $("#loginForm").serialize();
+//             $.post('#', details, function(data){
+//                 $('.warning').text(data);
+//             });
+//         }
+//     });
+// });

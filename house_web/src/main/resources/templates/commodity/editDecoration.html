@@ -5,29 +5,32 @@
 
 
 <body>
-<h1 class="apply_title">录入装修</h1>
+<h1 class="apply_title">修改信息</h1>
 
-<form enctype="multipart/form-data" action="/commodity/addDecoration" method="post"
+<form enctype="multipart/form-data" th:action="@{/commodity/updateDecoration(ID=${decoration.getID()})}" method="post"
       class="form-horizontal apply_form col-sm-offset-2 col-sm-8" role="form">
     <!-- 标题 -->
     <div class="form-group">
         <label for="company" class="col-sm-2 control-label">公司名</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="company" name="company" placeholder="请输入公司名">
+            <input type="text" th:value="${decoration.getCompany()}" class="form-control" id="company" name="company"
+                   placeholder="请输入公司名">
         </div>
     </div>
     <!-- 地址，可能要改成选择的 -->
     <div class="form-group">
         <label for="address" class="col-sm-2 control-label">公司地址</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="address" name="address" placeholder="请输入公司地址">
+            <input type="text" th:value="${decoration.getAddress()}" class="form-control" id="address" name="address"
+                   placeholder="请输入公司地址">
         </div>
     </div>
     <!-- 面积 -->
     <div class="form-group">
         <label for="tele" class="col-sm-2 control-label">联系方式</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="tele" name="tele" placeholder="请输入联系方式">
+            <input type="text" th:value="${decoration.getTele()}" class="form-control" id="tele" name="tele"
+                   placeholder="请输入联系方式">
         </div>
     </div>
     <!-- 售价 -->
@@ -56,7 +59,8 @@
     <div class="form-group">
         <label for="info" class="col-sm-2 control-label">公司简介</label>
         <div class="col-sm-10">
-            <textarea class="form-control" rows="3" id="info" name="info" placeholder="介绍一下公司情况"></textarea>
+            <textarea class="form-control" th:text="${decoration.getInfo()}" rows="3" id="info" name="info"
+                      placeholder="介绍一下公司情况"></textarea>
         </div>
     </div>
     <!-- 图片 -->
@@ -64,15 +68,6 @@
         <label for="inputimg" class="col-sm-2 control-label">上传样例图片</label>
         <div class="col-sm-10">
             <input type="file" id="inputimg">
-        </div>
-    </div>
-    <!-- 条款 -->
-    <div class="form-group">
-        <div class="checkbox">
-            <label class="col-sm-2 control-label"> </label>
-            <div class="col-sm-10">
-                <label><input type="checkbox">我已阅读并接受<a>《装修中介协议》</a></label>
-            </div>
         </div>
     </div>
     <!-- 提交按钮 -->

@@ -37,10 +37,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User GetUserByUsernameAndPassword(String username, String password) {
+
         BasicTextEncryptor basicTextEncryptor = new BasicTextEncryptor();
         basicTextEncryptor.setPassword(String.valueOf(username));
-        password = basicTextEncryptor.encrypt(password);
-        return userMapper.getUserByUsernameAndPassword(username, password);
+
+        User user = userMapper.getUser(username);
+
+        String pw = basicTextEncryptor.decrypt(user.getPw());
+        if (!pw.equals(password))
+            user = null;
+        return user;
     }
 
     @Override
@@ -56,12 +62,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public int UpdateUser(User user) {
         user = new JasyptTools().UserEncryptor(user);
-        return userMapper.update(user);
+        userMapper.update(user);
+        userMapper.updateImportant(user);
+        return 0;
     }
 
     @Override
-    public int AddToCollection(long UserId, long BuildingId, int decorationID, String time) {
-        return userMapper.addToCollection(UserId, BuildingId, decorationID, time);
+    public int AddToCollection(long UserID, long BuildingID, int decorationID, String time) {
+        return userMapper.addToCollection(UserID, BuildingID, decorationID, time);
     }
 
     //
@@ -72,19 +80,22 @@ public class UserServiceImpl implements UserService {
         if (type == 0) {
             returnlist = list;
         } else if (type <= 4) {
-            List<Collections> listChoice = null;
+            List<Collections> listChoice = list;
             int ItemID;
-            for (Collections collections : list) {
+            for (int i = list.size() - 1; i >= 0; i--) {
+                Collections collections = list.get(i);
                 if (collections.getBuildingID() != 0)
                     ItemID = collections.getBuildingID();
                 else
                     ItemID = collections.getDecorationID();
                 String tem = String.valueOf(ItemID);
                 int IDFirst = tem.charAt(0) - '0';
-                if (IDFirst == type)
-                    listChoice.add(collections);
-                returnlist = listChoice;
+//                System.out.println(IDFirst + " " + type);
+//                System.out.println(listChoice);
+                if (IDFirst != type)
+                    listChoice.remove(collections);
             }
+            returnlist = listChoice;
         } else
             System.out.println("type is the problem");
         return returnlist;

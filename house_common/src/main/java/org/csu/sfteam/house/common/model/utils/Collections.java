@@ -16,6 +16,15 @@ public class Collections {
 
     }
 
+    public Collections(int userID, int buildingID, int decorationID, String time) {
+        this.userID = userID;
+        if (buildingID != 0)
+            this.buildingID = buildingID;
+        if (decorationID != 0)
+            this.decorationID = decorationID;
+        this.time = time;
+    }
+
 
     public int getID() {
         return ID;

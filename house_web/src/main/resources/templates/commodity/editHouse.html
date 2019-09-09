@@ -5,36 +5,43 @@
 
 <!-- 要传一个值确定是申请出售还是出租 -->
 <body>
-<h1 class="apply_title">录入房源</h1>
-<form enctype="multipart/form-data" action="/commodity/addOldHouse" method="post" th:if="${type==2}"
+<h1 class="apply_title">修改信息</h1>
+<form enctype="multipart/form-data" th:action="@{/commodity/updateOldHouse(ID=${building.getID()})}" method="post"
+      th:if="${type==2}"
       class="form-horizontal apply_form col-sm-offset-2 col-sm-8"
       role="form">
     <!-- 标题（奇奇怪怪） -->
     <div class="form-group">
         <label for="itemName" class="col-sm-2 control-label">房源标题</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="itemNameID" name="itemName" placeholder="请输入房源名">
+            <input type="text" th:value="${building.getItemName()}" class="form-control" id="itemNameID" name="itemName"
+                   placeholder="请输入房源名">
         </div>
     </div>
+
     <!-- 序列号 -->
     <div class="form-group">
         <label for="buildingID" class="col-sm-2 control-label">房产序列号</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="buildingID" name="buildingID" placeholder="请输入房产序列号">
+            <input type="password" th:value="${building.getID()}" class="form-control" id="buildingID" name="ID"
+                   placeholder="请输入房产序列号" disabled>
         </div>
     </div>
+
     <!-- 地址，可能要改成选择的 -->
     <div class="form-group">
         <label for="address" class="col-sm-2 control-label">房源地址</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="address" name="address" placeholder="请输入房源地址">
+            <input type="text" th:value="${building.getAddress()}" class="form-control" id="address" name="address"
+                   placeholder="请输入房源地址" disabled>
         </div>
     </div>
     <!-- 面积 -->
     <div class="form-group">
         <label for="area" class="col-sm-2 control-label">房源面积</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="area" name="area" placeholder="请输入房源面积">
+            <input type="text" th:value="${building.getArea()}" class="form-control" id="area" name="area"
+                   placeholder="请输入房源面积">
         </div>
     </div>
     <!-- 装修状况 -->
@@ -53,14 +60,16 @@
     <div class="form-group">
         <label for="price" class="col-sm-2 control-label">售价</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="price" name="price" placeholder="请输入预期售价">
+            <input type="text" th:value="${building.getPrice()}" class="form-control" id="price" name="price"
+                   placeholder="请输入预期售价">
         </div>
     </div>
     <!-- 简介 -->
     <div class="form-group">
         <label for="info" class="col-sm-2 control-label">房源简介</label>
         <div class="col-sm-10">
-            <textarea class="form-control" rows="3" id="info" name="info" placeholder="介绍一下您的房子"></textarea>
+            <textarea class="form-control" th:text="${building.getInfo()}" rows="3" id="info" name="info"
+                      placeholder="介绍一下您的房子"></textarea>
         </div>
     </div>
     <!-- 图片 -->
@@ -68,15 +77,6 @@
         <label for="inputimg" class="col-sm-2 control-label">上传房源图片</label>
         <div class="col-sm-10">
             <input type="file" name="file" id="inputimg">
-        </div>
-    </div>
-    <!-- 条款 -->
-    <div class="form-group">
-        <div class="checkbox">
-            <label class="col-sm-2 control-label"> </label>
-            <div class="col-sm-10">
-                <label><input type="checkbox">我已阅读并接受<a>《房屋委托出售协议》</a></label>
-            </div>
         </div>
     </div>
     <!-- 提交按钮 -->
@@ -86,35 +86,42 @@
         </div>
     </div>
 </form>
-<form enctype="multipart/form-data" action="/commodity/addRent" method="post" th:if="${type==3}"
+<form enctype="multipart/form-data" th:action="@{/commodity/updateRent(ID=${building.getID()})}" method="post"
+      th:if="${type==3}"
       class="form-horizontal apply_form col-sm-offset-2 col-sm-8"
       role="form">
     <!-- 标题（奇奇怪怪） -->
     <div class="form-group">
         <label for="itemName" class="col-sm-2 control-label">房源标题</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="itemNameID" name="itemName" placeholder="请输入房源名">
+            <input type="text" th:value="${building.getItemName()}" class="form-control" id="itemNameID" name="itemName"
+                   placeholder="请输入房源名">
         </div>
     </div>
+
     <!-- 序列号 -->
     <div class="form-group">
         <label for="buildingID" class="col-sm-2 control-label">房产序列号</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="buildingID" placeholder="请输入房产序列号">
+            <input type="password" th:value="${building.getID()}" class="form-control" id="buildingID" name="buildingID"
+                   placeholder="请输入房产序列号" disabled>
         </div>
     </div>
+
     <!-- 地址，可能要改成选择的 -->
     <div class="form-group">
         <label for="address" class="col-sm-2 control-label">房源地址</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="address" name="address" placeholder="请输入房源地址">
+            <input type="text" th:value="${building.getAddress()}" class="form-control" id="address" name="address"
+                   placeholder="请输入房源地址" disabled>
         </div>
     </div>
     <!-- 面积 -->
     <div class="form-group">
         <label for="area" class="col-sm-2 control-label">房源面积</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="area" name="area" placeholder="请输入房源面积">
+            <input type="text" th:value="${building.getArea()}" class="form-control" id="area" name="area"
+                   placeholder="请输入房源面积">
         </div>
     </div>
     <!-- 装修状况 -->
@@ -133,14 +140,16 @@
     <div class="form-group">
         <label for="price" class="col-sm-2 control-label">售价</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="price" name="price" placeholder="请输入预期售价">
+            <input type="text" th:value="${building.getPrice()}" class="form-control" id="price" name="price"
+                   placeholder="请输入预期售价">
         </div>
     </div>
     <!-- 简介 -->
     <div class="form-group">
         <label for="info" class="col-sm-2 control-label">房源简介</label>
         <div class="col-sm-10">
-            <textarea class="form-control" rows="3" id="info" name="info" placeholder="介绍一下您的房子"></textarea>
+            <textarea class="form-control" th:text="${building.getInfo()}" rows="3" id="info" name="info"
+                      placeholder="介绍一下您的房子"></textarea>
         </div>
     </div>
     <!-- 图片 -->
@@ -148,15 +157,6 @@
         <label for="inputimg" class="col-sm-2 control-label">上传房源图片</label>
         <div class="col-sm-10">
             <input type="file" name="file" id="inputimg">
-        </div>
-    </div>
-    <!-- 条款 -->
-    <div class="form-group">
-        <div class="checkbox">
-            <label class="col-sm-2 control-label"> </label>
-            <div class="col-sm-10">
-                <label><input type="checkbox">我已阅读并接受<a>《房屋委托出售协议》</a></label>
-            </div>
         </div>
     </div>
     <!-- 提交按钮 -->

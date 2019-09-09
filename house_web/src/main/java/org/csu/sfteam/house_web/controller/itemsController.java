@@ -104,12 +104,17 @@ public class itemsController {
         return "commodity/item";
     }
 
-    @PostMapping("/addToCollection")
-    public String addToCollection(@RequestParam("ItemName") String ItemName, int type, Model model, HttpSession httpSession) {
+    @GetMapping("/addToCollection")
+    public String addToCollection(@RequestParam("type") int type, @RequestParam("itemName") String itemName, Model model, HttpSession httpSession) {
+
+        System.out.println(itemName + " " + type);
 
         User user = (User) httpSession.getAttribute("user");
+        if (user == null)
+            return "account/login";
         if (type == 4) {
-            Decoration decoration = decorationService.GetDecoration(ItemName);
+
+            Decoration decoration = decorationService.GetDecoration(itemName);
             model.addAttribute("type", 4);
             model.addAttribute("item", decoration);
             Date currentTime = new Date();
@@ -117,7 +122,7 @@ public class itemsController {
             String time = formatter.format(currentTime);
             userService.AddToCollection(user.getID(), 0, decoration.getID(), time);
         } else if (type == 3) {
-            Building building = rentService.GetRentByItemname(ItemName);
+            Building building = rentService.GetRentByItemname(itemName);
             model.addAttribute("type", 3);
             model.addAttribute("item", building);
             Date currentTime = new Date();
@@ -125,7 +130,7 @@ public class itemsController {
             String time = formatter.format(currentTime);
             userService.AddToCollection(user.getID(), building.getID(), 0, time);
         } else if (type == 2) {
-            Building building = saleOldHouseService.GetOldHouseByItemname(ItemName);
+            Building building = saleOldHouseService.GetOldHouseByItemname(itemName);
             model.addAttribute("type", 2);
             model.addAttribute("item", building);
             Date currentTime = new Date();
@@ -133,7 +138,7 @@ public class itemsController {
             String time = formatter.format(currentTime);
             userService.AddToCollection(user.getID(), building.getID(), 0, time);
         } else if (type == 1) {
-            Building building = salePropertyService.GetPropertyByItemname(ItemName);
+            Building building = salePropertyService.GetPropertyByItemname(itemName);
             model.addAttribute("type", 1);
             model.addAttribute("item", building);
             Date currentTime = new Date();

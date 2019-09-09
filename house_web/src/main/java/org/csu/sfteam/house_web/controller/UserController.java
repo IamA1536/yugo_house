@@ -1,11 +1,11 @@
 package org.csu.sfteam.house_web.controller;
 
+import org.csu.sfteam.house.biz.service.*;
+import org.csu.sfteam.house.common.model.items.Building;
+import org.csu.sfteam.house.common.model.items.Decoration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.csu.sfteam.house.common.model.account.User;
-import org.csu.sfteam.house.common.model.account.User_important;
-import org.csu.sfteam.house.common.model.account.User_standard;
-import org.csu.sfteam.house.biz.service.UserService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,16 +15,44 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import javax.websocket.SendResult;
-import javax.websocket.Session;
 import java.io.File;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private SaleOldHouseService saleOldHouseService;
+    @Autowired
+    private SalePropertyService salePropertyService;
+    @Autowired
+    private RentService rentService;
+    @Autowired
+    private DecorationService decorationService;
+
+    @GetMapping("/account/publishedInfoManage")
+    public String viewPublishedInfoManage(HttpSession httpSession, Model model) {
+
+        User user = (User) httpSession.getAttribute("user");
+
+        List<Building> buildingProperty = salePropertyService.ShowPropertyByItemFrom((int) user.getID());
+        List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouseByItemFrom((int) user.getID());
+        List<Building> buildingRent = rentService.ShowRentByItemFrom((int) user.getID());
+        List<Decoration> decorationList = decorationService.showDecorationsByItemFrom((int) user.getID());
+
+        model.addAttribute("buildingProperty", buildingProperty);
+        model.addAttribute("buildingOldHouse", buildingOldHouse);
+        model.addAttribute("buildingRent", buildingRent);
+        model.addAttribute("decorationList", decorationList);
+
+
+        return "account/publishedInfoManage";
+    }
+
 
     //登录界面跳转 ok
     @GetMapping("/account/login")
@@ -34,49 +62,91 @@ public class UserController {
 
     @PostMapping("/account/login")
     //登录 ok一半
-    public String login(HttpServletRequest req, HttpSession session) {
-        String username = req.getParameter("username");
-        System.out.println("username" + username);
-        String password = req.getParameter("password");
-        System.out.println("password" + password);
+    public String login(HttpSession session, String username, String password, Model model) {
+
+//        System.out.println("username" + username);
+
+//        System.out.println("password" + password);
         User user = userService.GetUserByUsernameAndPassword(username, password);
         if (user == null) {
-
-            System.out.println("failed");
+//            System.out.println("failed");
             return "account/login";
         } else {
             session.setAttribute("user", user);
-            System.out.println("success");
+//            System.out.println("success");
+
+            List<Building> buildingProperty = salePropertyService.ShowProperty();
+            List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouse();
+            List<Building> buildingRent = rentService.ShowRent();
+            List<Decoration> decorationList = decorationService.ShowDecorations();
+            Collections.reverse(buildingProperty);
+            Collections.reverse(buildingOldHouse);
+            Collections.reverse(buildingRent);
+            Collections.reverse(decorationList);
+
+            model.addAttribute("buildingProperty", buildingProperty);
+            model.addAttribute("buildingOldHouse", buildingOldHouse);
+            model.addAttribute("buildingRent", buildingRent);
+            model.addAttribute("decorationList", decorationList);
 
             return "index";
         }
 
     }
 
-    @GetMapping("account/register")
+    @GetMapping("/account/register")
     public String ViewRegister() {
         return "account/register";
     }
 
     //基本成功
-    @PostMapping("account/register")
-    public String register(User user, Model model) {
+    @PostMapping("/account/registerForm")
+    public String register(@Valid User user, Model model) {
+        System.out.println(user + "111111");
+
         if (!"".equals(user.getUsername()) && !"".equals(user.getPw())) {
             User temp = userService.GetUserByUsername(user.getUsername());
 
             if (temp == null) {
 
-                System.out.println("pw is:" + user.getSex());
                 long ID = (user.getType() * 1000000) + Math.round((Math.random() * 9 + 1) * 100000);
                 user.setID(ID);
                 userService.CreateUser(user);
-                User clear = null;
-                model.addAttribute("user", clear);
+
+                List<Building> buildingProperty = salePropertyService.ShowProperty();
+                List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouse();
+                List<Building> buildingRent = rentService.ShowRent();
+                List<Decoration> decorationList = decorationService.ShowDecorations();
+                Collections.reverse(buildingProperty);
+                Collections.reverse(buildingOldHouse);
+                Collections.reverse(buildingRent);
+                Collections.reverse(decorationList);
+
+                model.addAttribute("buildingProperty", buildingProperty);
+                model.addAttribute("buildingOldHouse", buildingOldHouse);
+                model.addAttribute("buildingRent", buildingRent);
+                model.addAttribute("decorationList", decorationList);
+
+                model.addAttribute("user", null);
                 return "index";
             } else {
 
-                User clear = null;
-                model.addAttribute("user", clear);
+                model.addAttribute("user", null);
+
+                List<Building> buildingProperty = salePropertyService.ShowProperty();
+                List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouse();
+                List<Building> buildingRent = rentService.ShowRent();
+                List<Decoration> decorationList = decorationService.ShowDecorations();
+                Collections.reverse(buildingProperty);
+                Collections.reverse(buildingOldHouse);
+                Collections.reverse(buildingRent);
+                Collections.reverse(decorationList);
+
+                model.addAttribute("buildingProperty", buildingProperty);
+                model.addAttribute("buildingOldHouse", buildingOldHouse);
+                model.addAttribute("buildingRent", buildingRent);
+                model.addAttribute("decorationList", decorationList);
+
                 return "account/register";
             }
         }
@@ -84,36 +154,50 @@ public class UserController {
     }
 
     //登出
-    @PostMapping("/account/logout")
+    @GetMapping("/account/logout")
     public String Logout(Model model, HttpSession httpSession) {
-        User user = (User) httpSession.getAttribute("user");
-        user = null;
-        httpSession.setAttribute("user", user);
-        model.addAttribute("user", user);
+        httpSession.setAttribute("user", null);
+
+        List<Building> buildingProperty = salePropertyService.ShowProperty();
+        List<Building> buildingOldHouse = saleOldHouseService.ShowOldHouse();
+        List<Building> buildingRent = rentService.ShowRent();
+        List<Decoration> decorationList = decorationService.ShowDecorations();
+        Collections.reverse(buildingProperty);
+        Collections.reverse(buildingOldHouse);
+        Collections.reverse(buildingRent);
+        Collections.reverse(decorationList);
+
+        model.addAttribute("buildingProperty", buildingProperty);
+        model.addAttribute("buildingOldHouse", buildingOldHouse);
+        model.addAttribute("buildingRent", buildingRent);
+        model.addAttribute("decorationList", decorationList);
+
         return "index";
     }
 
     //跳往用户信息界面
-    @GetMapping("account/userCenter")
+    @GetMapping("/account/userCenter")
     public String GetUserInfo(HttpSession session) {
         User user = (User) session.getAttribute("user");
+        if (user == null)
+            return "account/login";
         //System.out.println(user.getUsername());
         return "account/userCenter";
     }
 
     //修改用户个人信息
-    @PostMapping("/user/update_information")
+    @PostMapping("/account/update_information")
 
     public String UpdateInfo(@Valid User user, Model model, HttpSession session) {
-        if (!user.getPw().equals("")) {
-            userService.UpdateUser(user);
-            model.addAttribute("user", user);
-            session.setAttribute("user", user);
 
-            return "";
-        } else {
-            return "";
-        }
+        System.out.println(user.getEmail() + "111");
+        User nowUser = (User) session.getAttribute("user");
+
+        user.setID(nowUser.getID());
+        userService.UpdateUser(user);
+        nowUser = userService.GetUserByUsername(nowUser.getUsername());
+        session.setAttribute("user", nowUser);
+        return "account/userCenter";
     }
 
 
