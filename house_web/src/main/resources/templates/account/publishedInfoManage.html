@@ -4,7 +4,7 @@
 </head>
 
 <!-- 暂时不用写，实在不能引用就快乐复制 -->
-<body>
+<body  class="user_center_background">
 <!--导航栏-->
 <nav th:replace="common/template_navbar::nav(99)"></nav>
 <!-- 这部分和用户中心一样，看看有什么方法可以引用 -->
@@ -13,8 +13,8 @@
     <!-- 头像 -->
     <!-- 用户名 -->
 </div>
-<div id="user_container">
-    <div id="user_nav">
+<div class="col-sm-offset-2 col-sm-10 user_container">
+    <div class="user_nav col-sm-2" style="padding: 0">
         <ul class="nav nav-pills nav-stacked">
             <li><a href="#">我的个人信息</a></li>
             <li><a href="#">我的收藏</a></li>
@@ -25,7 +25,7 @@
             <!--用户类型为开发商才有以下两项-->
             <li th:if="${session.user.getType()==2}"><a href="#newHouse" data-toggle="tab">楼盘</a></li>
             <li th:if="${session.user.getType()==2}"><a href="#decoration" data-toggle="tab">装修</a></li>
-            <li><a href="/account/publishedInfoManage">已发布信息</a></li>
+            <li><a href="/account/publishedInfoManage" class="active">管理已发布信息</a></li>
         </ul>
         <ul class="nav nav-pills nav-stacked">
             <li><a href="/help">意见反馈</a></li>
@@ -33,16 +33,18 @@
     </div>
 
     <!-- 准确地说，除了这个部分，其他都是一样的 -->
-    <div id="my_collections">
+    <div class="userinfo col-sm-6">
+        <p class="my_title">已发布信息管理</p>
+        <hr/>
         <!-- 标签页 -->
         <!-- 标签页头部 -->
         <ul id="myTab" class="nav nav-tabs">
             <!-- 如果是普通用户，没有楼盘和装修 -->
-            <li class="active"><a href="/account/addOldHouse">我要卖房</a></li>
-            <li><a href="/account/addRent">我要出租</a></li>
+            <li class="active"><a href="#oldHouse">二手房管理</a></li>
+            <li><a href="#rent">出租管理</a></li>
             <!--用户类型为开发商才有以下两项-->
-            <li th:if="${session.user.getType()==2}"><a href="/account/addProperty">发布楼盘</a></li>
-            <li th:if="${session.user.getType()==2}"><a href="/account/addDecoration">发布装修</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="#newHouse">楼盘管理</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="#decoration">装修管理</a></li>
         </ul>
         <!-- 分页内容 -->
         <div id="myTabContent" class="tab-content">
@@ -52,25 +54,26 @@
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
                 <div th:if="${buildingProperty != null}" th:each="property:${buildingProperty}" th:id="property_List">
-                    <div>
+                    <div class="result_item">
                         <!-- 预览图片 -->
-                        <img th:src="${property.getImg()}">
+                        <!--这里的跳转我不太清楚是哪一个-->
+                        <img class="item_img" th:src="${property.getImg()}">
                         <!-- 信息盒子 -->
-                        <div>
+                        <div class="item_info">
                             <!-- 标题 -->
-                            <h2 th:text="${property.getItemName()}"></h2>
+                            <p class="item_title" th:text="${property.getItemName()}"></p>
                             <!-- 地址 -->
-                            <p th:text="${property.getAddress()}"></p>
+                            <p class="item_address" th:text="${property.getAddress()}"></p>
                             <!-- 价格 -->
-                            <p th:text="${property.getPrice()}"></p>
+                            <p class="item_price" th:text="${property.getPrice()}"></p>
                         </div>
                     </div>
                     <!-- 删除和修改按钮 -->
-                    <div>
+                    <div class=" btns_manage ">
                         <a th:href="@{/account/viewProperty(itemName=${property.getItemName()})}"
-                           class="btn btn_yellow">修改</a>
+                           class="btn btn_yellow btn_manage">修改</a>
                         <a th:href="@{/account/deleteProperty(itemName=${property.getItemName()})}"
-                           class="btn btn_yellow">删除</a>
+                           class="btn btn_yellow btn_manage">删除</a>
                     </div>
                 </div>
             </div>
@@ -80,25 +83,25 @@
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
                 <div th:if="${buildingOldHouse != null}" th:each="oldHouse:${buildingOldHouse}" th:id="oldHouse_List">
-                    <div>
+                    <div class="result_item">
                         <!-- 预览图片 -->
-                        <img th:src="${oldHouse.getImg()}">
+                        <img class="item_img" th:src="${oldHouse.getImg()}">
                         <!-- 信息盒子 -->
-                        <div>
+                        <div  class="item_info">
                             <!-- 标题 -->
-                            <h2 th:text="${oldHouse.getItemName()}"></h2>
+                            <p class="item_title" th:text="${oldHouse.getItemName()}"></p>
                             <!-- 地址 -->
-                            <p th:text="${oldHouse.getAddress()}"></p>
+                            <p class="item_address" th:text="${oldHouse.getAddress()}"></p>
                             <!-- 价格 -->
-                            <p th:text="${oldHouse.getPrice()}"></p>
+                            <p class="item_price" th:text="${oldHouse.getPrice()}"></p>
                         </div>
                     </div>
                     <!-- 删除和修改按钮 -->
-                    <div>
+                    <div class=" btns_manage ">
                         <a th:href="@{/account/viewOldHouse(itemName=${oldHouse.getItemName()})}"
-                           class="btn btn_yellow">修改</a>
+                           class="btn btn_yellow btn_manage">修改</a>
                         <a th:href="@{/account/deleteOldHouse(itemName=${oldHouse.getItemName()})}"
-                           class="btn btn_yellow">删除</a>
+                           class="btn btn_yellow btn_manage">删除</a>
                     </div>
                 </div>
 
@@ -109,24 +112,24 @@
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
                 <div th:if="${buildingRent != null}" th:each="rent:${buildingRent}" th:id="rent_List">
-                    <div>
+                    <div class="result_item">
                         <!-- 预览图片 -->
-                        <img th:src="${rent.getImg()}">
+                        <img class="item_img" th:src="${rent.getImg()}">
                         <!-- 信息盒子 -->
-                        <div>
+                        <div class="item_info">
                             <!-- 标题 -->
-                            <h2 th:text="${rent.getItemName()}"></h2>
+                            <p class="item_title" th:text="${rent.getItemName()}"></p>
                             <!-- 地址 -->
-                            <p th:text="${rent.getAddress()}"></p>
+                            <p class="item_address" th:text="${rent.getAddress()}"></p>
                             <!-- 价格 -->
-                            <p th:text="${rent.getPrice()}"></p>
+                            <p lass="item_price" th:text="${rent.getPrice()}"></p>
                         </div>
                     </div>
                     <!-- 删除和修改按钮 -->
-                    <div>
-                        <a th:href="@{/account/viewRent(itemName=${rent.getItemName()})}" class="btn btn_yellow">修改</a>
+                    <div class=" btns_manage ">
+                        <a th:href="@{/account/viewRent(itemName=${rent.getItemName()})}" class="btn btn_yellow btn_manage">修改</a>
                         <a th:href="@{/account/deleteRent(itemName=${rent.getItemName()})}"
-                           class="btn btn_yellow">删除</a>
+                           class="btn btn_yellow btn_manage">删除</a>
                     </div>
                 </div>
             </div>
@@ -136,23 +139,23 @@
                 <!-- 要设置数量，由后端控制，前台给一个上限 -->
                 <!-- 没有结果放张图片吧 -->
                 <div th:if="${decorationList != null}" th:each="decoration:${decorationList}" th:id="decoration_List">
-                    <div>
+                    <div class="result_item">
                         <!-- 预览图片 -->
-                        <img th:src="${decoration.getImg()}">
+                        <img class="item_img" th:src="${decoration.getImg()}">
                         <!-- 信息盒子 -->
-                        <div>
+                        <div class="item_info">
                             <!-- 标题 -->
-                            <h2 th:text="${decoration.getCompany()}"></h2>
+                            <p class="item_title" th:text="${decoration.getCompany()}"></p>
                             <!-- 地址 -->
-                            <p th:text="${decoration.getAddress()}"></p>
+                            <p class="item_address" th:text="${decoration.getAddress()}"></p>
                         </div>
                     </div>
                     <!-- 删除和修改按钮 -->
-                    <div>
+                    <div class=" btns_manage ">
                         <a th:href="@{/account/viewDecoration(company=${decoration.getCompany()})}"
-                           class="btn btn_yellow">修改</a>
+                           class="btn btn_yellow btn_manage">修改</a>
                         <a th:href="@{/account/deleteDecoration(company=${decoration.getCompany()})}"
-                           class="btn btn_yellow">删除</a>
+                           class="btn btn_yellow btn_manage">删除</a>
                     </div>
                 </div>
             </div>

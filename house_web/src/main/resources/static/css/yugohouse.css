@@ -8,7 +8,7 @@ button.btn_yellow:hover { background-color: rgb(238,119,17); color: white}
 		  background-size: cover;
 		  background-attachment: fixed;
 		  width: 100%;
-		  height: 550px;
+		  height: 670px;
 		  position: fixed;
 		  top: -30px;
 		  left: 0;
@@ -17,7 +17,8 @@ button.btn_yellow:hover { background-color: rgb(238,119,17); color: white}
 		  display: flex;
 		  align-items: center;
 		}
-.banner_black { height: 550px; background-color: rgba(0,0,0,0.47); position: absolute; top:45px ; width: 100% }
+.banner_black { height: 670px; background-color: rgba(0,0,0,0.47); position: absolute; top:45px ; width: 100% }
+.nav_com {z-index: 98;}
 /*登录*/
 #login_background { background: url(../images/login03.jpg) no-repeat top center;
 					background-size: cover;
@@ -60,15 +61,18 @@ button#btn_register:hover { background-color: rgb(238,119,17);}
 
 /*主页*/
 .carosel_home { position: relative; top:-20px; }
-#banner_home { background-image: url(../images/banner01.jpg) }
-#search_container { height: 170px; width:70%; margin: 290px auto 0px; max-width: 700px; min-width: 450px }
-.search_option { color: #bbbbbb; font-weight: 800 }
-.search_form {  }
+#banner_home { background-image: url(../images/banner01.jpg);float: left;}
+#title_box { float: left; position: absolute; top: 255px; width: 100%; z-index: 10}
+#title { font-size: 70px; color: white; font-weight: 900; width:70%; margin: auto;  max-width: 700px; min-width: 450px;}
+.active_home { color: #ffffff; font-size: 18px; font-weight: 800; margin-right: 10px;}
+#search_container { height: 350px; width:70%; margin: 330px auto 0px; max-width: 700px; min-width: 450px }
+.search_option { color: #bbbbbb; font-weight: 800;margin-right: 10px; font-size: 16px;}
+#search_form {  }
 #keyword { display: inline; width: 80%; height: 55px }
 .btn_search { height: 55px; width: 19%; position: relative; left: -4px; top:-1px; }
 .row_grey{ background-color: #eeeeee; }
 .recommend_row { padding-top:100px; padding-bottom: 100px; }
-#partlist { padding-top: 80px; padding-bottom: 80px }
+#partlist { padding-top: 40px; padding-bottom: 80px }
 .part { height: 200px; box-shadow: 3px 3px 5px #bbbbbb; margin-right:2%; padding:5px 5px 43px 5px; background-color: white}
 .part_title { color:rgb(241,196,15); font-weight: 900; width:50px; margin: 10px auto 15px auto;}
 .part_info {height: 78px; padding:0px 10px; color: #777777;}
@@ -79,23 +83,32 @@ a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
 .my_thumbnail {}
 .price {float: right;}
 
+
 #foot { height: 300px; background-color:rgb(241,196,15); color: white}
 
 /*用户中心*/
 .user_center_background { background-color: #EEEEEE; }
-#user_top { height: 100px; background-color: white }
-#user_container {  }
-#user_nav { float: left; margin:20px 20px; background-color: white; padding:0;}
+.user_top { height: 100px; background-color: white }
+.user_container { min-width: 880px; max-width: 1100px }
+.user_nav { float: left; margin:20px 20px; background-color: white; padding:0; height: 540px; width: 13%}
 #userinfo { float: left; background-color: white; padding: 5px 30px 10px 15px; margin-top:20px;}
-.my_title { border-left: 4px solid rgb(241,196,15); padding-left: 10px   }
+.my_title { border-left: 4px solid rgb(241,196,15); padding-left: 10px;margin-top: 10px; font-size: 16px; color: rgb(241,196,15);}
 #userinfo_form { }
 #btn_change_info { width: 100px; height: 40px; font-weight: 600; margin-top: 10px }
 .active { background-color:rgb(241,196,15); }
+.black_all { top:0px; position: fixed; display: flex; justify-content: center; align-items: center;
+			height: 100%; width: 100%; background-color: rgba(0,0,0,0.5); z-index: 99;}
+#change_user_icon { background-color: white; }
+#remove { float: right; color: white; }
+#change_icon_title { color: white; background-color: rgb(241,196,15);}
+#user_icon_in_form { width: 350px; height: 350px; }
+.my_icon { height: 90px; width: 90px; }
 
 /*申请表单*/
 .apply_title { color: rgb(241,196,15); font-weight: 600; margin: auto; width: 150px; margin-top: 30px}
 .apply_form { margin-top: 40px; padding-left: 20px; }
 button.btn_apply { width: 200px; height: 45px; font-weight: 600; margin-top: 20px; font-size: 20px }
+#allmap {width: 300px; height: 300px; overflow: hidden;margin:0;font-family:"微软雅黑";}
 
 /*商品列表(部分重用)*/
 .search_box {width: 70%; height: 170px; background-color: #EEEEEE; margin: auto; min-width:650px }

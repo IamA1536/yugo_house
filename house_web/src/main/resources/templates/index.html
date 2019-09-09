@@ -11,7 +11,7 @@
 <nav th:replace="common/template_navbar::nav(0)"></nav>
 
 <!-- 轮播器是响应式的，不好与搜索框组合 -->
-<div>
+<div style="overflow: auto; width: 100%">
     <!-- 我不做轮播器啦，JOJO！！ -->
 
     <!-- 轮播器 -->
@@ -50,17 +50,20 @@
     <div id="banner_home" class="banner col-sm-12">
 
     </div>
+    <div id="title_box">
+    <p id="title">优购房</p>
+    </div>
 
     <div class="banner_black">
         <!-- 搜索框 -->
         <div id="search_container">
-            <ul class="list-inline search_option">
-                <li>买新房</li>
-                <li>买二手房</li>
-                <li>找租房</li>
-                <li>找装修</li>
+            <ul class="list-inline ">
+                <li id="search_new" class="active_home">买新房</li>
+                <li id="search_old" class="search_option">二手房</li>
+                <li id="search_rent" class="search_option">找租房</li>
+                <li id="search_decoration" class="search_option">找装修</li>
             </ul>
-            <form action="/search" method="post" class="search_form" role="form">
+            <form action="/search" method="post" id="search_form" role="form">
                 <input type="text" class="form-control" id="keyword" name="keyword" placeholder="请输入查找关键字">
                 <button type="submit" class="btn btn_search btn_yellow">搜索</button>
             </form>
@@ -299,5 +302,11 @@
 <div id="foot">
 
 </div>
+<!--<script>-->
+    <!--$(window).scroll(function () {-->
+        <!--if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");-->
+        <!--}else {$(".navbar-fixed-top").removeClass("top-nav");}-->
+    <!--})</script>-->
+<script type="text/javascript" src="/js/search.js"></script>
 </body>
 </html>
