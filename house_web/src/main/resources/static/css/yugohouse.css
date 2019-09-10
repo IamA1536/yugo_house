@@ -78,7 +78,7 @@ button#btn_register:hover { background-color: rgb(238,119,17);}
 .part_info {height: 78px; padding:0px 10px; color: #777777;}
 a.learn_more { color: white; border: none; background-color: rgb(241,196,15); float: right; margin-right: 10px }
 a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
-.recommend_title_block {height: 180px ;color: white; background-color: rgb(241,196,15); padding: 2px 10px; margin-right:  10%} 
+.recommend_title_block {height: 230px ;color: white; background-color: rgb(241,196,15); padding: 2px 10px; margin-right:  10%} 
 .recommend {margin-right:  10%;}
 .my_thumbnail {}
 .price {float: right;}

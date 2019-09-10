@@ -134,7 +134,7 @@
             <!-- 预览图片 -->
             <img th:if="${type != 4}"
                  th:href="@{/showItemInfo(ItemName=${item.getItemName()},type=${type})}"
-                 th:src="${item.getImg()}" class="item_img">
+                 src="/images/property1.jpg" class="item_img">
             <!-- 预览图片 -->
             <img th:if="${type == 4}"
                  th:href="@{/showItemInfo(ItemName=${item.getCompany()},type=${type})}"
