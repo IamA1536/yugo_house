@@ -16,13 +16,15 @@
     <span th:text="${session.user.getUsername()}" class="my_username">username</span>
 </div>
 
-<div class="col-sm-offset-2 col-sm-10 user_container">
-    <div class="user_nav col-sm-2" style="padding: 0">
-        <ul class="nav nav-pills nav-stacked">
+<div class="user_container">
+    <div class="user_nav " >
+        <p class="center_title">个人中心</p>
+        <hr/>
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="/account/userCenter">我的个人信息</a></li>
             <li class="active"><a href="/showusercollection">我的收藏</a></li>
         </ul>
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="/account/addOldHouse">我要卖房</a></li>
             <li><a href="/account/addRent">我要出租</a></li>
             <!--用户类型为开发商才有以下两项-->
@@ -30,7 +32,7 @@
             <li th:if="${session.user.getType()==2}"><a href="/account/addDecoration">发布装修</a></li>
             <li><a href="/account/publishedInfoManage">管理已发布信息</a></li>
         </ul>
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="#">意见反馈</a></li>
         </ul>
     </div>
@@ -38,7 +40,7 @@
 
     <!-- 准确地说，除了这个部分，其他都是一样的 -->
     <!-- 这个部分和商品列那里很像 -->
-    <div class="userinfo col-sm-6">
+    <div class="userinfo">
         <!-- 标签页 -->
         <!-- 标签页头部 -->
         <p class="my_title">我的收藏</p>

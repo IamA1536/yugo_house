@@ -13,38 +13,40 @@
     <!-- 头像 -->
     <!-- 用户名 -->
 </div>
-<div class="col-sm-offset-2 col-sm-10 user_container">
-    <div class="user_nav col-sm-2" style="padding: 0">
-        <ul class="nav nav-pills nav-stacked">
+<div class="user_container">
+    <div class="user_nav">
+        <p class="center_title">个人中心</p>
+        <hr/>
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="#">我的个人信息</a></li>
             <li><a href="#">我的收藏</a></li>
         </ul>
-        <ul class="nav nav-pills nav-stacked">
-            <li><a href="#oldHouse" data-toggle="tab">二手房</a></li>
-            <li><a href="#rent" data-toggle="tab">出租房</a></li>
+        <ul class="nav nav-pills nav-stacked nav_part">
+            <li><a href="#oldHouse" data-toggle="tab">我要卖房</a></li>
+            <li><a href="#rent" data-toggle="tab">我要出租</a></li>
             <!--用户类型为开发商才有以下两项-->
             <li th:if="${session.user.getType()==2}"><a href="#newHouse" data-toggle="tab">楼盘</a></li>
             <li th:if="${session.user.getType()==2}"><a href="#decoration" data-toggle="tab">装修</a></li>
             <li><a href="/account/publishedInfoManage" class="active">管理已发布信息</a></li>
         </ul>
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="/help">意见反馈</a></li>
         </ul>
     </div>
 
     <!-- 准确地说，除了这个部分，其他都是一样的 -->
-    <div class="userinfo col-sm-6">
+    <div class="userinfo">
         <p class="my_title">已发布信息管理</p>
         <hr/>
         <!-- 标签页 -->
         <!-- 标签页头部 -->
         <ul id="myTab" class="nav nav-tabs">
             <!-- 如果是普通用户，没有楼盘和装修 -->
-            <li class="active"><a href="#oldHouse">二手房管理</a></li>
-            <li><a href="#rent">出租管理</a></li>
+            <li class="active" data-toggle="tab"><a href="#oldHouse">二手房管理</a></li>
+            <li><a href="#rent" data-toggle="tab">出租管理</a></li>
             <!--用户类型为开发商才有以下两项-->
-            <li th:if="${session.user.getType()==2}"><a href="#newHouse">楼盘管理</a></li>
-            <li th:if="${session.user.getType()==2}"><a href="#decoration">装修管理</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="#newHouse" data-toggle="tab">楼盘管理</a></li>
+            <li th:if="${session.user.getType()==2}"><a href="#decoration" data-toggle="tab">装修管理</a></li>
         </ul>
         <!-- 分页内容 -->
         <div id="myTabContent" class="tab-content">

@@ -14,16 +14,15 @@
     <!-- 用户名 -->
     <span th:text="${session.user.getUsername()}" class="my_username">username</span>
 </div>
-<div class="col-sm-offset-2 col-sm-10 user_container">
+<div class=" user_container">
     <div class="user_nav">
-        <p style="padding: 10px 10px 0 0">个人中心</p>
+        <p class="center_title">个人中心</p>
         <hr/>
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li class="active"><a href="#">我的个人信息</a></li>
             <li><a href="/showusercollection">我的收藏</a></li>
         </ul>
-        <hr/>
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="/account/addOldHouse">我要卖房</a></li>
             <li><a href="/account/addRent">我要出租</a></li>
             <!--用户类型为开发商才有以下两项-->
@@ -31,13 +30,12 @@
             <li th:if="${session.user.getType()==2}"><a href="/account/addDecoration">发布装修</a></li>
             <li><a href="/account/publishedInfoManage">管理已发布信息</a></li>
         </ul>
-        <hr/>
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="/help">意见反馈</a></li>
         </ul>
     </div>
 
-    <div class="userinfo col-sm-6">
+    <div class="userinfo">
         <p class="my_title">我的信息</p>
         <hr/>
         <form th:action="@{/account/update_information}" method="post" class="form-horizontal" id="userinfo_form"

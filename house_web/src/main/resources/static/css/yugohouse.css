@@ -89,13 +89,13 @@ a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
 /*用户中心*/
 .user_center_background { background-color: #EEEEEE; }
 .user_top { height: 100px; background-color: white }
-.user_container { min-width: 880px; max-width: 1100px }
-.user_nav { float: left; margin:20px 20px; background-color: white; padding:0; height: 540px; width: 13%}
-#userinfo { float: left; background-color: white; padding: 5px 30px 10px 15px; margin-top:20px;}
+.user_container { min-width: 880px; max-width: 1100px; width: 80%; margin: auto; }
+.user_nav { text-align: center; float: left; margin:20px 20px; background-color: white; padding:0; height: 540px; width: 15%}
+.userinfo { width: 80%; float: left; background-color: white; padding: 5px 30px 10px 15px; margin-top:20px;}
 .my_title { border-left: 4px solid rgb(241,196,15); padding-left: 10px;margin-top: 10px; font-size: 16px; color: rgb(241,196,15);}
-#userinfo_form { }
+#userinfo_form {}
 #btn_change_info { width: 100px; height: 40px; font-weight: 600; margin-top: 10px }
-.active { background-color:rgb(241,196,15); }
+.active { background-color:rgb(241,196,15); color: white}
 .black_all { top:0px; position: fixed; display: flex; justify-content: center; align-items: center;
 			height: 100%; width: 100%; background-color: rgba(0,0,0,0.5); z-index: 99;}
 #change_user_icon { background-color: white; }
@@ -103,6 +103,8 @@ a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
 #change_icon_title { color: white; background-color: rgb(241,196,15);}
 #user_icon_in_form { width: 350px; height: 350px; }
 .my_icon { height: 90px; width: 90px; }
+.center_title { padding: 17px 8px 0 0; font-weight: 600; font-size: 16px; color: #777777; }
+.nav_part { border-bottom: 1px solid #EEEEEE; padding-bottom: 5px;}
 
 /*申请表单*/
 .apply_title { color: rgb(241,196,15); font-weight: 600; margin: auto; width: 150px; margin-top: 30px}
@@ -111,11 +113,14 @@ button.btn_apply { width: 200px; height: 45px; font-weight: 600; margin-top: 20p
 #allmap {width: 300px; height: 300px; overflow: hidden;margin:0;font-family:"微软雅黑";}
 
 /*商品列表(部分重用)*/
-.search_box {width: 70%; height: 170px; background-color: #EEEEEE; margin: auto; min-width:650px }
+.search_box {width: 70%; background-color: #EEEEEE; margin: auto; min-width:650px; overflow: auto; }
+.search_in_list { padding: 10px 10px 10px; margin: 10px 10px; height: 45px }
+.btn_search_in_list { width: 80px; height: 45px; }
+.type_box { margin: 20px 20px; overflow: auto;}
 .result {font-weight: 700}
 .results_count { color: rgb(241,196,15); }
 .result_list {width: 60%; margin: auto; position: relative; left: -5%; min-width:650px }
-.result_item { border: 1px solid #cccccc; height: 260px; margin-bottom: 20px; margin-top: 20px; padding: 20px 20px  }
+.result_item { overflow: auto; width: 100%; border: 1px solid #cccccc; margin-bottom: 20px; margin-top: 20px; padding: 20px 20px}
 .item_img {float: left; width: 20%}
 .item_info {float: left; width: 70% ; margin-left: 30px}
 a.item_title {color: rgb(0,0,0); font-size: 18px; font-weight: 900}
