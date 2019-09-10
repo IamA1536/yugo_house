@@ -61,7 +61,9 @@
 
             <!-- 联系人及联系方式 -->
             <span th:text="${username}" class="info_contact"></span>
-            <span th:text="${tele}" class="info_tele">联系方式</span>
+            <div>
+            <span class="glyphicon glyphicon-earphone" style="color: rgb(241,196,15);"></span><span th:text="${tele}" class="info_tele">联系方式</span>
+            </div>
 
             <hr/>
             <!-- 收藏按钮 -->
@@ -75,7 +77,7 @@
                     class="btn btn_yellow btn_collection"> + 添加收藏
             </button>
             <!--预约按钮-->
-            <button class="btn btn_yellow btn_collection" th:if="${type != 4 }" >预约看房</button>
+            <button class="btn btn_yellow btn_collection" th:if="${type != 4 }">预约看房</button>
         </div>
 
     </div>
@@ -96,47 +98,54 @@
         <!-- 把后台传来的数据以键（label）值（span）状态显示 -->
         <!--这里因为缺乏沟通引发了误会，但既然有item应该问题不大，大不了写三个再用if判断...-->
         <div class="all_info">
-            <ul th:if="${type == 1 || type==2}">
-                <li><label>房屋售价</label></li>
-                <li><label>装修状况</label></li>
-                <li><label>地理位置</label></li>
-                <li th:if="${type == 2}"><label>房屋面积</label></li>
+            <!--楼盘或二手-->
+            <ul th:if="${type == 1 || type==2}" class="list-inline item_ul">
+                <li><label>房屋售价</label>暂无数据</li>
+                <li><label>装修状况</label>暂无数据</li>
+                <li><label>地理位置</label>暂无数据</li>
+                <li th:if="${type == 2}"><label>房屋面积</label>暂无数据</li>
                 <li><label>建筑结构</label>钢混结构</li>
                 <li><label>交易权属</label>商品房</li>
                 <li><label>房屋用途</label>普通住宅</li>
                 <li><label>产权所属</label>非共有</li>
                 <li><label>产权年限</label>70年</li>
             </ul>
-            <p>注：房源所示“房屋用途、交易权属、建成年代、产权年限、建筑结构”仅供参考，购房时请以房本信息为准。</p>
-            <!-- 二手或出租 -->
-                <ul th:if="${type == 2}">
-                    <li><label>房屋售价</label></li>
-                    <li><label>装修状况</label></li>
-                    <li><label>地理位置</label></li>
-                    <li><label>建筑结构</label>钢混结构</li>
-                    <li><label>交易权属</label>商品房</li>
-                    <li><label>房屋用途</label>普通住宅</li>
-                    <li><label>产权所属</label>非共有</li>
-                    <li><label>产权年限</label>70年</li>
-                </ul>
-                <p>注：房源所示“房屋用途、交易权属、建成年代、产权年限、建筑结构”仅供参考，购房时请以房本信息为准。</p>
-            </div>
+            <!-- 出租 -->
+            <ul th:if="${type == 3}" class="list-inline item_ul">
+                <li><label>出租价格</label>暂无数据</li>
+                <li><label>装修状况</label>暂无数据</li>
+                <li><label>地理位置</label>暂无数据</li>
+                <li><label>建筑结构</label>钢混结构</li>
+                <li><label>水电供应</label>齐全</li>
+                <li><label>房屋用途</label>普通住宅</li>
+                <li><label>产权所属</label>非共有</li>
+                <li><label>产权年限</label>70年</li>
+            </ul>
+            <p th:if="${type != 4}">注：房源所示“房屋用途、交易权属、建成年代、产权年限、建筑结构”仅供参考，购房时请以房本信息为准。</p>
+            <!-- 装修 -->
+            <ul th:if="${type == 4}" class="list-inline item_ul_decoration">
+                <li><label>公司位置</label>暂无数据</li>
+                <li><label>营业时间</label>早上9点-晚上10点</li>
+                <li><label>实景展示厅体验</label>5000㎡实景展示厅</li>
+                <li><label>装修免息分期</label>中国银行提供3年免息分期</li>
+                <li><label>投诉快速响应</label>用户投诉问题后，承诺1小时内有响应，24小时内解决</li>
+                <li><label>免费甲醛检测</label>省疾控中心、湖南省室内环境提供免费专业检测</li>
+            </ul>
         </div>
-
-
-
-
-        <div class="invisible" style="float: left">
-            <!--后端传值过来，js取到值显示出来-->
-            <p id="bdPosition" name="bdPosition"><span id="bdPositionX"></span>,<span id="dbPositionY"></span></p>
-        </div>
-        <hr/>
-        <!-- 百度地图 -->
-        <!--百度地图需要传值给js，而信息录入页面也还需要定位-->
-        <h2 class="info_label">周边信息</h2>
-        <br/>
-        <div id="baidu_map"></div>
     </div>
+
+
+    <div class="invisible" style="float: left">
+        <!--后端传值过来，js取到值显示出来-->
+        <p id="bdPosition" name="bdPosition"><span id="bdPositionX"></span>,<span id="dbPositionY"></span></p>
+    </div>
+    <hr/>
+    <!-- 百度地图 -->
+    <!--百度地图需要传值给js，而信息录入页面也还需要定位-->
+    <h2 class="info_label">周边信息</h2>
+    <br/>
+    <div id="baidu_map"></div>
+</div>
 </div>
 </body>
 
