@@ -1,17 +1,17 @@
-$(document).ready(function () {
+$(document).ready(function(){
     //隐藏修改头像框
     $(".black_all").hide();
     //点击修改头像
-    $(".my_icon").on("click", function () {
-        //    显示修改头像框
+    $(".my_icon").on("click",function () {
+    //    显示修改头像框
         $(".black_all").show();
     });
 
     //选择图片，头像预览改变
-    $("#choose_user_icon").on("change", function () {
-        var fileTypes = [".jpg", ".png"];
+    $("#choose_user_icon").on("change",function(){
+        var fileTypes = [".jpg",".png"];
         var filePath = this.value;
-        if (filePath) {
+        if(filePath) {
             //获取文件
             var file = $("#user_icon_form").find("input")[0].files[0];
 
@@ -36,8 +36,8 @@ $(document).ready(function () {
         //         alert('请选择图片，类型为jpg或png');
         //         file.value = '';
         // }
-        else {
-            alert('请选择图片，类型为jpg或png');
+        else{
+             alert('请选择图片，类型为jpg或png');
         }
     });
 //    点击提交隐藏遮罩和修改头像框，直接在前端改变头像
@@ -49,7 +49,7 @@ $(document).ready(function () {
         $(".black_all").hide();
     });
 
-    $("#remove").on("click", function () {
+    $("#remove").on("click",function () {
         $(".black_all").hide();
     });
 });

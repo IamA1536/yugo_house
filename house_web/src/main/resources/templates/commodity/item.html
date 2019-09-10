@@ -67,6 +67,8 @@
                     th:href="@{/addToCollection(ItemName=${item.getCompany()})}"
                     class="btn btn_yellow collection"> + 添加收藏
             </button>
+            <!--预约按钮-->
+            <button class="btn btn_yellow btn_collection" th:if="${type != 4 }">预约看房</button>
         </div>
     </div>
 
@@ -90,7 +92,7 @@
         <label for="bdPosition" class="col-sm-2 control-label invisible">地理坐标</label>
         <div class="invisible" style="float: left">
             <!--后端传值过来，js取到值显示出来-->
-            <p id="bdPosition" name="bdPosition"><span id="bdPositionX"></span>,<span id="dbPositionY"></span></p>
+            <p id="bdPosition" name="bdPosition"><span id="bdPositionX" th:value="${item.getLocationX()}"></span>,<span id="dbPositionY" th:value="${item.getLocationY()}"></span></p>
         </div>
         <hr/>
         <!-- 百度地图 -->
@@ -99,7 +101,6 @@
         <br/>
         <div id="baidu_map"></div>
         <h2 class="info_label">周边信息</h2>
-        <div id="baidu_map"></div>
     </div>
 </div>
 </body>

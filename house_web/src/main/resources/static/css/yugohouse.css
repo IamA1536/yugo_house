@@ -78,10 +78,11 @@ button#btn_register:hover { background-color: rgb(238,119,17);}
 .part_info {height: 78px; padding:0px 10px; color: #777777;}
 a.learn_more { color: white; border: none; background-color: rgb(241,196,15); float: right; margin-right: 10px }
 a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
-.recommend_title_block {height: 180px ;color: white; background-color: rgb(241,196,15); padding: 2px 10px; margin-right:  10%} 
+.recommend_title_block {height: 230px ;color: white; background-color: rgb(241,196,15); padding: 2px 10px; margin-right:  10%} 
 .recommend {margin-right:  10%;}
 .my_thumbnail {}
 .price {float: right;}
+.home_item_title { font-size: 16px; font-weight: 700 }
 
 
 #foot { height: 300px; background-color:rgb(241,196,15); color: white}
@@ -110,7 +111,7 @@ a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
 .apply_title { color: rgb(241,196,15); font-weight: 600; margin: auto; width: 150px; margin-top: 30px}
 .apply_form { margin-top: 40px; padding-left: 20px; }
 button.btn_apply { width: 200px; height: 45px; font-weight: 600; margin-top: 20px; font-size: 20px }
-#allmap {width: 300px; height: 300px; overflow: hidden;margin:0;font-family:"微软雅黑";}
+#allmap {width: 300px; height: 300px; overflow: hidden; margin:0;font-family:"微软雅黑";}
 
 /*商品列表(部分重用)*/
 .search_box {width: 70%; background-color: #EEEEEE; margin: auto; min-width:650px; overflow: auto; }
@@ -119,24 +120,34 @@ button.btn_apply { width: 200px; height: 45px; font-weight: 600; margin-top: 20p
 .type_box { margin: 20px 20px; overflow: auto;}
 .result {font-weight: 700}
 .results_count { color: rgb(241,196,15); }
-.result_list {width: 60%; margin: auto; position: relative; left: -5%; min-width:650px }
+.result_list {width: 60%; margin: auto; position: relative; left: -5%; min-width:650px; }
 .result_item { overflow: auto; width: 100%; border: 1px solid #cccccc; margin-bottom: 20px; margin-top: 20px; padding: 20px 20px}
-.item_img {float: left; width: 20%}
-.item_info {float: left; width: 70% ; margin-left: 30px}
-a.item_title {color: rgb(0,0,0); font-size: 18px; font-weight: 900}
-a.item_title:hover { color: rgb(241,196,15); text-decoration: none }
+.item_img {float: left; width: 20%;}
+.item_info {float: left; width: 70% ; margin-left: 30px;}
+a.item_title {color: rgb(0,0,0); font-size: 18px; font-weight: 900;}
+a.item_title:hover { color: rgb(241,196,15); text-decoration: none; }
+
 
 /*商品详情页*/
-#info_container { width: 70%; min-width:1100px; margin: auto;}
+#info_container { width: 70%; min-width:1300px; margin: auto;}
 #info_pic_box { float: left;}
 .info_pic { height: 500px;}
 #info_box { float: left; width: 700px; height: 500px; margin-left: 30px;}
-.ifo_title { font-weight: 700; }
+.info_title { font-weight: 700; }
 .info_price { font-size:40px; font-weight: 900; color: #E6421A;  }
 .info_address { font-size: 18px; font-weight: 800;  display: block;}
 .info_contact { font-size: 22px; font-weight: 900; display: block;}
-.info_tele { font-size: 22px; color: rgb(241,196,15); display: block; }
-.btn_collection { float: right; display: block;}
+.info_tele { font-size: 22px; color: rgb(241,196,15); }
+.btn_collection { float: right; width: 120px; height: 45px; margin-right: 20px}
 #info_important {height: 500px;}
 #info_others { position: relative; }
+.all_info { margin-left: 20px; }
+.info_label { padding-left: 8px ; border-left: 4px solid rgb(241,196,15); margin-bottom: 20px; }
+.item_ul { width: 700px; margin-top: 5px; margin-bottom: 20px;}
+ul.item_ul li{ width: 300px; margin-top: 3px; margin-bottom: 3px;  }
+ul.item_ul li label{ width: 100px; color: #777777; }
+.item_ul_decoration { width: 700px; margin-top: 5px; margin-bottom: 20px;}
+ul.item_ul_decoration li{ width: 100%; margin-top: 3px; margin-bottom: 3px;}
+ul.item_ul_decoration li label{ width: 150px; color: #777777; }
+.info_in_item { min-height: 130px; border: 2px solid #EEEEEE; padding: 20px; width: 70%;margin-left: 10px; }
 #baidu_map {width: 400px;height: 300px;overflow: hidden;margin:0;font-family:"微软雅黑";}
