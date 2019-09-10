@@ -3,7 +3,7 @@
 <mapper namespace="org.csu.sfteam.house.biz.mapper.BuildingMapper">
 
     <insert id="insertBuilding">
-        insert into building (ID, type, itemName, price, img, itemFrom, info, address, decStatus)
+        insert into building (ID, type, itemName, price, img, itemFrom, info, address, decStatus, LocationX, LocationY)
         values (#{ID},
                 #{type},
                 #{itemName},
@@ -12,7 +12,9 @@
                 #{itemFrom},
                 #{info},
                 #{address},
-                #{decStatus});
+                #{decStatus},
+                #{LocationX},
+                #{LocationY});
     </insert>
 
     <insert id="insertProperty">
@@ -58,6 +60,12 @@
             <if test="decStatus != null">
                 decStatus = #{decStatus}
             </if>
+            <if test="LocationX != null">
+                LocationX = #{LocationX}
+            </if>
+            <if test="LocationY != null">
+                LocationY = #{LocationY}
+            </if>
         </set>
         where ID = #{ID}
     </update>
@@ -92,6 +100,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                property_building.saleStatus
         from building,
              property_building
@@ -110,6 +120,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -128,6 +140,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -146,6 +160,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                property_building.saleStatus
         from building,
              property_building
@@ -164,6 +180,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -182,6 +200,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -200,6 +220,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                property_building.saleStatus
         from building,
              property_building
@@ -218,6 +240,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -236,6 +260,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -254,6 +280,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                property_building.saleStatus
         from building,
              property_building
@@ -270,6 +298,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -287,6 +317,8 @@
                building.info,
                building.address,
                building.decStatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -303,6 +335,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                property_building.saleStatus
         from building,
              property_building
@@ -320,6 +354,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -338,6 +374,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -356,6 +394,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -375,6 +415,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -393,6 +435,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                property_building.saleStatus
         from building,
              property_building
@@ -410,6 +454,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -428,6 +474,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -445,6 +493,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent
@@ -463,6 +513,8 @@
                building.info,
                building.address,
                building.decstatus,
+               building.LocationX,
+               building.LocationY,
                rent.area
         from building,
              rent

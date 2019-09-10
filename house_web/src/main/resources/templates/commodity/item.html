@@ -87,11 +87,17 @@
 
         <!-- 百度地图 -->
         <!--百度地图需要传值给js，而信息录入页面也还需要定位-->
-        <label for="bdPosition" class="col-sm-2 control-label invisible" >地理坐标</label>
-        <div class="col-sm-10  invisible">
+        <label for="bdPosition" class="col-sm-2 control-label invisible">地理坐标</label>
+        <div class="invisible" style="float: left">
             <!--后端传值过来，js取到值显示出来-->
-            <p class="form-control-static" id="bdPosition" name="bdPosition"></p>
+            <p id="bdPosition" name="bdPosition"><span id="bdPositionX"></span>,<span id="dbPositionY"></span></p>
         </div>
+        <hr/>
+        <!-- 百度地图 -->
+        <!--百度地图需要传值给js，而信息录入页面也还需要定位-->
+        <h2 class="info_label">周边信息</h2>
+        <br/>
+        <div id="baidu_map"></div>
         <h2 class="info_label">周边信息</h2>
         <div id="baidu_map"></div>
     </div>

@@ -132,11 +132,11 @@
         <!--更换头像的标题和叉-->
         <div id="change_icon_title">更换头像 <span class="glyphicon glyphicon-remove" id="remove"></span></div>
         <!--显示当前头像(从account中取),选择图片后改变(js)-->
-        <img id="user_icon_in_form" th:src="${session.user.getIcon()}">
+        <img id="user_icon_in_form" th:src="${user.getIcon()}">
         <!--表单-->
-        <form id="user_icon_form">
+        <form id="user_icon_form" th:action="@{/account/update_icon}" method="post" class="form-horizontal" enctype="multipart/form-data">
             <!--选择图片按钮-->
-            <input type="file" id="choose_user_icon">
+            <input type="file" id="choose_user_icon" name="file">
             <!--提交按钮-->
             <button type="submit" class="btn btn_yellow" id="submit_icon">提交</button>
         </form>

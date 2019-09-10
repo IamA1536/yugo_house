@@ -12,13 +12,13 @@
 <div class="search_box">
     <!-- 搜索框 -->
     <div style="overflow: auto">
-        <form class="bs-example bs-example-form search_in_list" role="form">
+        <form th:action="@{/search(type=${type})}" method="post" class="bs-example bs-example-form search_in_list" role="form">
             <div class="row">
                 <div class="col-lg-6">
                     <div class="input-group">
-                        <input type="text" class="form-control search" style="height: 45px">
+                        <input name="keyword" type="text" class="form-control search" style="height: 45px">
                         <span class="input-group-btn">
-							<button class="btn btn-default btn_yellow btn_search_in_list" type="button">
+							<button class="btn btn-default btn_yellow btn_search_in_list" type="submit">
 								搜索
 							</button>
 						</span>

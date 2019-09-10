@@ -1,0 +1,55 @@
+
+#test-n2 {
+	position: relative;
+	min-height: 100px !important;
+	width: 100% !important;
+}
+
+#test-n2  #layui-laydate1,#test-n2  #layui-laydate1 .layui-laydate-main,#test-n2 .layui-laydate-content table{
+	width: 100%;
+}
+
+#test-n2 .layui-laydate-content table tbody{
+	height:calc(100vh - 240px)!important;
+}
+.text_box{
+	padding: 5px !important;
+}
+
+
+
+
+#test-n3 {
+	position: relative;
+	min-height: 400px !important;
+	width: 100% !important;
+}
+
+#layui-laydate1{
+	width: 100% !important;
+}
+#test-n3  #layui-laydate1 .layui-laydate-main{
+	width:50%;
+}
+
+#test-n3  #layui-laydate1 .layui-laydate-main table{
+	width: 100% !important;
+}
+#test-n3 .layui-laydate-content table tbody{
+	height:calc(100vh - 240px)!important;
+}
+
+
+
+
+.laydate-day-mark.hide{ /**回复原状删除display即可**/
+		display: none;
+}
+.laydate-day-mark.center{
+		display: flex;
+		display: -webkit-flex;
+		/**回复原状添加display：none即可**/
+}
+.laydate-day-mark.center span{
+		margin: auto
+}

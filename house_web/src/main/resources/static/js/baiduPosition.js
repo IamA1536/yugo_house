@@ -9,7 +9,8 @@ geolocation.getCurrentPosition(function(r){
         var mk = new BMap.Marker(r.point);
         map.addOverlay(mk);
         map.panTo(r.point);
-        $("#bdPosition").text( r.point.lng+','+r.point.lat );
+        $("#bdPositionX").val( r.point.lng);
+        $("#bdPositionY").val(r.point.lat);
     }
     else {
         alert('failed'+this.getStatus());

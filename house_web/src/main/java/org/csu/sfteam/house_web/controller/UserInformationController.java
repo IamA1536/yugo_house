@@ -34,7 +34,6 @@ public class UserInformationController {
     private SaleOldHouseService saleOldHouseService;
     @Autowired
     private RentService rentService;
-
     /**
      * 共有 上传 修改 查看 删除
      * 楼盘的函数
@@ -64,6 +63,8 @@ public class UserInformationController {
         building.setItemFrom(user.getID());
         building.setType(1);
         building.setID(ID);
+        System.out.println("kksk"+building.getLocationX());
+        System.out.println("kksk"+building.getLocationY());
         //文件传输
         if (file != null) {
             if (file.isEmpty()) {
@@ -210,6 +211,8 @@ public class UserInformationController {
         int ID = (4 * 1000000) + (int) (Math.random() * 9 + 1) * 100000;
         decoration.setItemFrom((int) user.getID());
         decoration.setID(ID);
+        System.out.println(decoration.getLocationX());
+        System.out.println(decoration.getLocationY());
         if (file != null) {
             if (file.isEmpty()) {
                 System.out.println("文件为空");

@@ -38,6 +38,33 @@ public class itemsController {
     @Autowired
     private DecorationService decorationService;
 
+    @PostMapping("/search")
+    public String search(@RequestParam("type") int type, String keyword, Model model) {
+        if (type == 1) {
+            List<Building> buildingList = salePropertyService.SearchPropertyByKeyword(keyword);
+            model.addAttribute("type", 1);
+            model.addAttribute("itemList", buildingList);
+            model.addAttribute("count", buildingList.size());
+
+        } else if (type == 2) {
+            List<Building> buildingList = saleOldHouseService.SearchOldHouseListByKeyword(keyword);
+            model.addAttribute("type", 2);
+            model.addAttribute("itemList", buildingList);
+            model.addAttribute("count", buildingList.size());
+        } else if (type == 3) {
+            List<Building> buildingList = rentService.SearchRentListByKeyword(keyword);
+            model.addAttribute("type", 3);
+            model.addAttribute("itemList", buildingList);
+            model.addAttribute("count", buildingList.size());
+        } else if (type == 4) {
+            List<Decoration> decorationList = decorationService.GetDecorationListByKeywords(keyword);
+            model.addAttribute("type", 4);
+            model.addAttribute("itemList", decorationList);
+            model.addAttribute("count", decorationList.size());
+        }
+        return "commodity/itemList";
+    }
+
     @GetMapping("/showProperty")
     public String showProperty(Model model) {
         List<Building> buildingList = salePropertyService.ShowProperty();

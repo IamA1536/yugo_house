@@ -15,6 +15,9 @@ public class Building_standard {
     private String info;
     private String address;
     private int decStatus;
+    private String LocationX;
+    private String LocationY;
+
 
     public Building_standard() {
 
@@ -30,6 +33,8 @@ public class Building_standard {
         this.itemName = building.getItemName();
         this.price = building.getPrice();
         this.type = building.getType();
+        this.LocationX = building.getLocationX();
+        this.LocationY = building.getLocationY();
     }
 
     public long getID() {
@@ -102,5 +107,21 @@ public class Building_standard {
 
     public void setDecStatus(int decStatus) {
         this.decStatus = decStatus;
+    }
+
+    public String getLocationX() {
+        return LocationX;
+    }
+
+    public void setLocationX(String locationX) {
+        LocationX = locationX;
+    }
+
+    public String getLocationY() {
+        return LocationY;
+    }
+
+    public void setLocationY(String locationY) {
+        LocationY = locationY;
     }
 }

@@ -15,6 +15,8 @@ public class Decoration {
     private String info;
     private int style;
     private String link;
+    private String LocationX;
+    private String LocationY;
 
     public Decoration() {
 
@@ -90,5 +92,21 @@ public class Decoration {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public String getLocationX() {
+        return LocationX;
+    }
+
+    public void setLocationX(String locationX) {
+        LocationX = locationX;
+    }
+
+    public String getLocationY() {
+        return LocationY;
+    }
+
+    public void setLocationY(String locationY) {
+        LocationY = locationY;
     }
 }

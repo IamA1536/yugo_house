@@ -51,7 +51,7 @@
 
     </div>
     <div id="title_box">
-    <p id="title">优购房</p>
+        <p id="title">优购房</p>
     </div>
 
     <div class="banner_black">
@@ -63,7 +63,7 @@
                 <li id="search_rent" class="search_option">找租房</li>
                 <li id="search_decoration" class="search_option">找装修</li>
             </ul>
-            <form action="/search" method="post" id="search_form" role="form">
+            <form th:action="@{/search(type=${type})}" method="post" id="search_form" role="form">
                 <input type="text" class="form-control" id="keyword" name="keyword" placeholder="请输入查找关键字">
                 <button type="submit" class="btn btn_search btn_yellow">搜索</button>
             </form>
@@ -303,10 +303,10 @@
 
 </div>
 <!--<script>-->
-    <!--$(window).scroll(function () {-->
-        <!--if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");-->
-        <!--}else {$(".navbar-fixed-top").removeClass("top-nav");}-->
-    <!--})</script>-->
+<!--$(window).scroll(function () {-->
+<!--if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");-->
+<!--}else {$(".navbar-fixed-top").removeClass("top-nav");}-->
+<!--})</script>-->
 <script type="text/javascript" src="/js/search.js"></script>
 </body>
 </html>

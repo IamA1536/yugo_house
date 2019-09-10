@@ -1,55 +1,67 @@
 package org.csu.sfteam.house_web.controller;
 
-import org.csu.sfteam.house.biz.service.AdminService;
-import org.csu.sfteam.house.biz.service.UserService;
+import org.csu.sfteam.house.biz.service.*;
 import org.csu.sfteam.house.common.model.account.User;
+import org.csu.sfteam.house.common.model.items.Building;
+import org.csu.sfteam.house.common.model.items.Decoration;
 import org.csu.sfteam.house.common.model.utils.Admin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-@RestController
+@Controller
 public class AdminController {
 
     @Autowired
     private AdminService adminService;
     @Autowired
     private UserService userService;
+    @Autowired
+    private SalePropertyService salePropertyService;
+    @Autowired
+    private DecorationService decorationService;
+    @Autowired
+    private SaleOldHouseService saleOldHouseService;
+    @Autowired
+    private RentService rentService;
 
-    //进行管理员的登录
-    @PostMapping("/admin/login")
-    public String LoginAdmin(HttpServletRequest req, HttpSession session) {
-        String userID = req.getParameter("userID");
-        System.out.println("username" + userID);
-        String password = req.getParameter("password");
-        System.out.println("password" + password);
-
-        Admin admin = adminService.getAdminByUserIDAndPassword(userID, password);
-        return "admin";
-
+    @GetMapping("/usersList")
+    public String viewUsers(){
+        return "admin/user/usersList";
     }
-
+    @GetMapping("/buildingsList")
+    public String viewBuildings(){
+        return "admin/user/buildingsList";
+    }
+//    @GetMapping("/usersList")
+//    public String viewOldHouses(){
+//        return "admin/user/List";
+//    }
+    @GetMapping("/rentsList")
+    public String viewRent(){
+        return "admin/user/rentsList";
+    }
+    @GetMapping("/decorateList")
+    public String viewDecorate(){
+        return "admin/user/decorateList";
+    }
     /**
      * 用户功能
-     * 展示 添加 修改 删除
+     * 展示  删除
      */
     //跳转到用户展示页面，展示所有用户
-    @RequestMapping("/admin/viewAllUser")
-    public String ViewAllUser() {
-        List<User> userList = userService.showUser();
-        return "userList";
+    @GetMapping("/admin/background")
+    public String ViewAll() {
+        System.out.println("background");
+        return "/admin/background";
     }
-
-    //进行用户的删除
-    public String DeleteUser() {
-        return "";
-    }
-
 }
+

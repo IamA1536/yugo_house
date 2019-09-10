@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--layui后台管理模板 2.0</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<!--easyui-->
+	<script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="js/easyui/themes/color.css" media="all">
+	<link rel="stylesheet" type="text/css" href="js/easyui/demo/demo.css" media="all">
+	<link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css" media="all">
+
+	<link rel="stylesheet" type="text/css" href="css/background.css" media="screen">
+	<script type="text/javascript" src="js/buildingsList.js"></script>
+
+</head>
+<body class="childrenBody">
+<table id="dg" title="My Buildings" class="easyui-datagrid" style="border-spacing: 0;width:100%;height:100%;"
+	   url="get_buildings"
+	   toolbar="#toolbar"
+	   pagination="true"
+	   rownumbers="true" fitColumns="true" singleSelect="true">
+	<thead>
+	<tr>
+		<th field="ck" width="20" checkbox="true"></th>
+		<th field="ID" width="50">编号</th>
+		<th field="itemName" width="50">商品名</th>
+		<th field="buildingID" width="50">房产序列号</th>
+		<th field="saleStatus" width="50">销售状态</th>
+		<th field="price" width="50">商品价格</th>
+		<th field="img" width="50">商品图片链接</th>
+		<th field="itemFrom" width="50">供应商ID</th>
+		<th field="info" width="50">商品介绍</th>
+		<th field="address" width="50">楼盘地址</th>
+		<th field="decStatus" width="50">装修状况</th>
+	</tr>
+	</thead>
+	<tr>
+		<td></td>
+		<td>January</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+	</tr>
+</table>
+<div id="toolbar">
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newBuilding()">New Building</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editBuilding()">Edit Building</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyBuilding()">Remove Building</a>
+</div>
+<!--用户对话框-->
+<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+	 closed="true" buttons="#dlg-buttons">
+	<div class="ftitle" style="font-size: 20px;font-weight: bold">User Information</div><br/>
+	<form id="fm" method="post" novalidate>
+		<div class="fitem">
+			<label>编号  :</label>
+			<input name="id" class="easyui-textbox" required="true" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>商品名  :</label>
+			<input name="itemName" class="easyui-textbox" required="true" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>房产序列号  :</label>
+			<input name="buildingID" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>销售状态  :</label>
+			<input name="saleStatus" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>商品价格  :</label>
+			<input name="price" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>商品图片链接  :</label>
+			<input name="img" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>供应商ID  :</label>
+			<input name="itemFrom" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>商品介绍  :</label>
+			<input name="info" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>楼盘地址  :</label>
+			<input name="address" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>真实姓名:</label>
+			<input name="realname" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>装修状况:</label>
+			<input name="decStatus" class="easyui-textbox" style="width: 70%">
+		</div>
+	</form>
+</div>
+<div id="dlg-buttons">
+	<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveBuilding()" style="width:90px">Save</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+</div>
+</body>
+</html>

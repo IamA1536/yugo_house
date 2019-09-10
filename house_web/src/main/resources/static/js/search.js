@@ -1,31 +1,31 @@
-$(document).ready(function(){
-    $("#search_new").on( "click",function () {
+$(document).ready(function () {
+    $("#search_new").on("click", function () {
         $("#search_new").attr("class", "active_home");
-        $("#search_old").attr("class","search_option");
-        $("#search_rent").attr("class","search_option");
-        $("#search_decoration").attr("class","search_option");
+        $("#search_old").attr("class", "search_option");
+        $("#search_rent").attr("class", "search_option");
+        $("#search_decoration").attr("class", "search_option");
         //这里应该是给搜索添加一个参数而不是指向不同路径
-        $("#search_form").attr("action","/search");
+        $("#search_form").attr("action", "/search?type=1");
     });
-    $("#search_old").on( "click",function () {
+    $("#search_old").on("click", function () {
         $("#search_old").attr("class", "active_home");
-        $("#search_new").attr("class","search_option");
-        $("#search_rent").attr("class","search_option");
-        $("#search_decoration").attr("class","search_option");
-        $("#search_form").attr("action","/search");
+        $("#search_new").attr("class", "search_option");
+        $("#search_rent").attr("class", "search_option");
+        $("#search_decoration").attr("class", "search_option");
+        $("#search_form").attr("action", "/search?type=2");
     });
-    $("#search_rent").on( "click",function () {
+    $("#search_rent").on("click", function () {
         $("#search_rent").attr("class", "active_home");
-        $("#search_new").attr("class","search_option");
-        $("#search_old").attr("class","search_option");
-        $("#search_decoration").attr("class","search_option");
-        $("#search_form").attr("action","/search");
+        $("#search_new").attr("class", "search_option");
+        $("#search_old").attr("class", "search_option");
+        $("#search_decoration").attr("class", "search_option");
+        $("#search_form").attr("action", "/search?type=3");
     });
-    $("#search_decoration").on( "click",function () {
+    $("#search_decoration").on("click", function () {
         $("#search_decoration").attr("class", "active_home");
-        $("#search_new").attr("class","search_option");
-        $("#search_old").attr("class","search_option");
-        $("#search_rent").attr("class","search_option");
-        $("#search_form").attr("action","/search");
+        $("#search_new").attr("class", "search_option");
+        $("#search_old").attr("class", "search_option");
+        $("#search_rent").attr("class", "search_option");
+        $("#search_form").attr("action", "/search?type=4");
     });
 });

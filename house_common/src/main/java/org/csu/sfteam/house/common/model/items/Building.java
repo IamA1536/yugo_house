@@ -15,6 +15,9 @@ public class Building {
     private String info;
     private String address;
     private int decStatus;
+    private String LocationX;
+    private String LocationY;
+
 
     private int saleStatus;
 
@@ -110,5 +113,21 @@ public class Building {
 
     public void setArea(double area) {
         this.area = area;
+    }
+
+    public String getLocationY() {
+        return LocationY;
+    }
+
+    public void setLocationY(String locationY) {
+        LocationY = locationY;
+    }
+
+    public String getLocationX() {
+        return LocationX;
+    }
+
+    public void setLocationX(String locationX) {
+        LocationX = locationX;
     }
 }

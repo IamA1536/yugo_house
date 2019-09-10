@@ -123,6 +123,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> showUser() {
-        return new JasyptTools().UserListDecryptor(userMapper.showUsers());
+        List<User> userList = userMapper.showUsers();
+        userList.remove(0);
+        return new JasyptTools().UserListDecryptor(userList);
     }
 }

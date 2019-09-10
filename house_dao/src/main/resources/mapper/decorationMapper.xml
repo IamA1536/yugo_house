@@ -43,6 +43,12 @@
             <if test="link != null and link != '' ">
                 link = #{link}
             </if>
+            <if test="LocationX != null">
+                LocationX = #{LocationX}
+            </if>
+            <if test="LocationY != null">
+                LocationY = #{LocationY}
+            </if>
         </set>
         where ID = #{ID}
     </update>
@@ -56,7 +62,9 @@
                itemFrom,
                info,
                style,
-               link
+               link,
+               LocationX,
+               LocationY
         from decoration
         where company = #{company}
     </select>
@@ -70,7 +78,9 @@
                itemFrom,
                info,
                style,
-               link
+               link,
+               LocationX,
+               LocationY
         from decoration
         where ID = #{ID}
     </select>
@@ -84,7 +94,9 @@
                itemFrom,
                info,
                style,
-               link
+               link,
+               LocationX,
+               LocationY
         from decoration
         where company like CONCAT(CONCAT('%', #{keywords}), '%');
     </select>
@@ -98,7 +110,9 @@
                itemFrom,
                info,
                style,
-               link
+               link,
+               LocationX,
+               LocationY
         from decoration
     </select>
 
@@ -111,7 +125,9 @@
                itemFrom,
                info,
                style,
-               link
+               link,
+               LocationX,
+               LocationY
         from decoration
         where decoration.style = #{style}
     </select>
@@ -125,7 +141,9 @@
                itemFrom,
                info,
                style,
-               link
+               link,
+               LocationX,
+               LocationY
         from decoration
         where decoration.address = #{address}
     </select>
@@ -138,7 +156,9 @@
                itemFrom,
                info,
                style,
-               link
+               link,
+               LocationX,
+               LocationY
         from decoration
         where decoration.itemFrom = #{ID}
     </select>

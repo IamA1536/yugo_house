@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>文章列表--layui后台管理模板 2.0</title>
+	<meta name="renderer" content="webkit">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+
+	<!--easyui-->
+	<script type="text/javascript" src="js/easyui/jquery.min.js"></script>
+	<script type="text/javascript" src="js/easyui/jquery.easyui.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/easyui/themes/default/easyui.css" media="all">
+	<link rel="stylesheet" type="text/css" href="js/easyui/themes/color.css" media="all">
+	<link rel="stylesheet" type="text/css" href="js/easyui/demo/demo.css" media="all">
+	<link rel="stylesheet" type="text/css" href="js/easyui/themes/icon.css" media="all">
+
+	<link rel="stylesheet" type="text/css" href="css/background.css" media="screen">
+	<script type="text/javascript" src="js/usersList.js"></script>
+
+</head>
+<body class="childrenBody">
+<table id="dg" title="My Users" class="easyui-datagrid" style="border-spacing: 0;width:100%;height:100%;"
+	   url="get_users"
+	   toolbar="#toolbar"
+	   pagination="true"
+	   rownumbers="true" fitColumns="true" singleSelect="true">
+	<thead>
+	<tr>
+		<th field="ck" width="20" checkbox="true"></th>
+		<th field="ID" width="50">用户编号</th>
+		<th field="username" width="50">用户名</th>
+		<th field="type" width="50">角色</th>
+		<th field="email" width="50">邮箱</th>
+		<th field="info" width="50">描述</th>
+		<th field="icon" width="50">头像</th>
+		<th field="sex" width="50">性别</th>
+		<th field="address" width="50">地址</th>
+		<th field="tele" width="50">电话</th>
+		<th field="realname" width="50" hidden>真实姓名</th>
+		<th field="IDnumber" width="50" hidden>身份证号</th>
+		<th field="pw" width="50" hidden>用户密码</th>
+	</tr>
+	</thead>
+	<tr>
+		<td></td>
+		<td>January</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+	</tr>
+	<tr>
+		<td></td>
+		<td>AAAAAA</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+		<td>January</td>
+		<td>$100</td>
+	</tr>
+</table>
+<div id="toolbar">
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">New User</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">Edit User</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">Remove User</a>
+</div>
+<!--用户对话框-->
+<div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+	 closed="true" buttons="#dlg-buttons">
+	<div class="ftitle" style="font-size: 20px;font-weight: bold">User Information</div><br/>
+	<form id="fm" method="post" novalidate>
+		<div class="fitem">
+			<label>编号  :</label>
+			<input name="id" class="easyui-textbox" required="true" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>昵称  :</label>
+			<input name="username" class="easyui-textbox" required="true" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>角色  :</label>
+			<input name="type" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>邮箱  :</label>
+			<input name="email" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>描述  :</label>
+			<input name="info" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>头像  :</label>
+			<input name="icon" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>性别  :</label>
+			<input name="sex" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>地址  :</label>
+			<input name="address" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>电话  :</label>
+			<input name="tele" class="easyui-textbox" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>真实姓名:</label>
+			<input name="realname" class="easyui-textbox" type="password" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>身份证号:</label>
+			<input name="IDnumber" class="easyui-textbox" type="password" style="width: 70%">
+		</div>
+		<div class="fitem">
+			<label>用户密码:</label>
+			<input name="pw" class="easyui-textbox" type="password" style="width: 70%">
+		</div>
+	</form>
+</div>
+<div id="dlg-buttons">
+	<a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">Save</a>
+	<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">Cancel</a>
+</div>
+</body>
+</html>

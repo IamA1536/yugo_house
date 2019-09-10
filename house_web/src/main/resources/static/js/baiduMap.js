@@ -1,5 +1,7 @@
 var mp = new BMap.Map("baidu_map");
-var point = new BMap.Point(116.3964, 39.9093);
+var x = $("#bdPositionX").text;
+var y = $("#bdPositionY").text;
+var point = new BMap.Point(x, y);
 mp.centerAndZoom(point, 10);
 mp.enableScrollWheelZoom();
 
@@ -9,10 +11,9 @@ var canvasLayer = new BMap.CanvasLayer({
 
 var marker = new BMap.Marker(point);  // 创建标注
 mp.addOverlay(marker);              // 将标注添加到地图中
-mp.panTo(new_point);
+mp.panTo(point);
 
-var geolocation = new BMap.Geolocation();
-$("#bdPosition").text(r.point.lng + ',' + r.point.lat);
+// $("#bdPosition").text(point.lng + ',' + point.lat);
 
 function update() {
     var ctx = this.canvas.getContext("2d");
@@ -30,10 +31,10 @@ function update() {
 //         new BMap.Point(116.297047, 39.979542),
 //     ];
 
-    for (var i = 0, len = data.length; i < len; i++) {
-        var pixel = mp.pointToPixel(data[i]);
-        ctx.fillRect(pixel.x, pixel.y, 30, 30);
-    }
+    // for (var i = 0, len = data.length; i < len; i++) {
+    //     var pixel = mp.pointToPixel(data[i]);
+    //     ctx.fillRect(pixel.x, pixel.y, 30, 30);
+    // }
 }
 
 mp.addOverlay(canvasLayer);
