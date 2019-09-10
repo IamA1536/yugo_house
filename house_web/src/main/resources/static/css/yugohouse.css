@@ -82,6 +82,7 @@ a.learn_more:hover { color:white; background-color: rgb(238,119,17);}
 .recommend {margin-right:  10%;}
 .my_thumbnail {}
 .price {float: right;}
+.home_item_title { font-size: 16px; font-weight: 700 }
 
 
 #foot { height: 300px; background-color:rgb(241,196,15); color: white}
