@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <!-- 导航菜单，可重用 -->
-<nav th:fragment="nav(active)" class="navbar navbar-default" role="navigation">
+<nav th:fragment="nav(active)" class="navbar navbar-default nav_com" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -24,17 +24,22 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/account/login" th:if="${session.user==null}" th:text="#{login}">
-                        <span class="glyphicon glyphicon-user"></span>Sign In
+                    <a href="/account/login" th:if="${session.user==null}">
+                        <span class="glyphicon glyphicon-user"></span> 登录
                     </a>
                 </li>
 
-                <a href="/account/logout" th:if="${session.user!=null}" th:text="#{signOut}">
-                    Sign Out
+                <li th:if="${session.user!=null}">
+                <a href="/account/userCenter" >
+                    <span class="glyphicon glyphicon-user"></span>
+                     个人中心
                 </a>
-                <a href="/account/userCenter" th:if="${session.user!=null}" th:text="#{myAccount}">
-                    My Account
+                </li>
+                <li th:if="${session.user!=null}">
+                <a href="/account/logout" th:if="${session.user!=null}">
+                    <span class="glyphicon glyphicon-log-in"></span> 登出
                 </a>
+            </ul>
             </ul>
         </div>
     </div>

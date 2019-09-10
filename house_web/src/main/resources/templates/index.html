@@ -11,7 +11,7 @@
 <nav th:replace="common/template_navbar::nav(0)"></nav>
 
 <!-- 轮播器是响应式的，不好与搜索框组合 -->
-<div>
+<div style="overflow: auto; width: 100%">
     <!-- 我不做轮播器啦，JOJO！！ -->
 
     <!-- 轮播器 -->
@@ -50,17 +50,20 @@
     <div id="banner_home" class="banner col-sm-12">
 
     </div>
+    <div id="title_box">
+    <p id="title">优购房</p>
+    </div>
 
     <div class="banner_black">
         <!-- 搜索框 -->
         <div id="search_container">
-            <ul class="list-inline search_option">
-                <li>买新房</li>
-                <li>买二手房</li>
-                <li>找租房</li>
-                <li>找装修</li>
+            <ul class="list-inline ">
+                <li id="search_new" class="active_home">买新房</li>
+                <li id="search_old" class="search_option">二手房</li>
+                <li id="search_rent" class="search_option">找租房</li>
+                <li id="search_decoration" class="search_option">找装修</li>
             </ul>
-            <form action="/search" method="post" class="search_form" role="form">
+            <form action="/search" method="post" id="search_form" role="form">
                 <input type="text" class="form-control" id="keyword" name="keyword" placeholder="请输入查找关键字">
                 <button type="submit" class="btn btn_search btn_yellow">搜索</button>
             </form>
@@ -76,28 +79,30 @@
             <div class="col-xs-6 col-sm-3">
                 <div class="part">
                     <h3 class="part_title">买房</h3>
-                    <p class="part_info">上我们这儿找好房.jpg我们为您精心挑选优质房源</p>
+                    <p class="part_info">我们为您精心挑选优质房源。好房源那么多，我们为你精选。
+                    </p>
                     <a href="/showProperty" class="btn btn-default learn_more">了解更多</a>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="part">
                     <h3 class="part_title">卖房</h3>
-                    <p class="part_info">上我们这儿找好房.jpg</p>
+                    <p class="part_info">我们有宽广的受众群体、优良的推荐算法。</p>
                     <a href="/account/userCenter" class="btn btn-default learn_more">了解更多</a>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="part">
                     <h3 class="part_title">租房</h3>
-                    <p class="part_info">上我们这儿找好房.jpg</p>
+                    <p class="part_info">我们为您精心挑选优质房源。好房源那么多，我们为你精选。</p>
                     <a href="/showRent" class="btn btn-default learn_more">了解更多</a>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="part">
                     <h3 class="part_title">装修</h3>
-                    <p class="part_info">上我们这儿找好房.jpg</p>
+                    <p class="part_info">真实信息准确同步，装修动态一手掌握。
+                        </p>
                     <a href="/showDecoration" class="btn btn-default learn_more">了解更多</a>
                 </div>
             </div>
@@ -112,36 +117,37 @@
             <div class="col-xs-12 col-sm-3">
                 <div class="recommend_title_block">
                     <h3>买新房</h3>
-                    <p>上我们这儿找好房.jpg</p>
+                    <p>真实信息准确同步，楼盘动态一手掌握。
+                    </p>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingProperty.get(0).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/property1.jpg"/>
                     <div>
                         <span class="price">暂无价格</span>
-                        <h6 th:text="${buildingProperty.get(0).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingProperty.get(0).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingProperty.get(0).getItemName()}" class="home_item_title">商品名称</h6>
+                        <p th:text="${buildingProperty.get(0).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingProperty.get(1).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/property1.jpg"/>
                     <div>
                         <span class="price">暂无价格</span>
-                        <h6 th:text="${buildingProperty.get(1).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingProperty.get(1).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingProperty.get(1).getItemName()}" class="home_item_title">商品名称</h6>
+                        <p th:text="${buildingProperty.get(1).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3 hidden-xs">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingProperty.get(2).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/property1.jpg"/>
                     <div>
                         <span class="price">暂无价格</span>
-                        <h6 th:text="${buildingProperty.get(2).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingProperty.get(2).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingProperty.get(2).getItemName()}" class="home_item_title">商品名称</h6>
+                        <p th:text="${buildingProperty.get(2).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
@@ -156,43 +162,43 @@
             <div class="col-xs-12 col-sm-3 visible-xs">
                 <div class="recommend_title_block">
                     <h3>二手房</h3>
-                    <p>上我们这儿找好房.jpg</p>
+                    <p>我们为您精心挑选优质房源。好房源那么多，我们为你精选。</p>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingOldHouse.get(0).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/house1.jpg"/>
                     <div>
                         <span th:text="${buildingOldHouse.get(0).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingOldHouse.get(0).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingOldHouse.get(0).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingOldHouse.get(0).getItemName()}" class="home_item_title">商品名称</h6>
+                        <p th:text="${buildingOldHouse.get(0).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingOldHouse.get(1).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/house1.jpg"/>
                     <div>
                         <span th:text="${buildingOldHouse.get(1).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingOldHouse.get(1).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingOldHouse.get(1).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingOldHouse.get(1).getItemName()}" class="home_item_title">商品名称</h6>
+                        <p th:text="${buildingOldHouse.get(1).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3 hidden-xs">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingOldHouse.get(2).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/house1.jpg"/>
                     <div>
                         <span th:text="${buildingOldHouse.get(2).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingOldHouse.get(2).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingOldHouse.get(2).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingOldHouse.get(2).getItemName()}" class="home_item_title">商品名称</h6>
+                        <p th:text="${buildingOldHouse.get(2).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-3 hidden-xs">
                 <div class="recommend_title_block">
                     <h3>二手房</h3>
-                    <p>上我们这儿找好房.jpg</p>
+                    <p>我们为您精心挑选优质房源。好房源那么多，我们为你精选。</p>
                 </div>
             </div>
         </div>
@@ -206,36 +212,36 @@
             <div class="col-xs-12 col-sm-3">
                 <div class="recommend_title_block">
                     <h3>租房</h3>
-                    <p>上我们这儿找好房.jpg</p>
+                    <p>我们为您精心挑选优质房源。好房源那么多，我们为你精选。</p>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingRent.get(0).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/house2.jpg"/>
                     <div>
                         <span th:text="${buildingRent.get(0).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingRent.get(0).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingRent.get(0).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingRent.get(0).getItemName()}" class="home_item_title">商品名称</h6>
+                        <p th:text="${buildingRent.get(0).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingRent.get(1).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/house2.jpg"/>
                     <div>
                         <span th:text="${buildingRent.get(1).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingRent.get(1).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingRent.get(1).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingRent.get(1).getItemName()}" class="home_item_title">商品名称</h6>
+                        <p th:text="${buildingRent.get(1).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3 hidden-xs">
                 <div class="recommend">
-                    <img class="my_thumbnail img-rounded img-responsive" th:src="${buildingRent.get(2).getImg()}"/>
+                    <img class="my_thumbnail img-rounded img-responsive" src="/images/house2.jpg"/>
                     <div>
                         <span th:text="${buildingRent.get(2).getPrice()}" class="price">价格</span>
-                        <h6 th:text="${buildingRent.get(2).getItemName()}">商品名称</h6>
-                        <p th:text="${buildingRent.get(2).getInfo()}">详细信息</p>
+                        <h6 th:text="${buildingRent.get(2).getItemName()}" class="home_item_name">商品名称</h6>
+                        <p th:text="${buildingRent.get(2).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
@@ -250,7 +256,7 @@
             <div class="col-xs-12 col-sm-3 visible-xs">
                 <div class="recommend_title_block">
                     <h3>装修</h3>
-                    <p>上我们这儿找好房.jpg</p>
+                    <p>真实信息准确同步，装修动态一手掌握。</p>
                 </div>
             </div>
             <div class="col-xs-6 col-sm-3">
@@ -258,8 +264,8 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(0).getImg()}"/>
                     <div>
                         <span class="price">暂无价格</span>
-                        <h6 th:text="${decorationList.get(0).getCompany()}">商品名称</h6>
-                        <p th:text="${decorationList.get(0).getInfo()}">详细信息</p>
+                        <h6 th:text="${decorationList.get(0).getCompany()}" class="home_item_name">商品名称</h6>
+                        <p th:text="${decorationList.get(0).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
@@ -268,8 +274,8 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(1).getImg()}"/>
                     <div>
                         <span class="price">暂无价格</span>
-                        <h6 th:text="${decorationList.get(1).getCompany()}">商品名称</h6>
-                        <p th:text="${decorationList.get(1).getInfo()}">详细信息</p>
+                        <h6 th:text="${decorationList.get(1).getCompany()}" class="home_item_name">商品名称</h6>
+                        <p th:text="${decorationList.get(1).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
@@ -278,15 +284,15 @@
                     <img class="my_thumbnail img-rounded img-responsive" th:src="${decorationList.get(2).getImg()}"/>
                     <div>
                         <span class="price">暂无价格</span>
-                        <h6 th:text="${decorationList.get(2).getCompany()}">商品名称</h6>
-                        <p th:text="${decorationList.get(2).getInfo()}">详细信息</p>
+                        <h6 th:text="${decorationList.get(2).getCompany()}" class="home_item_name">商品名称</h6>
+                        <p th:text="${decorationList.get(2).getInfo()}" class="home_item_info">详细信息</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-3 hidden-xs">
                 <div class="recommend_title_block">
                     <h3>装修</h3>
-                    <p>上我们这儿找好房.jpg</p>
+                    <p>真实信息准确同步，装修动态一手掌握。</p>
                 </div>
             </div>
         </div>
@@ -299,5 +305,11 @@
 <div id="foot">
 
 </div>
+<!--<script>-->
+    <!--$(window).scroll(function () {-->
+        <!--if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");-->
+        <!--}else {$(".navbar-fixed-top").removeClass("top-nav");}-->
+    <!--})</script>-->
+<script type="text/javascript" src="/js/search.js"></script>
 </body>
 </html>

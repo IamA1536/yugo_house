@@ -7,19 +7,22 @@
 <!-- 导航栏 -->
 <nav th:replace="common/template_navbar::nav(99)"></nav>
 <!-- 最上面用户栏 -->
-<div id="user_top">
+<div class="user_top">
     <!-- 头像 -->
-    <img src="" class="my_icon">
+    <img th:src="${session.user.getIcon()}" class="my_icon">
+    <!--用js控制点击头像弹出修改头像框，头像框写在最后面-->
     <!-- 用户名 -->
     <span th:text="${session.user.getUsername()}" class="my_username">username</span>
 </div>
-<div id="user_container" class="col-sm-offset-2 col-sm-10">
-    <div id="user_nav" class="col-sm-2">
-        <ul class="nav nav-pills nav-stacked">
+<div class=" user_container">
+    <div class="user_nav">
+        <p class="center_title">个人中心</p>
+        <hr/>
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li class="active"><a href="#">我的个人信息</a></li>
             <li><a href="/showusercollection">我的收藏</a></li>
         </ul>
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="/account/addOldHouse">我要卖房</a></li>
             <li><a href="/account/addRent">我要出租</a></li>
             <!--用户类型为开发商才有以下两项-->
@@ -27,13 +30,14 @@
             <li th:if="${session.user.getType()==2}"><a href="/account/addDecoration">发布装修</a></li>
             <li><a href="/account/publishedInfoManage">管理已发布信息</a></li>
         </ul>
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked nav_part">
             <li><a href="/help">意见反馈</a></li>
         </ul>
     </div>
 
-    <div id="userinfo" class="col-sm-6">
-        <h2 class="my_title">我的信息</h2>
+    <div class="userinfo">
+        <p class="my_title">我的信息</p>
+        <hr/>
         <form th:action="@{/account/update_information}" method="post" class="form-horizontal" id="userinfo_form"
               role="form">
             <!-- 用户名 -->
@@ -112,6 +116,7 @@
                            name="IDnumber" th:if="${session.user.getIDnumber()!=null}" disabled>
                 </div>
             </div>
+            <hr/>
             <!-- 提交按钮 -->
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
@@ -121,4 +126,21 @@
         </form>
     </div>
 </div>
+<!--修改头像遮罩和修改头像表单-->
+<div class="black_all">
+    <div id="change_user_icon">
+        <!--更换头像的标题和叉-->
+        <div id="change_icon_title">更换头像 <span class="glyphicon glyphicon-remove" id="remove"></span></div>
+        <!--显示当前头像(从account中取),选择图片后改变(js)-->
+        <img id="user_icon_in_form" th:src="${session.user.getIcon()}">
+        <!--表单-->
+        <form id="user_icon_form">
+            <!--选择图片按钮-->
+            <input type="file" id="choose_user_icon">
+            <!--提交按钮-->
+            <button type="submit" class="btn btn_yellow" id="submit_icon">提交</button>
+        </form>
+    </div>
+</div>
+<script type="text/javascript" src="/js/changeUserIcon.js"></script>
 </body>
