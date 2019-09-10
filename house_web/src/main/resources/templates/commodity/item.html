@@ -53,46 +53,88 @@
             </div>
             <!-- 地址 -->
             <span th:text="${item.getAddress()}" class="info_address">地址</span>
+            <hr/>
+
+            <!--加一些占位置的东西-->
+            <label>看房时间 </label><span>提前预约随时可看</span>
+            <hr/>
+
             <!-- 联系人及联系方式 -->
             <span th:text="${username}" class="info_contact"></span>
             <span th:text="${tele}" class="info_tele">联系方式</span>
 
+            <hr/>
             <!-- 收藏按钮 -->
             <button th:if="${type != 4 || session.account != null}"
                     th:href="@{/addToCollection(ItemName=${item.getItemName()})}"
                     class="btn btn_yellow btn_collection ">
-                添加收藏
+                + 添加收藏
             </button>
             <button th:if="${type == 4 || session.account != null}"
                     th:href="@{/addToCollection(ItemName=${item.getCompany()})}"
-                    class="btn btn_yellow collection"> + 添加收藏
+                    class="btn btn_yellow btn_collection"> + 添加收藏
             </button>
+            <!--预约按钮-->
+            <button class="btn btn_yellow btn_collection" th:if="${type != 4 }" >预约看房</button>
         </div>
+
     </div>
 
+    <hr/>
     <!-- 介绍 -->
     <div id="info_others">
         <h2 name="itemName" th:if="${type != 4}" class="info_label">房源简介</h2>
         <h2 name="itemName" th:if="${type == 4}" class="info_label">装修简介</h2>
-        <p th:text="${item.getInfo()}"></p>
+        <p th:text="${item.getInfo()}" class="info_in_item"></p>
 
         <!--<p th:text="${item.getItemName()}" th:if="${type != 4}"></p>-->
         <!--<p th:text="${item.getCompany()}" th:if="${type == 4}"></p>-->
 
+        <hr/>
         <!-- 详细信息 -->
         <h2 class="info_label">详细信息</h2>
         <!-- 把后台传来的数据以键（label）值（span）状态显示 -->
         <!--这里因为缺乏沟通引发了误会，但既然有item应该问题不大，大不了写三个再用if判断...-->
-        <div></div>
+        <div class="all_info">
+            <ul th:if="${type == 1 || type==2}">
+                <li><label>房屋售价</label></li>
+                <li><label>装修状况</label></li>
+                <li><label>地理位置</label></li>
+                <li th:if="${type == 2}"><label>房屋面积</label></li>
+                <li><label>建筑结构</label>钢混结构</li>
+                <li><label>交易权属</label>商品房</li>
+                <li><label>房屋用途</label>普通住宅</li>
+                <li><label>产权所属</label>非共有</li>
+                <li><label>产权年限</label>70年</li>
+            </ul>
+            <p>注：房源所示“房屋用途、交易权属、建成年代、产权年限、建筑结构”仅供参考，购房时请以房本信息为准。</p>
+            <!-- 二手或出租 -->
+                <ul th:if="${type == 2}">
+                    <li><label>房屋售价</label></li>
+                    <li><label>装修状况</label></li>
+                    <li><label>地理位置</label></li>
+                    <li><label>建筑结构</label>钢混结构</li>
+                    <li><label>交易权属</label>商品房</li>
+                    <li><label>房屋用途</label>普通住宅</li>
+                    <li><label>产权所属</label>非共有</li>
+                    <li><label>产权年限</label>70年</li>
+                </ul>
+                <p>注：房源所示“房屋用途、交易权属、建成年代、产权年限、建筑结构”仅供参考，购房时请以房本信息为准。</p>
+            </div>
+        </div>
 
+
+
+
+        <div class="invisible" style="float: left">
+            <!--后端传值过来，js取到值显示出来-->
+            <p id="bdPosition" name="bdPosition"><span id="bdPositionX"></span>,<span id="dbPositionY"></span></p>
+        </div>
+        <hr/>
         <!-- 百度地图 -->
         <!--百度地图需要传值给js，而信息录入页面也还需要定位-->
-        <label for="bdPosition" class="col-sm-2 control-label invisible" >地理坐标</label>
-        <div class="col-sm-10  invisible">
-            <!--后端传值过来，js取到值显示出来-->
-            <p class="form-control-static" id="bdPosition" name="bdPosition"></p>
-        </div>
         <h2 class="info_label">周边信息</h2>
+        <br/>
         <div id="baidu_map"></div>
     </div>
 </div>

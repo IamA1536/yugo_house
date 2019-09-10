@@ -43,7 +43,7 @@ $(document).ready(function(){
 //    点击提交隐藏遮罩和修改头像框，直接在前端改变头像
 //    后端没写，阻拦了表单提交
     $("#submit_icon").on("click",function (e) {
-        e.preventDefault();
+        // e.preventDefault();
         var imgFile = $("#user_icon_in_form").attr('src');
         $(".my_icon").attr('src', imgFile);
         $(".black_all").hide();
