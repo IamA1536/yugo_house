@@ -53,112 +53,7 @@
 4. 服务器上搭建数据库
  
 ### 表结构
-* 用户管理
->user_standrad
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||用户编号|NOT NULL|是
-username|varchar|30|用户名|NOT NULL|否
-type|int|2|用户角色|NOT NULL|否
-email|varchar|255|用户邮箱|NOT NULL|否
-info|varchar|255|用户描述||否
-icon|varchar|255|头像||否
-sex|int|2|性别|NOT NULL|否
-address|varchar|255|省市|NOT NULL|否
-tele|varchar|20|电话|NOT NULL|否
->user_important
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||用户编号|NOT NULL|是
-realname|varchar|255|真实姓名|NOT NULL|否
-IDnumber|varchar|255|身份证号|NOT NULL|否
-pw|varchar|255|用户密码|NOT NULL|否
-
->user_collections
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||编号|NOT NULL|是
-userID|int||用户编号|NOT NULL|是
-itemID|int||商品ID|NOT NULL|否
-time|varchar|255|收藏时间|NOT NULL|否
-
-* 房产/租房/装修管理
->property_building
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||编号|NOT NULL|是
-buildingID|varchar|255|房产序列号|NOT NULL|否
-saleStatus|int|2|销售状态|NOT NULL|否
-
->rent
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||编号|NOT NULL|是
-buildingID|varchar|255|房产序列号|NOT NULL|否
-area|double|20|面积|NOT NULL|否
-
->building
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||编号|NOT NULL|是
-type|int|10|状态(买/租/楼盘)|NOT NULL|否
-itemName|varchar|255|商品名|NOT NULL|否
-price|double||商品价格|NOT NULL|否
-img|varchar|255|商品图片链接||否
-itemFrom|int||供应商ID|NOT NULL|否
-info|varchar|255|商品介绍||否
-address|varchar|255|楼盘地址|NOT NULL|否
-decStatus|int|2|装修状况|NOT NULL|否
-
->decoration
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||编号|NOT NULL|是
-company|varchar|25|公司名|NOT NULL|否
-address|varchar|255|地址|NOT NULL|否
-tele|varchar|30|联系方式|NOT NULL|否
-img|varchar|255|公司图片||否
-itemFrom|int||供应商ID|NOT NULL|否
-info|varchar|255|商品介绍||否
-style|int|10|风格||否
-link|varchar|255|官网链接||否
-
-* 论坛
-
->post
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||编号|NOT NULL|是
-theme|varchar|255|主题|NOT NULL|否
-host|varchar|255|楼主|NOT NULL|否
-content|varchar|255|内容|NOT NULL|否
-time|varchar|35|建立时间|NOT NULL|否
-
->reply
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||编号|NOT NULL|是
-postID|int||主贴ID|NOT NULL|否
-userID|int||回复人ID|NOT NULL|否
-content|varchar|255|内容|NOT NULL|否
-time|varchar|255|时间|NOT NULL|否
-
-* 管理员
->admin
-
-字段名称|数据类型|长度|描述|允许空|主键
---|:--:|:--:|:--:|:--:|:--:
-ID|int||编号|NOT NULL|是
-userID|varchar|30|账户|NOT NULL|否
-pw|varchar|255|密码|NOT NULL|否
+[>_<]:隐藏
 
 ## 8.30~9.1
 ### 工作
@@ -242,10 +137,8 @@ ID就是1114514
 2. 前端开始修改静态文件
 3. 开始准备写后台站点
 
-<div style='display: none'>
 ## 9.9
 ### 工作
 1. 修复好主站的样式
 2. 完成并开始测试后台
 3. 准备开始制作PPT
-</div>
